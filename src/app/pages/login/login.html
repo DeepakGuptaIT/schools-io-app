@@ -17,8 +17,8 @@
     <ion-list>
       <ion-item>
         <ion-label position="stacked" color="primary">Username</ion-label>
-        <ion-input [(ngModel)]="login.username" name="username" type="text" #username="ngModel" spellcheck="false" autocapitalize="off"
-          required>
+        <ion-input [(ngModel)]="login.username" name="username" type="text" #username="ngModel" spellcheck="false"
+          autocapitalize="off" required>
         </ion-input>
       </ion-item>
 
@@ -47,6 +47,17 @@
       </ion-col>
       <ion-col>
         <ion-button (click)="onSignup()" color="light" expand="block">Signup</ion-button>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-button (click)="webGoogleLogin()" type="submit" expand="block">Google Login</ion-button>
+      </ion-col>
+      <ion-col>
+        <ion-button (click)="webFacebookLogin()" type="submit" expand="block">Facebook Login</ion-button>
+      </ion-col>
+      <ion-col>
+        <ion-button (click)="signOut()" color="light" expand="block">Log out</ion-button>
       </ion-col>
     </ion-row>
   </form>

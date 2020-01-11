@@ -12,6 +12,20 @@ import { AppComponent } from './app.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { FormsModule } from '@angular/forms';
+import { AngularFireModule } from '@angular/fire';
+import { AngularFireAuthModule } from '@angular/fire/auth';
+// import { GooglePlus } from '@ionic-native/google-plus'; // We'll install this in the next section
+
+const firebaseConfig = {
+  apiKey: "AIzaSyBKAQAy4yb1BpE-eoMjFg_ZRFALUhejg8U",
+  authDomain: "schools-io-d0066.firebaseapp.com",
+  databaseURL: "https://schools-io-d0066.firebaseio.com",
+  projectId: "schools-io-d0066",
+  storageBucket: "schools-io-d0066.appspot.com",
+  messagingSenderId: "276194740345",
+  appId: "1:276194740345:web:715ed962a8565d6f9ceca8",
+  measurementId: "G-RS2ZSDQDWC"
+};
 
 @NgModule({
   imports: [
@@ -23,10 +37,12 @@ import { FormsModule } from '@angular/forms';
     IonicStorageModule.forRoot(),
     ServiceWorkerModule.register('ngsw-worker.js', {
       enabled: environment.production
-    })
+    }),
+    AngularFireModule.initializeApp(firebaseConfig), // <-- firebase here
+    AngularFireAuthModule
   ],
   declarations: [AppComponent],
   providers: [InAppBrowser, SplashScreen, StatusBar],
   bootstrap: [AppComponent]
 })
-export class AppModule {}
+export class AppModule { }
