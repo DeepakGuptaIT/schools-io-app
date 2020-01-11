@@ -1,0 +1,785 @@
+[
+    {
+        "_id": "5d7fd2a6de197e51d012575a",
+        "name": "Gyan Niketan",
+        "city": "Bokaro",
+        "type": "co",
+        "tagLine": "Tamsoma Amritam Gamya",
+        "__v": 0
+    },
+    {
+        "_id": "5d7fd2bbde197e51d0125765",
+        "name": "iit bombey",
+        "city": "mumbai",
+        "type": "boys",
+        "tagLine": "Tamsoma Amritam Gamya",
+        "__v": 0
+    },
+    {
+        "_id": "5d7fd2d5de197e51d0125768",
+        "name": "School B",
+        "city": "B",
+        "type": "Secondary School",
+        "tagLine": "Tamsoma Amritam Gamya",
+        "__v": 0
+    },
+    {
+        "_id": "5d7fd2d5de197e51d0125769",
+        "name": "School C",
+        "city": "C",
+        "type": "Secondary School",
+        "tagLine": "Tamsoma Amritam Gamya",
+        "__v": 0
+    },
+    {
+        "_id": "5d7fd2d5de197e51d012576a",
+        "name": "School A",
+        "city": "Pune",
+        "type": "girls",
+        "tagLine": "Tamsoma Amritam Gamya",
+        "__v": 0
+    },
+    {
+        "_id": "5d7fd2d5de197e51d012576b",
+        "name": "School B",
+        "city": "B",
+        "type": "Secondary School",
+        "tagLine": "Tamsoma Amritam Gamya",
+        "__v": 0
+    },
+    {
+        "_id": "5d7fd2d5de197e51d012576c",
+        "name": "School C",
+        "city": "C",
+        "type": "Secondary School",
+        "tagLine": "Tamsoma Amritam Gamya",
+        "__v": 0
+    },
+    {
+        "_id": "5d7fd2d5de197e51d012576d",
+        "name": "School A",
+        "city": "A",
+        "type": "Secondary School",
+        "tagLine": "Tamsoma Amritam Gamya",
+        "__v": 0
+    },
+    {
+        "_id": "5d7fd2d5de197e51d012576e",
+        "name": "School B",
+        "city": "B",
+        "type": "Secondary School",
+        "tagLine": "Tamsoma Amritam Gamya",
+        "__v": 0
+    },
+    {
+        "_id": "5d7fd2d5de197e51d012576f",
+        "name": "School C",
+        "city": "C",
+        "type": "Secondary School",
+        "tagLine": "Tamsoma Amritam Gamya",
+        "__v": 0
+    },
+    {
+        "_id": "5d7fd2d5de197e51d0125770",
+        "name": "School A",
+        "city": "A",
+        "type": "Secondary School",
+        "tagLine": "Tamsoma Amritam Gamya",
+        "__v": 0
+    },
+    {
+        "_id": "5d7fd2d5de197e51d0125771",
+        "name": "School B",
+        "city": "B",
+        "type": "Secondary School",
+        "tagLine": "Tamsoma Amritam Gamya",
+        "__v": 0
+    },
+    {
+        "_id": "5d7fd2d5de197e51d0125772",
+        "name": "School C",
+        "city": "C",
+        "type": "Secondary School",
+        "tagLine": "Tamsoma Amritam Gamya",
+        "__v": 0
+    },
+    {
+        "_id": "5d7fd2d5de197e51d0125774",
+        "name": "School B",
+        "city": "B",
+        "type": "Secondary School",
+        "tagLine": "Tamsoma Amritam Gamya",
+        "__v": 0
+    },
+    {
+        "_id": "5d7fd2d5de197e51d0125775",
+        "name": "School C",
+        "city": "C",
+        "type": "Secondary School",
+        "tagLine": "Tamsoma Amritam Gamya",
+        "__v": 0
+    },
+    {
+        "_id": "5d7fd2d9de197e51d0125776",
+        "name": "School A",
+        "city": "A",
+        "type": "Secondary School",
+        "tagLine": "Tamsoma Amritam Gamya",
+        "__v": 0
+    },
+    {
+        "_id": "5d7fd2d9de197e51d0125777",
+        "name": "School B",
+        "city": "B",
+        "type": "Secondary School",
+        "tagLine": "Tamsoma Amritam Gamya",
+        "__v": 0
+    },
+    {
+        "_id": "5d7fd2d9de197e51d0125778",
+        "name": "School C",
+        "city": "C",
+        "type": "Secondary School",
+        "tagLine": "Tamsoma Amritam Gamya",
+        "__v": 0
+    },
+    {
+        "_id": "5d7fd2d9de197e51d0125779",
+        "name": "School A",
+        "city": "A",
+        "type": "Secondary School",
+        "tagLine": "Tamsoma Amritam Gamya",
+        "__v": 0
+    },
+    {
+        "_id": "5d7fd2d9de197e51d012577a",
+        "name": "School B",
+        "city": "B",
+        "type": "Secondary School",
+        "tagLine": "Tamsoma Amritam Gamya",
+        "__v": 0
+    },
+    {
+        "_id": "5d7fd2d9de197e51d012577b",
+        "name": "School C",
+        "city": "C",
+        "type": "Secondary School",
+        "tagLine": "Tamsoma Amritam Gamya",
+        "__v": 0
+    },
+    {
+        "_id": "5d7fd2d9de197e51d012577c",
+        "name": "School A",
+        "city": "A",
+        "type": "Secondary School",
+        "tagLine": "Tamsoma Amritam Gamya",
+        "__v": 0
+    },
+    {
+        "_id": "5d7fd2d9de197e51d012577d",
+        "name": "School B",
+        "city": "B",
+        "type": "Secondary School",
+        "tagLine": "Tamsoma Amritam Gamya",
+        "__v": 0
+    },
+    {
+        "_id": "5d7fd2d9de197e51d012577e",
+        "name": "School C",
+        "city": "C",
+        "type": "Secondary School",
+        "tagLine": "Tamsoma Amritam Gamya",
+        "__v": 0
+    },
+    {
+        "_id": "5d7fd2d9de197e51d012577f",
+        "name": "School A",
+        "city": "A",
+        "type": "Secondary School",
+        "tagLine": "Tamsoma Amritam Gamya",
+        "__v": 0
+    },
+    {
+        "_id": "5d7fd2d9de197e51d0125780",
+        "name": "School B",
+        "city": "B",
+        "type": "Secondary School",
+        "tagLine": "Tamsoma Amritam Gamya",
+        "__v": 0
+    },
+    {
+        "_id": "5d7fd2d9de197e51d0125781",
+        "name": "School C",
+        "city": "C",
+        "type": "Secondary School",
+        "tagLine": "Tamsoma Amritam Gamya",
+        "__v": 0
+    },
+    {
+        "_id": "5d7fd2d9de197e51d0125782",
+        "name": "School A",
+        "city": "A",
+        "type": "Secondary School",
+        "tagLine": "Tamsoma Amritam Gamya",
+        "__v": 0
+    },
+    {
+        "_id": "5d7fd2d9de197e51d0125783",
+        "name": "School B",
+        "city": "B",
+        "type": "Secondary School",
+        "tagLine": "Tamsoma Amritam Gamya",
+        "__v": 0
+    },
+    {
+        "_id": "5d7fd2d9de197e51d0125784",
+        "name": "School C",
+        "city": "C",
+        "type": "Secondary School",
+        "tagLine": "Tamsoma Amritam Gamya",
+        "__v": 0
+    },
+    {
+        "_id": "5d7fd2dade197e51d0125785",
+        "name": "School A",
+        "city": "A",
+        "type": "Secondary School",
+        "tagLine": "Tamsoma Amritam Gamya",
+        "__v": 0
+    },
+    {
+        "_id": "5d7fd2dade197e51d0125786",
+        "name": "School B",
+        "city": "B",
+        "type": "Secondary School",
+        "tagLine": "Tamsoma Amritam Gamya",
+        "__v": 0
+    },
+    {
+        "_id": "5d7fd2dade197e51d0125787",
+        "name": "School C",
+        "city": "C",
+        "type": "Secondary School",
+        "tagLine": "Tamsoma Amritam Gamya",
+        "__v": 0
+    },
+    {
+        "_id": "5d7fd2dade197e51d0125788",
+        "name": "School A",
+        "city": "A",
+        "type": "Secondary School",
+        "tagLine": "Tamsoma Amritam Gamya",
+        "__v": 0
+    },
+    {
+        "_id": "5d7fd2dade197e51d0125789",
+        "name": "School B",
+        "city": "B",
+        "type": "Secondary School",
+        "tagLine": "Tamsoma Amritam Gamya",
+        "__v": 0
+    },
+    {
+        "_id": "5d7fd2dade197e51d012578a",
+        "name": "School C",
+        "city": "C",
+        "type": "Secondary School",
+        "tagLine": "Tamsoma Amritam Gamya",
+        "__v": 0
+    },
+    {
+        "_id": "5d7fd2dade197e51d012578b",
+        "name": "School A",
+        "city": "A",
+        "type": "Secondary School",
+        "tagLine": "Tamsoma Amritam Gamya",
+        "__v": 0
+    },
+    {
+        "_id": "5d7fd2dade197e51d012578c",
+        "name": "School B",
+        "city": "B",
+        "type": "Secondary School",
+        "tagLine": "Tamsoma Amritam Gamya",
+        "__v": 0
+    },
+    {
+        "_id": "5d7fd2dade197e51d012578d",
+        "name": "School C",
+        "city": "C",
+        "type": "Secondary School",
+        "tagLine": "Tamsoma Amritam Gamya",
+        "__v": 0
+    },
+    {
+        "_id": "5d7fd2dade197e51d012578e",
+        "name": "School A",
+        "city": "A",
+        "type": "Secondary School",
+        "tagLine": "Tamsoma Amritam Gamya",
+        "__v": 0
+    },
+    {
+        "_id": "5d7fd2dade197e51d012578f",
+        "name": "School B",
+        "city": "B",
+        "type": "Secondary School",
+        "tagLine": "Tamsoma Amritam Gamya",
+        "__v": 0
+    },
+    {
+        "_id": "5d7fd2dade197e51d0125790",
+        "name": "School C",
+        "city": "C",
+        "type": "Secondary School",
+        "tagLine": "Tamsoma Amritam Gamya",
+        "__v": 0
+    },
+    {
+        "_id": "5d7fd2dade197e51d0125791",
+        "name": "School A",
+        "city": "A",
+        "type": "Secondary School",
+        "tagLine": "Tamsoma Amritam Gamya",
+        "__v": 0
+    },
+    {
+        "_id": "5d7fd2dade197e51d0125792",
+        "name": "School B",
+        "city": "B",
+        "type": "Secondary School",
+        "tagLine": "Tamsoma Amritam Gamya",
+        "__v": 0
+    },
+    {
+        "_id": "5d7fd2dade197e51d0125793",
+        "name": "School C",
+        "city": "C",
+        "type": "Secondary School",
+        "tagLine": "Tamsoma Amritam Gamya",
+        "__v": 0
+    },
+    {
+        "_id": "5d7fd2dbde197e51d0125794",
+        "name": "School A",
+        "city": "A",
+        "type": "Secondary School",
+        "tagLine": "Tamsoma Amritam Gamya",
+        "__v": 0
+    },
+    {
+        "_id": "5d7fd2dbde197e51d0125795",
+        "name": "School B",
+        "city": "B",
+        "type": "Secondary School",
+        "tagLine": "Tamsoma Amritam Gamya",
+        "__v": 0
+    },
+    {
+        "_id": "5d7fd2dbde197e51d0125797",
+        "name": "shital",
+        "city": "Jio",
+        "type": "girls",
+        "tagLine": "Tamsoma Amritam Gamya",
+        "__v": 0
+    },
+    {
+        "_id": "5d7fd2dbde197e51d0125798",
+        "name": "School B",
+        "city": "B",
+        "type": "Secondary School",
+        "tagLine": "Tamsoma Amritam Gamya",
+        "__v": 0
+    },
+    {
+        "_id": "5d7fd2dbde197e51d0125799",
+        "name": "School C",
+        "city": "C",
+        "type": "Secondary School",
+        "tagLine": "Tamsoma Amritam Gamya",
+        "__v": 0
+    },
+    {
+        "_id": "5d7fd2dbde197e51d012579a",
+        "name": "School A",
+        "city": "A",
+        "type": "Secondary School",
+        "tagLine": "Tamsoma Amritam Gamya",
+        "__v": 0
+    },
+    {
+        "_id": "5d7fd2dbde197e51d012579b",
+        "name": "School B",
+        "city": "B",
+        "type": "Secondary School",
+        "tagLine": "Tamsoma Amritam Gamya",
+        "__v": 0
+    },
+    {
+        "_id": "5d7fd2dbde197e51d012579c",
+        "name": "School C",
+        "city": "C",
+        "type": "Secondary School",
+        "tagLine": "Tamsoma Amritam Gamya",
+        "__v": 0
+    },
+    {
+        "_id": "5d7fd2dbde197e51d012579d",
+        "name": "School A",
+        "city": "A",
+        "type": "Secondary School",
+        "tagLine": "Tamsoma Amritam Gamya",
+        "__v": 0
+    },
+    {
+        "_id": "5d7fd2dbde197e51d012579e",
+        "name": "School B",
+        "city": "B",
+        "type": "Secondary School",
+        "tagLine": "Tamsoma Amritam Gamya",
+        "__v": 0
+    },
+    {
+        "_id": "5d7fd2dbde197e51d01257a0",
+        "name": "School A",
+        "city": "A",
+        "type": "Secondary School",
+        "tagLine": "Tamsoma Amritam Gamya",
+        "__v": 0
+    },
+    {
+        "_id": "5d7fd2dbde197e51d012579f",
+        "name": "School C",
+        "city": "C",
+        "type": "Secondary School",
+        "tagLine": "Tamsoma Amritam Gamya",
+        "__v": 0
+    },
+    {
+        "_id": "5d7fd2dbde197e51d01257a1",
+        "name": "School B",
+        "city": "B",
+        "type": "Secondary School",
+        "tagLine": "Tamsoma Amritam Gamya",
+        "__v": 0
+    },
+    {
+        "_id": "5d7fd2dbde197e51d01257a2",
+        "name": "School C",
+        "city": "C",
+        "type": "Secondary School",
+        "tagLine": "Tamsoma Amritam Gamya",
+        "__v": 0
+    },
+    {
+        "_id": "5d7fd2dcde197e51d01257a3",
+        "name": "School A",
+        "city": "A",
+        "type": "Secondary School",
+        "tagLine": "Tamsoma Amritam Gamya",
+        "__v": 0
+    },
+    {
+        "_id": "5d7fd2dcde197e51d01257a4",
+        "name": "School B",
+        "city": "B",
+        "type": "Secondary School",
+        "tagLine": "Tamsoma Amritam Gamya",
+        "__v": 0
+    },
+    {
+        "_id": "5d7fd2dcde197e51d01257a5",
+        "name": "School C",
+        "city": "C",
+        "type": "Secondary School",
+        "tagLine": "Tamsoma Amritam Gamya",
+        "__v": 0
+    },
+    {
+        "_id": "5d7fd2dcde197e51d01257a6",
+        "name": "School A",
+        "city": "A",
+        "type": "Secondary School",
+        "tagLine": "Tamsoma Amritam Gamya",
+        "__v": 0
+    },
+    {
+        "_id": "5d7fd2dcde197e51d01257a7",
+        "name": "School B",
+        "city": "B",
+        "type": "Secondary School",
+        "tagLine": "Tamsoma Amritam Gamya",
+        "__v": 0
+    },
+    {
+        "_id": "5d7fd2dcde197e51d01257a8",
+        "name": "School C",
+        "city": "C",
+        "type": "Secondary School",
+        "tagLine": "Tamsoma Amritam Gamya",
+        "__v": 0
+    },
+    {
+        "_id": "5d7fd2dcde197e51d01257a9",
+        "name": "School A",
+        "city": "A",
+        "type": "Secondary School",
+        "tagLine": "Tamsoma Amritam Gamya",
+        "__v": 0
+    },
+    {
+        "_id": "5d7fd2dcde197e51d01257aa",
+        "name": "School B",
+        "city": "B",
+        "type": "Secondary School",
+        "tagLine": "Tamsoma Amritam Gamya",
+        "__v": 0
+    },
+    {
+        "_id": "5d7fd2dcde197e51d01257ab",
+        "name": "School C",
+        "city": "C",
+        "type": "Secondary School",
+        "tagLine": "Tamsoma Amritam Gamya",
+        "__v": 0
+    },
+    {
+        "_id": "5d7fd2dcde197e51d01257ac",
+        "name": "School A",
+        "city": "A",
+        "type": "Secondary School",
+        "tagLine": "Tamsoma Amritam Gamya",
+        "__v": 0
+    },
+    {
+        "_id": "5d7fd2dcde197e51d01257ad",
+        "name": "School B",
+        "city": "B",
+        "type": "Secondary School",
+        "tagLine": "Tamsoma Amritam Gamya",
+        "__v": 0
+    },
+    {
+        "_id": "5d7fd2dcde197e51d01257af",
+        "name": "School A",
+        "city": "A",
+        "type": "Secondary School",
+        "tagLine": "Tamsoma Amritam Gamya",
+        "__v": 0
+    },
+    {
+        "_id": "5d7fd2dcde197e51d01257b0",
+        "name": "School B",
+        "city": "B",
+        "type": "Secondary School",
+        "tagLine": "Tamsoma Amritam Gamya",
+        "__v": 0
+    },
+    {
+        "_id": "5d7fd2dcde197e51d01257b1",
+        "name": "School C",
+        "city": "C",
+        "type": "Secondary School",
+        "tagLine": "Tamsoma Amritam Gamya",
+        "__v": 0
+    },
+    {
+        "_id": "5d7fd2ddde197e51d01257b2",
+        "name": "School A",
+        "city": "A",
+        "type": "Secondary School",
+        "tagLine": "Tamsoma Amritam Gamya",
+        "__v": 0
+    },
+    {
+        "_id": "5d7fd2ddde197e51d01257b3",
+        "name": "School B",
+        "city": "B",
+        "type": "Secondary School",
+        "tagLine": "Tamsoma Amritam Gamya",
+        "__v": 0
+    },
+    {
+        "_id": "5d7fd2ddde197e51d01257b4",
+        "name": "School C",
+        "city": "C",
+        "type": "Secondary School",
+        "tagLine": "Tamsoma Amritam Gamya",
+        "__v": 0
+    },
+    {
+        "_id": "5d7fd2ddde197e51d01257b5",
+        "name": "School A",
+        "city": "A",
+        "type": "Secondary School",
+        "tagLine": "Tamsoma Amritam Gamya",
+        "__v": 0
+    },
+    {
+        "_id": "5d7fd2ddde197e51d01257b6",
+        "name": "School B",
+        "city": "B",
+        "type": "Secondary School",
+        "tagLine": "Tamsoma Amritam Gamya",
+        "__v": 0
+    },
+    {
+        "_id": "5d7fd2ddde197e51d01257b7",
+        "name": "School C",
+        "city": "C",
+        "type": "Secondary School",
+        "tagLine": "Tamsoma Amritam Gamya",
+        "__v": 0
+    },
+    {
+        "_id": "5d7fd2ddde197e51d01257b8",
+        "name": "School A",
+        "city": "A",
+        "type": "Secondary School",
+        "tagLine": "Tamsoma Amritam Gamya",
+        "__v": 0
+    },
+    {
+        "_id": "5d7fd2ddde197e51d01257b9",
+        "name": "School B",
+        "city": "B",
+        "type": "Secondary School",
+        "tagLine": "Tamsoma Amritam Gamya",
+        "__v": 0
+    },
+    {
+        "_id": "5d7fd2ddde197e51d01257ba",
+        "name": "School C",
+        "city": "C",
+        "type": "Secondary School",
+        "tagLine": "Tamsoma Amritam Gamya",
+        "__v": 0
+    },
+    {
+        "_id": "5d7fd2ddde197e51d01257bb",
+        "name": "School A",
+        "city": "A",
+        "type": "Secondary School",
+        "tagLine": "Tamsoma Amritam Gamya",
+        "__v": 0
+    },
+    {
+        "_id": "5d7fd2ddde197e51d01257bc",
+        "name": "School B",
+        "city": "B",
+        "type": "Secondary School",
+        "tagLine": "Tamsoma Amritam Gamya",
+        "__v": 0
+    },
+    {
+        "_id": "5d7fd2ddde197e51d01257bd",
+        "name": "School C",
+        "city": "C",
+        "type": "Secondary School",
+        "tagLine": "Tamsoma Amritam Gamya",
+        "__v": 0
+    },
+    {
+        "_id": "5d7fd2ddde197e51d01257bf",
+        "name": "School B",
+        "city": "B",
+        "type": "Secondary School",
+        "tagLine": "Tamsoma Amritam Gamya",
+        "__v": 0
+    },
+    {
+        "_id": "5d8751b9241b97069c890664",
+        "name": "Deepak Gupta School",
+        "city": "Jharkhand",
+        "type": "co",
+        "tagLine": "Tamsoma Amritam Gamya",
+        "__v": 0
+    },
+    {
+        "_id": "5d875232241b97069c890665",
+        "name": "shital gupta",
+        "city": "Jio",
+        "type": "girls",
+        "tagLine": "Tamsoma Amritam Gamya",
+        "__v": 0
+    },
+    {
+        "_id": "5d8752df241b97069c890666",
+        "name": "DPS BBc",
+        "city": "Delhi",
+        "type": "co",
+        "tagLine": "Tamsoma Amritam Gamya",
+        "__v": 0
+    },
+    {
+        "_id": "5d875cd3241b97069c890667",
+        "name": "DPS BB",
+        "city": "Delhi",
+        "type": "co",
+        "tagLine": "Tamsoma Amritam Gamya",
+        "__v": 0
+    },
+    {
+        "_id": "5d875e56241b97069c890668",
+        "name": "Sita Ram School",
+        "city": "Panji",
+        "type": "boys",
+        "tagLine": "Tamsoma Amritam Gamya",
+        "__v": 0
+    },
+    {
+        "_id": "5d875e75241b97069c890669",
+        "name": "Saraswati sishu mandir",
+        "city": "Bokaro",
+        "type": "Secondary School",
+        "tagLine": "Tamsoma Amritam Gamya",
+        "__v": 0
+    },
+    {
+        "_id": "5db5ca553997c1413cd7fb21",
+        "name": "vip",
+        "city": "pune",
+        "type": "co school",
+        "tagLine": "vidya dadati vinyam",
+        "__v": 0
+    },
+    {
+        "_id": "5dc6e5798bf0d6544c376573",
+        "name": "vibgyor",
+        "city": "pune",
+        "type": "kid scheool",
+        "tagLine": "money and money",
+        "__v": 0
+    },
+    {
+        "_id": "5dc954b91c019e12f02e2728",
+        "city": "string",
+        "type": "string",
+        "tagLine": "string",
+        "__v": 0
+    },
+    {
+        "_id": "5dc996f10312d032680dbebd",
+        "name": "school_name",
+        "city": "city_name",
+        "type": "type-of-school",
+        "tagLine": "Tamsoma Jyotirgamya",
+        "__v": 0
+    },
+    {
+        "_id": "5dfe0d08ecc03f35b08fadcb",
+        "name": "deepak's new school",
+        "city": "daltongunj",
+        "type": "upto 10thl",
+        "tagLine": "Tamsoma Jyotirgamya",
+        "__v": 0
+    },
+    {
+        "_id": "5e063cb213621113a814e665",
+        "name": "nit patna",
+        "city": "Pune",
+        "type": "girls",
+        "tagLine": "Tamsoma Amritam Gamya",
+        "__v": 0
+    }
+]

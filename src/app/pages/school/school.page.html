@@ -1,0 +1,55 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button [text]="buttonText" [icon]="buttonIcon" (click)="dismiss()">back</ion-back-button>
+    </ion-buttons>
+    <ion-title>{{isNew? 'Add' : 'Update'}} Form</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <form [formGroup]="schoolForm" (ngSubmit)="onSubmit()">
+    <ion-item>
+      <ion-label position="fixed" color="primary">Id</ion-label>
+      <ion-input type="text" formControlName="_id"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="fixed" color="primary">Name</ion-label>
+      <ion-input type="text" formControlName="name"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="fixed" color="primary">City</ion-label>
+      <ion-input type="text" formControlName="city"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="fixed" color="primary">Type</ion-label>
+      <ion-select placeholder="Select One" formControlName="type">
+        <ion-select-option value="boys">Boys School</ion-select-option>
+        <ion-select-option value="girls">Girls School</ion-select-option>
+        <ion-select-option value="co">Co School</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label position="fixed" color="primary">TagLine</ion-label>
+      <ion-input type="text" formControlName="tagLine"></ion-input>
+    </ion-item>
+    <ion-button type="submit" [disabled]="!schoolForm.valid" shape="round" size="default" color="primary">
+      {{isNew? 'Add' : 'Update'}} School
+    </ion-button>
+    <ion-button (click)="resetSchoolForm()" shape="round" size="default" color="primary">
+      Reset School Form
+    </ion-button>
+    <ion-button (click)="dismiss()" shape="round" size="default" color="primary">
+      close
+    </ion-button>
+
+  </form>
+  <p>
+    Form Value: {{ schoolForm.value | json }}
+  </p>
+  <p>
+    Form Status: {{ schoolForm.status }}
+  </p>
+
+
+</ion-content>

@@ -45,6 +45,7 @@ export class LoginPage {
 
   async webGoogleLogin(): Promise<void> {
     try {
+      // await firebase.auth().setPersistence(firebase.auth.Auth.Persistence.NONE);
       const provider = new firebase.auth.GoogleAuthProvider();
       const credential = await this.afAuth.auth.signInWithPopup(provider);
       console.log("google credential:", credential);
