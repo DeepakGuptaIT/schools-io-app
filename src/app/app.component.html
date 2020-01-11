@@ -1,10 +1,22 @@
 <ion-app [class.dark-theme]="dark">
-  <ion-split-pane contentId="main-content">
+  <ion-split-pane contentId="main-content" [disabled]="true">
 
-    <ion-menu contentId="main-content">
+    <!-- <ion-menu contentId="main-content"> -->
+    <ion-menu side="start" menuId="custom" class="my-custom-menu" contentId="main-content">
       <ion-header>
-        <ion-toolbar>
-          <ion-title>Menu</ion-title>
+        <ion-toolbar class="toolbar">
+          <!-- <ion-item slot="end"> -->
+          <ion-menu-toggle auto-hide=false slot="end">
+            <ion-button fill="clear" shape="round">
+              <ion-icon name="menu" slot="icon-only"></ion-icon>
+            </ion-button>
+          </ion-menu-toggle>
+          <!-- </ion-item> -->
+          <ion-title slot="start">
+            Menu
+          </ion-title>
+          <!-- <ion-button color="primary" expand="full" (click)="toggleCustomMenu('custom')">open-close</ion-button> -->
+
         </ion-toolbar>
       </ion-header>
 

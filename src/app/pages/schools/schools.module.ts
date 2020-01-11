@@ -8,6 +8,7 @@ import { SchoolsPageRoutingModule } from './schools-routing.module';
 
 import { SchoolsPage } from './schools.page';
 import { SchoolPage } from './../school/school.page';
+import { SchoolPageModule } from './../school/school.module';
 
 @NgModule({
   imports: [
@@ -15,9 +16,10 @@ import { SchoolPage } from './../school/school.page';
     FormsModule,
     ReactiveFormsModule,
     IonicModule,
-    SchoolsPageRoutingModule
+    SchoolsPageRoutingModule,
+    SchoolPageModule
   ],
-  declarations: [SchoolsPage, SchoolPage],
+  declarations: [SchoolsPage],
   entryComponents: [SchoolPage]
 })
 export class SchoolsPageModule { }

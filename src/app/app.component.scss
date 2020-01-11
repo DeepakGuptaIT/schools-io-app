@@ -2,6 +2,10 @@ ion-item {
   --transition: unset;
 }
 
+// .my-custom-menu {
+//   --width: 500px;
+// }
+
 .active {
   --color: var(--ion-color-primary);
   --background: rgba(var(--ion-color-primary-rgb), 0.12);

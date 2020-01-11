@@ -47,6 +47,7 @@ export class AppComponent implements OnInit {
   ];
   loggedIn = false;
   dark = false;
+  isSplitPaneDisabled = false;
 
   constructor(
     private menu: MenuController,
@@ -126,5 +127,19 @@ export class AppComponent implements OnInit {
     this.menu.enable(false);
     this.storage.set('ion_did_tutorial', false);
     this.router.navigateByUrl('/tutorial');
+  }
+
+  async toggleCustomMenu(toggleCustomMenu: string) {
+    console.log('open custom clicked', toggleCustomMenu);
+    // this.menu.enable(true, 'custom');
+    const menu = await this.menu.get(toggleCustomMenu);
+    const isOpen = await menu.isOpen();
+    if (isOpen) {
+      this.isSplitPaneDisabled = true;
+      this.menu.close(toggleCustomMenu);
+    } else {
+      this.menu.open(toggleCustomMenu);
+      this.isSplitPaneDisabled = false;
+    }
   }
 }

@@ -9,13 +9,23 @@ import { School } from './../../interfaces/school';
 })
 export class SchoolService {
   baseUrl = 'http://localhost:3000';
+  schools: School[];
 
   constructor(public http: HttpClient) { }
 
   getSchoolList(): Observable<any> {
     let url = `${this.baseUrl}/school/`;
-    return this.http.get(url);
+    if (this.schools) {
+      return of(this.schools);
+    } else {
+      return this.http
+        .get('assets/data/schools.json');
+    }
+  }
 
+  getSchoolList2(): Observable<any> {
+    let url = `${this.baseUrl}/school/`;
+    return this.http.get(url);
   }
 
   addSchool(school: School): Observable<any> {
