@@ -1,5 +1,5 @@
 <ion-app [class.dark-theme]="dark">
-  <ion-split-pane contentId="main-content" [disabled]="true">
+  <ion-split-pane contentId="main-content" [disabled]="false">
 
     <!-- <ion-menu contentId="main-content"> -->
     <ion-menu side="start" menuId="custom" class="my-custom-menu" contentId="main-content">
@@ -46,6 +46,15 @@
               <ion-icon slot="start" name="person"></ion-icon>
               <ion-label>
                 Account
+              </ion-label>
+            </ion-item>
+          </ion-menu-toggle>
+
+          <ion-menu-toggle autoHide="false">
+            <ion-item routerLink="/user-profile" routerLinkActive="active" routerDirection="root" detail="false">
+              <ion-icon slot="start" name="person"></ion-icon>
+              <ion-label>
+                User Profile
               </ion-label>
             </ion-item>
           </ion-menu-toggle>

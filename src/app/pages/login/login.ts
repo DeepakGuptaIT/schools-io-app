@@ -6,8 +6,9 @@ import { UserData } from '../../providers/user-data';
 
 import { UserOptions } from '../../interfaces/user-options';
 import * as firebase from 'firebase/app';
-import { AngularFireAuth } from '@angular/fire/auth';
 import { Observable } from 'rxjs';
+import { Storage } from '@ionic/storage';
+import { AuthService } from './../../providers/core/auth.service';
 // import { Platform } from 'ionic-angular';
 
 
@@ -18,60 +19,104 @@ import { Observable } from 'rxjs';
   styleUrls: ['./login.scss'],
 })
 export class LoginPage {
-  login: UserOptions = { username: '', password: '' };
+  login: UserOptions = { username: '', password: '', email: '' };
   submitted = false;
-  user: Observable<firebase.User>;
+  userObservable: Observable<firebase.User>;
+  user: firebase.User;
 
   constructor(
     public userData: UserData,
     public router: Router,
-    private afAuth: AngularFireAuth
+    public storage: Storage,
+    public authService: AuthService
   ) {
-    this.user = this.afAuth.authState;
+
   }
 
-  onLogin(form: NgForm) {
+  async ngOnInit() {
+    firebase.auth().onAuthStateChanged(user => {
+      this.user = user;
+      console.log("user details from login page", user)
+    });
+    if (this.userObservable) {
+      this.userObservable.subscribe(user => {
+        this.user = user;
+        console.log("user details from login page", user)
+      });
+    }
+    // this.userProfile = await this.getUserProfile();
+    // const isLoggedIn = firebase.auth().signOut();
+  }
+
+  /* onLogin(form: NgForm) {
     this.submitted = true;
 
     if (form.valid) {
       this.userData.login(this.login.username);
       this.router.navigateByUrl('/app/tabs/schedule');
     }
-  }
+  } */
 
   onSignup() {
     this.router.navigateByUrl('/signup');
   }
 
-  async webGoogleLogin(): Promise<void> {
+  async logInWithEmailId(form: NgForm): Promise<void> {
     try {
-      // await firebase.auth().setPersistence(firebase.auth.Auth.Persistence.NONE);
-      const provider = new firebase.auth.GoogleAuthProvider();
-      const credential = await this.afAuth.auth.signInWithPopup(provider);
-      console.log("google credential:", credential);
-      this.userData.login(credential.user.displayName);
-      this.router.navigateByUrl('/app/tabs/schedule');
+      this.submitted = true;
+      if (form.valid) {
+        await this.authService.emailLogin(this.login.email, this.login.password)
+        //this.user = this.authService.currentUser;
+      }
 
     } catch (err) {
       console.log(err)
     }
+
   }
 
-  async webFacebookLogin(): Promise<void> {
+  async signUpWithEmailId(form: NgForm): Promise<void> {
     try {
-      const provider = new firebase.auth.FacebookAuthProvider();
-      const credential = await this.afAuth.auth.signInWithPopup(provider);
-      console.log("facebook credentials:", credential);
-      this.userData.login(credential.user.displayName);
-      this.router.navigateByUrl('/app/tabs/schedule');
+      this.submitted = true;
+      if (form.valid) {
+        await this.authService.emailSignUp(this.login.email, this.login.password);
+        //this.user = this.authService.currentUser;
+      }
 
     } catch (err) {
       console.log(err)
     }
+
   }
 
-  signOut() {
-    this.afAuth.auth.signOut();
+  async signInWithGoogle(): Promise<void> {
+    try {
+      await this.authService.googleLogin();
+      //this.user = this.authService.currentUser;
+
+    } catch (err) {
+      console.log(err)
+    }
+
+  }
+
+  private afterSignIn(): void {
+    // Do after login stuff here, such router redirects, toast messages, etc.
+    this.router.navigateByUrl('/app/tabs/schedule');
+  }
+
+  async signInWithFaceBook(): Promise<void> {
+    try {
+      await this.authService.facebookLogin();
+
+    } catch (err) {
+      console.log(err)
+    }
+
+  }
+
+  async signOut() {
+    await this.authService.signOut();
   }
 
 }

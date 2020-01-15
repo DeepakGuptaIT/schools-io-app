@@ -9,9 +9,6 @@
 </ion-header>
 
 <ion-content>
-  <div class="login-logo">
-    <img src="assets/img/appicon.svg" alt="Ionic logo">
-  </div>
 
   <form #loginForm="ngForm" novalidate>
     <ion-list>
@@ -25,6 +22,19 @@
       <ion-text color="danger">
         <p [hidden]="username.valid || submitted == false" class="ion-padding-start">
           Username is required
+        </p>
+      </ion-text>
+
+      <ion-item>
+        <ion-label position="stacked" color="primary">Email</ion-label>
+        <ion-input [(ngModel)]="login.email" name="email" type="email" #email="ngModel" spellcheck="false"
+          autocapitalize="off" required>
+        </ion-input>
+      </ion-item>
+
+      <ion-text color="danger">
+        <p [hidden]="email.valid || submitted == false" class="ion-padding-start">
+          Email is required
         </p>
       </ion-text>
 
@@ -43,21 +53,21 @@
 
     <ion-row>
       <ion-col>
-        <ion-button (click)="onLogin(loginForm)" type="submit" expand="block">Login</ion-button>
+        <ion-button (click)="logInWithEmailId(loginForm)" type="submit" expand="block">Login</ion-button>
       </ion-col>
       <ion-col>
-        <ion-button (click)="onSignup()" color="light" expand="block">Signup</ion-button>
+        <ion-button (click)="signUpWithEmailId(loginForm)" color="light" expand="block">Signup</ion-button>
       </ion-col>
     </ion-row>
     <ion-row>
       <ion-col>
-        <ion-button color="google" (click)="webGoogleLogin()" type="submit" expand="block">
+        <ion-button color="google" (click)="signInWithGoogle()" type="submit" expand="block">
           <ion-icon name="logo-googleplus"></ion-icon>
           <span> &nbsp;Login</span>
         </ion-button>
       </ion-col>
       <ion-col>
-        <ion-button color="facebook" (click)="webFacebookLogin()" type="submit" expand="block">
+        <ion-button color="facebook" (click)="signInWithFaceBook()" type="submit" expand="block">
           <ion-icon name="logo-facebook"></ion-icon>
           <span> &nbsp;Login</span>
         </ion-button>
@@ -67,5 +77,6 @@
       </ion-col>
     </ion-row>
   </form>
+
 
 </ion-content>

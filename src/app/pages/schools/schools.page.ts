@@ -3,6 +3,8 @@ import { SchoolService } from './../../providers/school/school.service';
 import { AlertController, IonList, LoadingController, ModalController, ToastController } from '@ionic/angular';
 import { School } from './../../interfaces/school';
 import { SchoolPage } from './../school/school.page';
+import { Observable } from 'rxjs';
+import { AngularFireAuth } from '@angular/fire/auth';
 
 @Component({
   selector: 'schools',
@@ -12,17 +14,23 @@ import { SchoolPage } from './../school/school.page';
 export class SchoolsPage implements OnInit {
 
   schoolList: School[];
+  user: Observable<firebase.User>;
 
   constructor(
     public schoolService: SchoolService,
     public modalCtrl: ModalController,
     public loadingCtrl: LoadingController,
     public toastCtrl: ToastController,
-    public alertController: AlertController
-  ) { }
+    public alertController: AlertController,
+    private afAuth: AngularFireAuth
+  ) {
+    this.user = this.afAuth.authState;
+  }
 
   ngOnInit() {
     // reset the components here
+    if (this.user)
+      this.user.subscribe(e => console.log("user details from school page", e));
   }
 
   async ionViewDidEnter() {
@@ -46,6 +54,13 @@ export class SchoolsPage implements OnInit {
 
 
     })
+  }
+
+  async helloFunction(id) {
+    this.schoolService.helloFunction(id).subscribe(async res => {
+      console.log("helloFunction", res);
+    });
+
   }
 
   async deleteSchool(id) {
