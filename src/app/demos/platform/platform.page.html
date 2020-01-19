@@ -1,0 +1,31 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>platform Details</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="outer-content ion-content">
+  <ion-list>
+    <ion-grid fixed>
+      <ion-row class="ion-align-items-stretch">
+        <ion-col size="12" size-md="6" class="ion-padding-bottom" *ngFor="let p of pList">
+          <ion-card class="p-card">
+            <ion-card-header>
+              <ion-item>
+                <h1>{{p.heading}}</h1>
+              </ion-item>
+            </ion-card-header>
+            <ion-card-content>
+              <!-- <ion-item *ngFor="let key of keys(p)"><span *ngIf="key != 'heading'">{{key}} : {{p[key]}}</span> -->
+              <!-- </ion-item> -->
+              <ion-item>{{getPlatformDetail(p.heading)}}</ion-item>
+
+            </ion-card-content>
+          </ion-card>
+
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-list>
+
+</ion-content>

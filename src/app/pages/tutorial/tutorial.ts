@@ -15,6 +15,8 @@ import { Storage } from '@ionic/storage';
  */
 export class TutorialPage {
   showSkip = true;
+  hidePrev = true;
+  hideNext = false;
   slideOpts = {
     on: {
       beforeInit() {
@@ -28,6 +30,7 @@ export class TutorialPage {
           watchSlidesProgress: true,
           spaceBetween: 0,
           virtualTranslate: true,
+          autoplay: true
         };
         swiper.params = Object.assign(swiper.params, overwriteParams);
         swiper.originalParams = Object.assign(swiper.originalParams, overwriteParams);
@@ -118,12 +121,24 @@ export class TutorialPage {
   }
 
   onSlideChangeStart(event) {
-    event.target.isEnd().then(isEnd => {
+    let prom1 = this.slides.isBeginning();
+    let prom2 = this.slides.isEnd();
+
+    Promise.all([prom1, prom2]).then((data) => {
+      data[0] ? this.hidePrev = true : this.hidePrev = false;
+      data[1] ? (this.hideNext = true, this.showSkip = this.hideNext) : this.hideNext = false;
+      this.showSkip = !this.hideNext;
+    });
+    /* event.target.isEnd().then(isEnd => {
       this.showSkip = !isEnd;
     });
+    event.target.isStart().then(isStart => {
+      this.showPrev = !isStart;
+    }); */
   }
   slideNext() {
     this.slides.slideNext();
+    // this.slides.startAutoplay();
   }
   slidePrev() {
     this.slides.slidePrev();

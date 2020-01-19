@@ -1,7 +1,7 @@
 import { Component, ElementRef, Inject, ViewChild, AfterViewInit } from '@angular/core';
 import { ConferenceData } from '../../providers/conference-data';
 import { Platform } from '@ionic/angular';
-import { DOCUMENT} from '@angular/common';
+import { DOCUMENT } from '@angular/common';
 
 import { darkStyle } from './map-dark-style';
 
@@ -16,7 +16,7 @@ export class MapPage implements AfterViewInit {
   constructor(
     @Inject(DOCUMENT) private doc: Document,
     public confData: ConferenceData,
-    public platform: Platform) {}
+    public platform: Platform) { }
 
   async ngAfterViewInit() {
     const appEl = this.doc.querySelector('ion-app');
@@ -26,8 +26,11 @@ export class MapPage implements AfterViewInit {
       style = darkStyle;
     }
 
-    const googleMaps = await getGoogleMaps(
+    /* const googleMaps = await getGoogleMaps(
       'AIzaSyB8pf6ZdFQj5qw7rc_HSGrhUwQKfIe9ICw'
+    ); */
+    const googleMaps = await getGoogleMaps(
+      'AIzaSyBKAQAy4yb1BpE-eoMjFg_ZRFALUhejg8U'
     );
 
     let map;
@@ -68,9 +71,9 @@ export class MapPage implements AfterViewInit {
           const el = mutation.target as HTMLElement;
           isDark = el.classList.contains('dark-theme');
           if (map && isDark) {
-            map.setOptions({styles: darkStyle});
+            map.setOptions({ styles: darkStyle });
           } else if (map) {
-            map.setOptions({styles: []});
+            map.setOptions({ styles: [] });
           }
         }
       });

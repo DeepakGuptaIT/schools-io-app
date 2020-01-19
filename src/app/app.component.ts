@@ -11,6 +11,7 @@ import { Storage } from '@ionic/storage';
 
 import { UserData } from './providers/user-data';
 import { AuthService } from './providers/core/auth.service';
+import { timer } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -46,9 +47,18 @@ export class AppComponent implements OnInit {
       icon: 'contacts'
     }
   ];
+  demoPages = [
+    {
+      title: 'platform',
+      url: '/platform',
+      icon: 'laptop'
+    }
+
+  ]
   loggedIn = false;
   dark = false;
   isSplitPaneDisabled = false;
+  showSplash = true; // <-- show animation
 
   constructor(
     private menu: MenuController,
@@ -87,10 +97,20 @@ export class AppComponent implements OnInit {
   }
 
   initializeApp() {
-    this.platform.ready().then(() => {
+    this.platform.ready().then((source) => {
       this.statusBar.styleDefault();
       this.splashScreen.hide();
+      timer(3000).subscribe(() => this.showSplash = false) // <-- hide animation after 3s
+      this.getPlatformInfo();
     });
+  }
+
+  getPlatformInfo() {
+    console.log("platform source " + this.platform.platforms());
+    this.platform.resize.subscribe(async () => {
+      console.log(`Resize event detected ${this.platform.width()}`);
+    });
+
   }
 
   checkLoginStatus() {

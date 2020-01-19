@@ -88,7 +88,7 @@ export class AuthService {
     this.user = credential.user;
   }
   async facebookLogin(): Promise<void> {
-    const provider = new firebase.auth.GoogleAuthProvider();
+    const provider = new firebase.auth.FacebookAuthProvider();
     const credential = await this.socialSignIn(provider);
     // this.user = credential.user;
   }

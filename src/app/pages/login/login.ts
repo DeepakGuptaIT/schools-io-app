@@ -9,7 +9,7 @@ import * as firebase from 'firebase/app';
 import { Observable } from 'rxjs';
 import { Storage } from '@ionic/storage';
 import { AuthService } from './../../providers/core/auth.service';
-// import { Platform } from 'ionic-angular';
+import { Platform } from '@ionic/angular';
 
 
 
@@ -28,7 +28,8 @@ export class LoginPage {
     public userData: UserData,
     public router: Router,
     public storage: Storage,
-    public authService: AuthService
+    public authService: AuthService,
+    private platform: Platform
   ) {
 
   }

@@ -1,7 +1,7 @@
 <ion-header no-border>
   <ion-toolbar>
-    <ion-buttons slot="end">
-      <ion-button color='primary' (click)="startApp()" [hidden]="!showSkip">Skip</ion-button>
+    <ion-buttons class="ion-padding-end" slot="end">
+      <ion-button color='secondary' (click)="startApp()" [hidden]="!showSkip">Skip</ion-button>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
@@ -20,9 +20,6 @@
         proper code
         use.
       </p>
-      <ion-button fill="clear" (click)="slideNext()"> Next
-        <ion-icon slot="end" name="arrow-forward"></ion-icon>
-      </ion-button>
     </ion-slide>
 
     <ion-slide>
@@ -32,12 +29,6 @@
         <b>Ionic Framework</b> is an open source SDK that enables developers to build high quality mobile apps with web
         technologies
         like HTML, CSS, and JavaScript.</p>
-      <ion-button fill="clear" (click)="slidePrev()"> Prev
-        <ion-icon slot="end" name="arrow-back"></ion-icon>
-      </ion-button>
-      <ion-button fill="clear" (click)="slideNext()"> Next
-        <ion-icon slot="end" name="arrow-forward"></ion-icon>
-      </ion-button>
     </ion-slide>
 
     <ion-slide>
@@ -59,3 +50,16 @@
     </ion-slide>
   </ion-slides>
 </ion-content>
+<ion-footer no-border>
+  <ion-toolbar class="ion-hide prev-next">
+    <ion-buttons class="ion-padding-end" slot="end">
+      <ion-button color='primary' strong="true" (click)="slidePrev()" [hidden]="hidePrev"> Prev
+        <ion-icon slot="start" name="arrow-back"></ion-icon>
+      </ion-button>
+      <ion-button color='primary' strong="true" (click)="slideNext()" [hidden]="hideNext"> Next
+        <ion-icon slot="end" name="arrow-forward"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+
+</ion-footer>

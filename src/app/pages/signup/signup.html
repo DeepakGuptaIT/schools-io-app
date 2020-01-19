@@ -7,40 +7,160 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content class="ion-justify-content-center">
+  <ion-row class="ion-justify-content-center">
+    <ion-col size="12" size-xl="9">
+      <ion-card class="ion-padding signup-card">
+        <ion-card-header>
+          <ion-row class="ion-justify-content-center">
+            <ion-item>
+              <ion-text color="dark">
+                <h3 style="align-items: center;">Create a New Account</h3>
+              </ion-text>
+            </ion-item>
+          </ion-row>
+        </ion-card-header>
+        <form [formGroup]="registerForm" (ngSubmit)="signUpWithEmailId()">
+          <ion-list>
+            <ion-item>
+              <ion-label position="fixed" color="primary">First Name<ion-text color="danger">*</ion-text>
+              </ion-label>
+              <ion-input type="text" formControlName="firstName"></ion-input>
+            </ion-item>
+            <div *ngIf="submitted && f.firstName.errors" class="invalid-feedback">
+              <ion-text color="danger">
+                <p *ngIf="f.firstName.errors.required" class="ion-padding-start">
+                  <ion-icon name="alert"></ion-icon>
+                  First Name is required
+                </p>
+                <p *ngIf="f.firstName.errors.minlength" class="ion-padding-start">
+                  <ion-icon name="alert"></ion-icon>
+                  First Name must be at least 6 characters
+                </p>
+              </ion-text>
+            </div>
+            <ion-item>
+              <ion-label position="fixed" color="primary">Last Name<ion-text color="danger">*</ion-text>
+              </ion-label>
+              <ion-input type="text" formControlName="lastName"></ion-input>
+            </ion-item>
+            <div *ngIf="submitted && f.lastName.errors" class="invalid-feedback">
+              <ion-text color="danger">
+                <p class="ion-padding-start">
+                  <ion-icon name="alert"></ion-icon>
+                  Last Name is required
+                </p>
+              </ion-text>
+            </div>
+            <ion-item>
+              <ion-label position="fixed" color="primary">Email<ion-text color="danger">*</ion-text>
+              </ion-label>
+              <ion-input type="email" inputmode="email" formControlName="email"></ion-input>
+            </ion-item>
+            <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+              <ion-text color="danger">
+                <p *ngIf="f.email.errors.required" class="ion-padding-start">
+                  <ion-icon name="alert"></ion-icon>
+                  Email is required
+                </p>
+                <p *ngIf="f.email.errors.email" class="ion-padding-start">
+                  <ion-icon name="alert"></ion-icon>
+                  Enter a valid email
+                </p>
+              </ion-text>
+            </div>
+            <div formGroupName="passwords">
+              <ion-item>
+                <ion-label position="fixed" color="primary">Password<ion-text color="danger">*</ion-text>
+                </ion-label>
+                <ion-input [type]="passwordShown ? 'text' : 'password'" formControlName="password"></ion-input>
+                <ion-icon [name]="passwordShown ? 'eye' : 'eye-off'" color="medium" slot="end"
+                  (click)="togglePassword()">
+                </ion-icon>
+              </ion-item>
+              <p>{{registerForm.get('password')}}</p>
+              <div *ngIf="submitted && p.password.errors" class="invalid-feedback">
+                <ion-text color="danger">
+                  <p *ngIf="p.password.errors.required" class="ion-padding-start">
+                    <ion-icon name="alert"></ion-icon>
+                    Password is required
+                  </p>
+                  <p *ngIf="p.password.errors.minlength" class="ion-padding-start">
+                    <ion-icon name="alert"></ion-icon>
+                    Password must be at least 6 characters
+                  </p>
+                </ion-text>
+              </div>
+              <ion-item>
+                <ion-label position="fixed" color="primary">Confirm<ion-text color="danger">*</ion-text>
+                </ion-label>
+                <ion-input [type]="passwordShown ? 'text' : 'password'" formControlName="confirmPassword"></ion-input>
+                <ion-icon [name]="passwordShown ? 'eye' : 'eye-off'" color="medium" slot="end"
+                  (click)="togglePassword()">
+                </ion-icon>
+              </ion-item>
+              <div *ngIf="submitted && (p.confirmPassword.errors)" class="invalid-feedback">
+                <ion-text color="danger">
+                  <p *ngIf="p.confirmPassword.errors.required" class="ion-padding-start">
+                    <ion-icon name="alert"></ion-icon>
+                    Confirm Password is required
+                  </p>
+                  <p *ngIf="p.confirmPassword.errors.minlength" class="ion-padding-start">
+                    <ion-icon name="alert"></ion-icon>
+                    Confirm Password must be at least 6 characters
+                  </p>
+                </ion-text>
+              </div>
+              <div *ngIf="submitted && (!!f.passwords.errors)" class="invalid-feedback">
+                <ion-text color="danger">
+                  <p *ngIf="f.passwords.errors.passwordMismatch" class="ion-padding-start">
+                    <ion-icon name="alert"></ion-icon>
+                    Password does not match
+                  </p>
+                </ion-text>
+              </div>
 
-  <div class="signup-logo">
-    <img src="assets/img/appicon.svg" alt="Ionic Logo">
-  </div>
+            </div>
 
-  <form #signupForm="ngForm" novalidate>
-    <ion-list lines="none">
-      <ion-item>
-        <ion-label position="stacked" color="primary">Username</ion-label>
-        <ion-input [(ngModel)]="signup.username" name="username" type="text" #username="ngModel" required>
-        </ion-input>
-      </ion-item>
-      <ion-text color="danger">
-        <p [hidden]="username.valid || submitted == false" class="ion-padding-start">
-          Username is required
-        </p>
-      </ion-text>
+          </ion-list>
+          <ion-row>
+            <ion-col size="12" size-md="9">
+              <ion-button type="submit" expand="block">Create</ion-button>
+            </ion-col>
+            <ion-col size="12" size-md="3">
+              <ion-button (click)="signOut()" color="dark" fill="outline" expand="block">Log out</ion-button>
+            </ion-col>
 
-      <ion-item>
-        <ion-label position="stacked" color="primary">Password</ion-label>
-        <ion-input [(ngModel)]="signup.password" name="password" type="password" #password="ngModel" required>
-        </ion-input>
-      </ion-item>
-      <ion-text color="danger">
-        <p [hidden]="password.valid || submitted == false" class="ion-padding-start">
-          Password is required
-        </p>
-      </ion-text>
-    </ion-list>
+          </ion-row>
+        </form>
+        <ion-row>
+          <ion-col size="12" size-md="6">
+            <ion-button color="google" (click)="signInWithGoogle()" type="submit" expand="block">
+              <ion-icon name="logo-googleplus"></ion-icon>
+              <span> &nbsp;Login</span>
+            </ion-button>
+          </ion-col>
+          <ion-col size="12" size-md="6">
+            <ion-button color="facebook" (click)="signInWithFaceBook()" type="submit" expand="block">
+              <ion-icon name="logo-facebook"></ion-icon>
+              <span> &nbsp;Login</span>
+            </ion-button>
+          </ion-col>
 
-    <div class="ion-padding">
-      <ion-button (click)="onSignup(signupForm)" type="submit" expand="block">Create</ion-button>
-    </div>
-  </form>
+        </ion-row>
+
+      </ion-card>
+    </ion-col>
+  </ion-row>
+
+  <ion-card class="school-card">
+    <p>
+      Form Value: {{ registerForm.value | json }}
+    </p>
+    <p>
+      Form Status: {{ registerForm.status }}
+    </p>
+
+  </ion-card>
 
 </ion-content>

@@ -1,4 +1,7 @@
 <ion-app [class.dark-theme]="dark">
+  <div *ngIf="showSplash" class="splash">
+    <div class="spinner"></div>
+  </div>
   <ion-split-pane contentId="main-content" [disabled]="false">
 
     <!-- <ion-menu contentId="main-content"> -->
@@ -131,6 +134,20 @@
             </ion-label>
             <ion-toggle [(ngModel)]="dark"></ion-toggle>
           </ion-item>
+        </ion-list>
+        <ion-list lines="none">
+          <ion-list-header>
+            Api Tutorials
+          </ion-list-header>
+          <ion-menu-toggle autoHide="false" *ngFor="let p of demoPages; let i = index">
+            <ion-item [routerLink]="p.url" routerLinkActive="active" routerDirection="root" detail="false">
+              <ion-icon slot="start" [name]="p.icon"></ion-icon>
+              <ion-label>
+                {{p.title}}
+              </ion-label>
+            </ion-item>
+
+          </ion-menu-toggle>
         </ion-list>
       </ion-content>
     </ion-menu>
