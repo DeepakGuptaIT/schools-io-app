@@ -47,6 +47,10 @@ const routes: Routes = [
   {
     path: 'platform',
     loadChildren: () => import('./demos/platform/platform.module').then( m => m.PlatformPageModule)
+  },
+  {
+    path: 'cards',
+    loadChildren: () => import('./demos/cards/cards.module').then( m => m.CardsPageModule)
   }
 
 ];

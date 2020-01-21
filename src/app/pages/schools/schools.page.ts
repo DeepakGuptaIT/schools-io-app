@@ -35,7 +35,9 @@ export class SchoolsPage implements OnInit {
 
   async ionViewDidEnter() {
     const loading = await this.loadingCtrl.create({
-      message: `Loading Schools..`
+      message: `Loading Schools..`,
+      cssClass: 'custom-loading',
+      spinner: 'lines-small'
     });
     await loading.present();
     const toast = await this.toastCtrl.create({

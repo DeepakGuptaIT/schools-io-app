@@ -52,13 +52,19 @@ export class AppComponent implements OnInit {
       title: 'platform',
       url: '/platform',
       icon: 'laptop'
+    },
+    {
+      title: 'cards',
+      url: '/cards',
+      icon: 'card'
     }
+
 
   ]
   loggedIn = false;
   dark = false;
   isSplitPaneDisabled = false;
-  showSplash = true; // <-- show animation
+  showSplash = false; // <-- show animation
 
   constructor(
     private menu: MenuController,
@@ -100,9 +106,16 @@ export class AppComponent implements OnInit {
     this.platform.ready().then((source) => {
       this.statusBar.styleDefault();
       this.splashScreen.hide();
-      timer(3000).subscribe(() => this.showSplash = false) // <-- hide animation after 3s
       this.getPlatformInfo();
     });
+  }
+
+  showSplashFn() {
+    //call only after platform is ready
+    if (this.platform.is('desktop') && !this.platform.is('pwa')) {
+      this.showSplash = true;
+      timer(3000).subscribe(() => this.showSplash = false) // <-- hide animation after 3s
+    }
   }
 
   getPlatformInfo() {
