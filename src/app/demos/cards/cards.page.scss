@@ -39,6 +39,13 @@
     color: #fff;
 
   }
+  img {
+    transition: transform 0.2s;
+  }
+  img:hover {
+    transform: scale(1.2);
+    transform-origin: 50% 50%;
+  }
 
 }
 

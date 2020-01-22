@@ -112,7 +112,7 @@ export class AppComponent implements OnInit {
 
   showSplashFn() {
     //call only after platform is ready
-    if (this.platform.is('desktop') && !this.platform.is('pwa')) {
+    if (!(this.platform.is('desktop') && !this.platform.is('pwa'))) {
       this.showSplash = true;
       timer(3000).subscribe(() => this.showSplash = false) // <-- hide animation after 3s
     }
