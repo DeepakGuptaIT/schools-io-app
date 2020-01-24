@@ -19,14 +19,24 @@
  * check out our color generator:
  * https://www.ionicframework.com/docs/theming/color-generator
  */
-
- :root {
-  --ion-color-primary: #3880ff;
+ /*
+ --ion-color-primary: #3880ff;
   --ion-color-primary-rgb: 56, 128, 255;
   --ion-color-primary-contrast: #ffffff;
   --ion-color-primary-contrast-rgb: 255, 255, 255;
   --ion-color-primary-shade: #3171e0;
   --ion-color-primary-tint: #4c8dff;
+ */
+
+ :root {
+  
+
+  --ion-color-primary: #1ab890;
+  --ion-color-primary-rgb: 26,184,144;
+  --ion-color-primary-contrast: #ffffff;
+  --ion-color-primary-contrast-rgb: 255, 255, 255;
+  --ion-color-primary-shade: #17a27f;
+  --ion-color-primary-tint: #31bf9b;
 
   --ion-color-secondary: #0cd1e8;
   --ion-color-secondary-rgb: 12, 209, 232;
@@ -282,12 +292,12 @@
  */
 
 .dark-theme {
-  --ion-color-primary: #428cff;
-  --ion-color-primary-rgb: 66,140,255;
+  --ion-color-primary: #1ab890;
+  --ion-color-primary-rgb: 26,184,144;
   --ion-color-primary-contrast: #ffffff;
-  --ion-color-primary-contrast-rgb: 255,255,255;
-  --ion-color-primary-shade: #3a7be0;
-  --ion-color-primary-tint: #5598ff;
+  --ion-color-primary-contrast-rgb: 255, 255, 255;
+  --ion-color-primary-shade: #17a27f;
+  --ion-color-primary-tint: #31bf9b;
 
   --ion-color-secondary: #50c8ff;
   --ion-color-secondary-rgb: 80,200,255;
