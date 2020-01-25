@@ -50,6 +50,7 @@ export class SchedulePage implements OnInit {
     this.confData.getTimeline(this.dayIndex, this.queryText, this.excludeTracks, this.segment).subscribe((data: any) => {
       this.shownSessions = data.shownSessions;
       this.groups = data.groups;
+      console.log('%c Groups', 'color: orange; font-weight: bold;', this.groups);
     });
   }
 

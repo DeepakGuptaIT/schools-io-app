@@ -57,6 +57,16 @@ export class AppComponent implements OnInit {
       title: 'cards',
       url: '/cards',
       icon: 'card'
+    },
+    {
+      title: 'responsive grid',
+      url: '/grid',
+      icon: 'grid'
+    },
+    {
+      title: 'css-utilities',
+      url: '/css-utilities',
+      icon: 'logo-css3'
     }
 
 

@@ -51,6 +51,14 @@ const routes: Routes = [
   {
     path: 'cards',
     loadChildren: () => import('./demos/cards/cards.module').then( m => m.CardsPageModule)
+  },
+  {
+    path: 'grid',
+    loadChildren: () => import('./demos/grid/grid.module').then( m => m.GridPageModule)
+  },
+  {
+    path: 'css-utilities',
+    loadChildren: () => import('./demos/css-utilities/css-utilities.module').then( m => m.CssUtilitiesPageModule)
   }
 
 ];

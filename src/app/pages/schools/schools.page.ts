@@ -37,7 +37,7 @@ export class SchoolsPage implements OnInit {
     const loading = await this.loadingCtrl.create({
       message: `Loading Schools..`,
       cssClass: 'custom-loading',
-      spinner: 'lines-small'
+      spinner: 'crescent'
     });
     await loading.present();
     const toast = await this.toastCtrl.create({
@@ -56,6 +56,15 @@ export class SchoolsPage implements OnInit {
 
 
     })
+  }
+
+  doRefresh(event) {
+    console.log('Begin async operation');
+
+    setTimeout(() => {
+      console.log('Async operation has ended');
+      event.target.complete();
+    }, 2000);
   }
 
   async helloFunction(id) {
