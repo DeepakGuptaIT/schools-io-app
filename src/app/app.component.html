@@ -2,18 +2,24 @@
   <div *ngIf="showSplash" class="splash">
     <div class="spinner"></div>
   </div>
-  <ion-split-pane contentId="main-content" [disabled]="false">
+  <ion-split-pane contentId="main-content" [disabled]="true">
 
     <!-- <ion-menu contentId="main-content"> -->
     <ion-menu side="start" menuId="custom" class="my-custom-menu" contentId="main-content">
       <ion-header>
         <ion-toolbar class="toolbar">
           <!-- <ion-item slot="end"> -->
-          <ion-menu-toggle auto-hide=false slot="end">
-            <ion-button fill="clear" shape="round">
-              <ion-icon name="menu" slot="icon-only"></ion-icon>
-            </ion-button>
-          </ion-menu-toggle>
+
+          <ion-buttons slot="start">
+            <ion-menu-toggle>
+              <ion-button>
+                <span>
+                  <ion-icon name="menu" slot="icon-only"></ion-icon>
+                </span>
+              </ion-button>
+            </ion-menu-toggle>
+          </ion-buttons>
+
           <!-- </ion-item> -->
           <ion-title slot="start">
             Menu
