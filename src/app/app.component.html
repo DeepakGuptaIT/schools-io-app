@@ -4,28 +4,41 @@
   </div>
   <ion-split-pane contentId="main-content" [disabled]="true">
 
-    <!-- <ion-menu contentId="main-content"> -->
     <ion-menu side="start" menuId="custom" class="my-custom-menu" contentId="main-content">
-      <ion-header>
+      <ion-header no-border>
         <ion-toolbar class="toolbar">
-          <!-- <ion-item slot="end"> -->
 
           <ion-buttons slot="start">
             <ion-menu-toggle>
               <ion-button>
                 <span>
-                  <ion-icon name="menu" slot="icon-only"></ion-icon>
+                  <ion-icon name="close" slot="icon-only"></ion-icon>
                 </span>
               </ion-button>
             </ion-menu-toggle>
           </ion-buttons>
-
-          <!-- </ion-item> -->
-          <ion-title slot="start">
-            Menu
-          </ion-title>
+          <ion-menu-toggle autoHide="false">
+            <ion-item class="ion-margin-horizontal" detail="false" lines="none">
+              <a routerLink="/app/tabs/schedule" class="devsite-site-logo-link" routerDirection="root" detail="false"
+                lines="none">
+                <img src="assets/img/appicon.png" class="devsite-site-logo" alt="Schools Io">
+              </a>
+            </ion-item>
+          </ion-menu-toggle>
           <!-- <ion-button color="primary" expand="full" (click)="toggleCustomMenu('custom')">open-close</ion-button> -->
 
+        </ion-toolbar>
+        <ion-toolbar *ngIf="loggedIn && !!user">
+          <ion-menu-toggle autoHide="false">
+            <ion-item routerLink="/user-profile" routerDirection="root" detail="false" lines="none">
+              <ion-avatar slot="start">
+                <img [src]="user.photoURL" [alt]="user.displayName">
+              </ion-avatar>
+              <ion-label>
+                {{user.displayName}}
+              </ion-label>
+            </ion-item>
+          </ion-menu-toggle>
         </ion-toolbar>
       </ion-header>
 

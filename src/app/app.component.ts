@@ -75,6 +75,7 @@ export class AppComponent implements OnInit {
   dark = false;
   isSplitPaneDisabled = false;
   showSplash = false; // <-- show animation
+  user: firebase.User = null;
 
   constructor(
     private menu: MenuController,
@@ -145,6 +146,13 @@ export class AppComponent implements OnInit {
   updateLoggedInStatus(loggedIn: boolean) {
     setTimeout(() => {
       this.loggedIn = loggedIn;
+      if (loggedIn) {
+        this.authService.getCurrentUser().subscribe(user => {
+          this.user = user;
+        })
+      } else {
+        this.user = null;
+      }
     }, 300);
   }
 
