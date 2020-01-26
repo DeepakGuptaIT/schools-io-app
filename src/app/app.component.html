@@ -19,7 +19,7 @@
           </ion-buttons>
           <ion-menu-toggle autoHide="false">
             <ion-item class="ion-margin-horizontal" detail="false" lines="none">
-              <a routerLink="/app/tabs/schedule" class="devsite-site-logo-link" routerDirection="root" detail="false"
+              <a routerLink="/app/tabs/schools" class="devsite-site-logo-link" routerDirection="root" detail="false"
                 lines="none">
                 <img src="assets/img/appicon.png" class="devsite-site-logo" alt="Schools Io">
               </a>
@@ -30,7 +30,7 @@
         </ion-toolbar>
         <ion-toolbar *ngIf="loggedIn && !!user">
           <ion-menu-toggle autoHide="false">
-            <ion-item routerLink="/user-profile" routerDirection="root" detail="false" lines="none">
+            <ion-item routerLink="/app/tabs/user-profile" routerDirection="root" detail="false" lines="none">
               <ion-avatar slot="start">
                 <img [src]="user.photoURL" [alt]="user.displayName">
               </ion-avatar>
@@ -57,6 +57,20 @@
 
           </ion-menu-toggle>
         </ion-list>
+        <ion-list *ngIf="loggedIn && isAdminUser" lines="none">
+          <ion-list-header>
+            Admin
+          </ion-list-header>
+          <ion-menu-toggle autoHide="false" *ngFor="let p of adminAppPages; let i = index">
+            <ion-item [routerLink]="p.url" routerLinkActive="active" routerDirection="root" detail="false">
+              <ion-icon slot="start" [name]="p.icon"></ion-icon>
+              <ion-label>
+                {{p.title}}
+              </ion-label>
+            </ion-item>
+
+          </ion-menu-toggle>
+        </ion-list>
 
         <ion-list *ngIf="loggedIn" lines="none">
           <ion-list-header>
@@ -64,19 +78,11 @@
           </ion-list-header>
 
           <ion-menu-toggle autoHide="false">
-            <ion-item routerLink="/account" routerLinkActive="active" routerDirection="root" detail="false">
+            <ion-item routerLink="/app/tabs/user-profile" routerLinkActive="active" routerDirection="root"
+              detail="false">
               <ion-icon slot="start" name="person"></ion-icon>
               <ion-label>
                 Account
-              </ion-label>
-            </ion-item>
-          </ion-menu-toggle>
-
-          <ion-menu-toggle autoHide="false">
-            <ion-item routerLink="/user-profile" routerLinkActive="active" routerDirection="root" detail="false">
-              <ion-icon slot="start" name="person"></ion-icon>
-              <ion-label>
-                User Profile
               </ion-label>
             </ion-item>
           </ion-menu-toggle>
@@ -95,6 +101,15 @@
               <ion-icon slot="start" name="log-out"></ion-icon>
               <ion-label>
                 Logout
+              </ion-label>
+            </ion-item>
+          </ion-menu-toggle>
+
+          <ion-menu-toggle *ngIf="isAdminUser" autoHide="false">
+            <ion-item routerLink="/account" routerLinkActive="active" routerDirection="root" detail="false">
+              <ion-icon slot="start" name="person"></ion-icon>
+              <ion-label>
+                Account-2
               </ion-label>
             </ion-item>
           </ion-menu-toggle>
@@ -154,7 +169,7 @@
             <ion-toggle [(ngModel)]="dark"></ion-toggle>
           </ion-item>
         </ion-list>
-        <ion-list lines="none">
+        <ion-list *ngIf="loggedIn && isAdminUser" lines="none">
           <ion-list-header>
             Api Tutorials
           </ion-list-header>

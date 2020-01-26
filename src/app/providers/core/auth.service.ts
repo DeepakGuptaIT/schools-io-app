@@ -8,6 +8,7 @@ import * as firebase from 'firebase/app';
 import { Storage } from '@ionic/storage';
 import * as _ from "lodash";
 import { async } from '@angular/core/testing';
+import { AlertController, IonList, LoadingController, ModalController, ToastController } from '@ionic/angular';
 
 
 
@@ -24,9 +25,11 @@ enum EVENT_TYPE {
 })
 export class AuthService {
   HAS_LOGGED_IN = 'hasLoggedIn';
+  IS_ADMIN_USER = 'isAdminUser';
   user: firebase.User;//this is the current User
+  adminUserEmailList = ['deepak.gupta.sky@gmail.com', 'deepakguptaoptimistic@gmail.com', 'uvzdeepak789@gmail.com'];
 
-  constructor(public router: Router, private afAuth: AngularFireAuth, private db: AngularFireDatabase, private storage: Storage) {
+  constructor(public router: Router, private afAuth: AngularFireAuth, private db: AngularFireDatabase, private storage: Storage, private alertController: AlertController) {
     firebase.auth().onAuthStateChanged(user => {
       this.user = user;
     });
@@ -35,6 +38,11 @@ export class AuthService {
   async isAuthenticated(): Promise<boolean> {
     const isLoggedIn = await this.storage.get(this.HAS_LOGGED_IN);
     return isLoggedIn;
+  }
+  async isAdminUser(): Promise<boolean> {
+    const isLoggedIn = await this.storage.get(this.HAS_LOGGED_IN);
+    const isAdminUser = isLoggedIn ? await this.storage.get(this.IS_ADMIN_USER) : false;
+    return isAdminUser;
   }
 
   // Returns current user
@@ -76,7 +84,18 @@ export class AuthService {
       }
 
     } catch (error) {
-      console.log(error)
+      // Handle Errors here.
+      let errorCode = error.code;
+      let errorMessage = error.message;
+      const alert = await this.alertController.create({
+        header: 'Alert',
+        subHeader: 'Login Failed',
+        message: errorMessage,
+        buttons: ['OK']
+      });
+      await alert.present();
+      console.error(error);
+      return null;
     }
     return credential;
 
@@ -107,10 +126,23 @@ export class AuthService {
       let errorCode = error.code;
       let errorMessage = error.message;
       if (errorCode == 'auth/weak-password') {
-        alert('The password is too weak.');
-      } else {
-        alert(errorMessage);
+        // alert('The password is too weak.');
+        errorMessage = 'The password is too weak.';
       }
+      const alertPopUp = await this.alertController.create({
+        message: errorMessage,
+        buttons: [
+          {
+            text: 'OK',
+            role: 'cancel',
+            cssClass: 'secondary',
+            handler: (blah) => {
+              console.log('Confirm Cancel: blah');
+            }
+          }
+        ]
+      });
+      await alertPopUp.present();
       console.log(error);
     }
   }
@@ -127,11 +159,26 @@ export class AuthService {
       // Handle Errors here.
       var errorCode = error.code;
       var errorMessage = error.message;
-      if (errorCode === 'auth/wrong-password') {
+      /* if (errorCode === 'auth/wrong-password') {
+        errorMessage = 
         alert('Wrong password.');
       } else {
         alert(errorMessage);
-      }
+      } */
+      const alert = await this.alertController.create({
+        message: errorMessage,
+        buttons: [
+          {
+            text: 'OK',
+            role: 'cancel',
+            cssClass: 'secondary',
+            handler: (blah) => {
+              console.log('Confirm Cancel: blah');
+            }
+          }
+        ]
+      });
+      await alert.present();
       console.log(error);
     }
   }
@@ -140,10 +187,35 @@ export class AuthService {
   //
   async signOut(): Promise<void> {
     try {
-      await this.afAuth.auth.signOut();
-      await this.storage.remove(this.HAS_LOGGED_IN);
-      this.dispatchEvent(EVENT_TYPE.LOGOUT);
-      this.router.navigateByUrl('/login');
+      //INSPIRED BY ZOMATO LOG OUT
+      const alert = await this.alertController.create({
+        message: 'Are you sure you want to log out ?',
+        buttons: [
+          {
+            text: 'CANCEL',
+            role: 'cancel',
+            cssClass: 'secondary',
+            handler: (blah) => {
+              console.log('Confirm Cancel: blah');
+            }
+          }, {
+            text: 'LOG OUT',
+            handler: async () => {
+              await this.afAuth.auth.signOut();
+              await this.storage.remove(this.HAS_LOGGED_IN);
+              await this.storage.remove(this.IS_ADMIN_USER);
+              this.dispatchEvent(EVENT_TYPE.LOGOUT);
+              this.router.navigateByUrl('/app/tabs/schools');
+            }
+          }
+        ]
+      });
+      await alert.present();
+      // await this.afAuth.auth.signOut();
+      // await this.storage.remove(this.HAS_LOGGED_IN);
+      // await this.storage.remove(this.IS_ADMIN_USER);
+      // this.dispatchEvent(EVENT_TYPE.LOGOUT);
+      // this.router.navigateByUrl('/app/tabs/schools');
     } catch (error) {
       console.log("logg out error", error)
     }
@@ -175,9 +247,12 @@ export class AuthService {
 
     console.log(user);
     await this.storage.set(this.HAS_LOGGED_IN, true);
+    if (this.adminUserEmailList.indexOf(user.email) != -1) {
+      await this.storage.set(this.IS_ADMIN_USER, true);
+    }
     this.dispatchEvent(EVENT_TYPE.LOGIN);
     // this.updateUserData();
-    this.router.navigateByUrl('/user-profile');
+    this.router.navigateByUrl('/app/tabs/schools');
 
 
   }
@@ -185,9 +260,12 @@ export class AuthService {
   private async afterSignUp(user: firebase.User) {
     console.log(user);
     await this.storage.set(this.HAS_LOGGED_IN, true);
+    if (this.adminUserEmailList.indexOf(user.email) != -1) {
+      await this.storage.set(this.IS_ADMIN_USER, true);
+    }
     this.dispatchEvent(EVENT_TYPE.SIGNUP);
     this.updateUserData();
-    this.router.navigateByUrl('/user-profile');
+    this.router.navigateByUrl('/app/tabs/schools');
   }
 
 

@@ -7,14 +7,22 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-  <div *ngIf="user" class="ion-padding-top ion-text-center">
-    <img [src]="user.photoURL" [alt]="user.displayName">
-    <h2>{{ user.displayName }}</h2>
-    <h3>{{ user.email }}</h3>
+<ion-content class="ion-padding">
+  <ion-row *ngIf="user" class="ion-justify-content-center">
+    <ion-col size="12" size-xl="9">
+      <ion-card class="ion-padding">
+        <div class="user-detail-div ion-padding-top ion-text-center">
+          <img [src]="user.photoURL" class="user-image" [alt]="user.displayName">
+          <h2>{{ user.displayName }}</h2>
+          <h3>{{ user.email }}</h3>
+          <ion-row class="ion-justify-content-center">
+            <ion-col size="12" size-md="6">
+              <ion-button (click)="logout()" color="dark" fill="outline" expand="block">Log out</ion-button>
+            </ion-col>
+          </ion-row>
+        </div>
 
-    <ion-list inset>
-      <ion-item (click)="logout()">Logout</ion-item>
-    </ion-list>
-  </div>
+      </ion-card>
+    </ion-col>
+  </ion-row>
 </ion-content>

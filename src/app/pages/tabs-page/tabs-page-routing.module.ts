@@ -58,8 +58,26 @@ const routes: Routes = [
         ]
       },
       {
+        path: 'schools',
+        children: [
+          {
+            path: '',
+            loadChildren: () => import('../schools/schools.module').then(m => m.SchoolsPageModule)
+          }
+        ]
+      },
+      {
+        path: 'user-profile',
+        children: [
+          {
+            path: '',
+            loadChildren: () => import('../user-profile/user-profile.module').then(m => m.UserProfilePageModule)
+          }
+        ]
+      },
+      {
         path: '',
-        redirectTo: '/app/tabs/schedule',
+        redirectTo: '/app/tabs/schools',
         pathMatch: 'full'
       }
     ]

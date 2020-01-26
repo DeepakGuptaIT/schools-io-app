@@ -32,33 +32,26 @@ const routes: Routes = [
     path: 'tutorial',
     loadChildren: () => import('./pages/tutorial/tutorial.module').then(m => m.TutorialModule),
     canLoad: [CheckTutorial]
-  },  {
-    path: 'schools',
-    loadChildren: () => import('./pages/schools/schools.module').then( m => m.SchoolsPageModule)
   },
   {
     path: 'school',
-    loadChildren: () => import('./pages/school/school.module').then( m => m.SchoolPageModule)
-  },
-  {
-    path: 'user-profile',
-    loadChildren: () => import('./pages/user-profile/user-profile.module').then( m => m.UserProfilePageModule)
+    loadChildren: () => import('./pages/school/school.module').then(m => m.SchoolPageModule)
   },
   {
     path: 'platform',
-    loadChildren: () => import('./demos/platform/platform.module').then( m => m.PlatformPageModule)
+    loadChildren: () => import('./demos/platform/platform.module').then(m => m.PlatformPageModule)
   },
   {
     path: 'cards',
-    loadChildren: () => import('./demos/cards/cards.module').then( m => m.CardsPageModule)
+    loadChildren: () => import('./demos/cards/cards.module').then(m => m.CardsPageModule)
   },
   {
     path: 'grid',
-    loadChildren: () => import('./demos/grid/grid.module').then( m => m.GridPageModule)
+    loadChildren: () => import('./demos/grid/grid.module').then(m => m.GridPageModule)
   },
   {
     path: 'css-utilities',
-    loadChildren: () => import('./demos/css-utilities/css-utilities.module').then( m => m.CssUtilitiesPageModule)
+    loadChildren: () => import('./demos/css-utilities/css-utilities.module').then(m => m.CssUtilitiesPageModule)
   }
 
 ];
@@ -67,4 +60,4 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }

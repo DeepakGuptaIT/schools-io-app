@@ -22,6 +22,18 @@ import { timer } from 'rxjs';
 export class AppComponent implements OnInit {
   appPages = [
     {
+      title: 'Schools',
+      url: '/app/tabs/schools',
+      icon: 'school'
+    },
+    {
+      title: 'About',
+      url: '/app/tabs/about',
+      icon: 'information-circle'
+    }
+  ];
+  adminAppPages = [
+    {
       title: 'Schedule',
       url: '/app/tabs/schedule',
       icon: 'calendar'
@@ -35,16 +47,6 @@ export class AppComponent implements OnInit {
       title: 'Map',
       url: '/app/tabs/map',
       icon: 'map'
-    },
-    {
-      title: 'About',
-      url: '/app/tabs/about',
-      icon: 'information-circle'
-    },
-    {
-      title: 'Schools',
-      url: '/schools',
-      icon: 'contacts'
     }
   ];
   demoPages = [
@@ -76,6 +78,8 @@ export class AppComponent implements OnInit {
   isSplitPaneDisabled = false;
   showSplash = false; // <-- show animation
   user: firebase.User = null;
+  isAdminUser: boolean = false;
+  adminUserEmailList = ['deepak.gupta.sky@gmail.com', 'deepakguptaoptimistic@gmail.com', 'uvzdeepak789@gmail.com'];
 
   constructor(
     private menu: MenuController,
@@ -149,9 +153,14 @@ export class AppComponent implements OnInit {
       if (loggedIn) {
         this.authService.getCurrentUser().subscribe(user => {
           this.user = user;
+          const email = this.user.email;
+          if (this.adminUserEmailList.indexOf(email) != -1) {
+            this.isAdminUser = true;
+          }
         })
       } else {
         this.user = null;
+        this.isAdminUser = false;
       }
     }, 300);
   }
@@ -172,7 +181,8 @@ export class AppComponent implements OnInit {
 
   logout() {
     this.authService.signOut().then(() => {
-      return this.router.navigateByUrl('/app/tabs/schedule');
+      //we are already navigating to schools page in the signOut Service method
+      // return this.router.navigateByUrl('/app/tabs/schools');
     });
   }
 

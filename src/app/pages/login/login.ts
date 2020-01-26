@@ -103,7 +103,7 @@ export class LoginPage {
 
   private afterSignIn(): void {
     // Do after login stuff here, such router redirects, toast messages, etc.
-    this.router.navigateByUrl('/app/tabs/schedule');
+    this.router.navigateByUrl('/app/tabs/schools');
   }
 
   async signInWithFaceBook(): Promise<void> {

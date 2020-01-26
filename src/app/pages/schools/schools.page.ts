@@ -5,6 +5,7 @@ import { School } from './../../interfaces/school';
 import { SchoolPage } from './../school/school.page';
 import { Observable } from 'rxjs';
 import { AngularFireAuth } from '@angular/fire/auth';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'schools',
@@ -22,7 +23,8 @@ export class SchoolsPage implements OnInit {
     public loadingCtrl: LoadingController,
     public toastCtrl: ToastController,
     public alertController: AlertController,
-    private afAuth: AngularFireAuth
+    private afAuth: AngularFireAuth,
+    public router: Router
   ) {
     this.user = this.afAuth.authState;
   }
@@ -31,6 +33,15 @@ export class SchoolsPage implements OnInit {
     // reset the components here
     if (this.user)
       this.user.subscribe(e => console.log("user details from school page", e));
+    /* this.router.events
+      .pipe(
+        filter(value => value instanceof NavigationEnd),
+      )
+      .subscribe(event => {
+        if (event.url === 'http://mypreviousUrl.com') {
+          this.window.location.reload();
+        }
+      }); */
   }
 
   async ionViewDidEnter() {
