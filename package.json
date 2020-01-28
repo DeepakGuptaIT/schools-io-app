@@ -22,6 +22,7 @@
   },
   "private": true,
   "dependencies": {
+    "@angular/animations": "^8.2.14",
     "@angular/common": "8.2.13",
     "@angular/core": "8.2.13",
     "@angular/fire": "^5.3.0",
@@ -37,6 +38,7 @@
     "@ionic-native/status-bar": "5.0.0-beta.15",
     "@ionic/angular": "^4.11.6",
     "@ionic/storage": "^2.1.3",
+    "animate.css": "^3.7.2",
     "cordova-android": "^8.1.0",
     "cordova-ios": "^5.1.1",
     "cordova-plugin-device": "^2.0.3",
@@ -47,12 +49,14 @@
     "cordova-plugin-statusbar": "^2.4.3",
     "cordova-plugin-whitelist": "^1.3.4",
     "core-js": "^3.4.1",
+    "css-animator": "^2.3.1",
     "firebase": "^7.6.2",
     "lodash": "^4.17.15",
     "promise-polyfill": "^8.1.3",
     "rxjs": "^6.5.3",
     "sw-toolbox": "3.6.0",
     "tslib": "^1.10.0",
+    "web-animations-js": "^2.3.2",
     "zone.js": "~0.9.1"
   },
   "devDependencies": {

@@ -28,6 +28,10 @@
       <ion-icon name="person"></ion-icon>
       <ion-label>Account</ion-label>
     </ion-tab-button>
+    <ion-tab-button *ngIf="!loggedIn" tab="login">
+      <ion-icon name="person-add"></ion-icon>
+      <ion-label>Login or Signup</ion-label>
+    </ion-tab-button>
   </ion-tab-bar>
 
 </ion-tabs>

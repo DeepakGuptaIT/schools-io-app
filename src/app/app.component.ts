@@ -47,6 +47,11 @@ export class AppComponent implements OnInit {
       title: 'Map',
       url: '/app/tabs/map',
       icon: 'map'
+    },
+    {
+      title: 'Signup',
+      url: '/signup',
+      icon: 'person-add'
     }
   ];
   demoPages = [
@@ -69,6 +74,11 @@ export class AppComponent implements OnInit {
       title: 'css-utilities',
       url: '/css-utilities',
       icon: 'logo-css3'
+    },
+    {
+      title: 'animation',
+      url: '/animation',
+      icon: 'color-wand'
     }
 
 

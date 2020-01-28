@@ -119,5 +119,9 @@ export class LoginPage {
   async signOut() {
     await this.authService.signOut();
   }
+  async skipLogIn() {
+    this.router.navigateByUrl('/app/tabs/schools');
+
+  }
 
 }

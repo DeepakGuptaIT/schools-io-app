@@ -28,6 +28,12 @@ export class TabsPage implements OnInit {
       this.isAdminUser = false;
       this.loggedIn = false;
     });
+    window.addEventListener('user:signup', () => {
+      this.loggedIn = true;
+    });
+    window.addEventListener('user:login', () => {
+      this.loggedIn = true;
+    });
   }
 
 }

@@ -17,10 +17,6 @@ const routes: Routes = [
     loadChildren: () => import('./pages/support/support.module').then(m => m.SupportModule)
   },
   {
-    path: 'login',
-    loadChildren: () => import('./pages/login/login.module').then(m => m.LoginModule)
-  },
-  {
     path: 'signup',
     loadChildren: () => import('./pages/signup/signup.module').then(m => m.SignUpModule)
   },
@@ -52,7 +48,11 @@ const routes: Routes = [
   {
     path: 'css-utilities',
     loadChildren: () => import('./demos/css-utilities/css-utilities.module').then(m => m.CssUtilitiesPageModule)
+  },  {
+    path: 'animation',
+    loadChildren: () => import('./demos/animation/animation.module').then( m => m.AnimationPageModule)
   }
+
 
 ];
 

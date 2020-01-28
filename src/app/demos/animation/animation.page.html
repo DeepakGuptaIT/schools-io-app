@@ -1,0 +1,51 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>animation</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-card color="dark" class="ion-padding animated fadeInLeft">
+    <ion-card-content class="ion-padding">
+      <ion-button color="google" (click)="toggleVisible()">
+        toggle visibility
+      </ion-button>
+      <ion-button color="google" (click)="animateElem()">
+        Animate it
+      </ion-button>
+    </ion-card-content>
+  </ion-card>
+  <ion-card class="ion-padding" #myElement>
+    <ion-card-content class="ion-padding">
+
+      <ion-item [@myvisibility]="visibleState">
+        <h1> I am sometimes here and sometimes there. Animation using angular animation </h1>
+      </ion-item>
+      <ion-item class=" animated fadeInLeft">
+        <h1> I am fadeInLeft. Animation using animate.css </h1>
+      </ion-item>
+      <ion-item class=" animated fadeInRight">
+        <h1> I am fadeInRight. Animation using animate.css </h1>
+      </ion-item>
+
+    </ion-card-content>
+  </ion-card>
+  <!--   <ion-card #myElement>
+    <ion-card-header>My Animation Card</ion-card-header>
+    <ion-card-content>So much awesome content and animations. AMAZING!</ion-card-content>
+  </ion-card> -->
+
+  <p class="animated bounce">hello</p>
+  <header class="site__header island">
+    <div class="wrap">
+      <span id="animationSandbox" style="display: block;" class="">
+        <h1 class="site__title mega">Animate.css</h1>
+      </span>
+      <span class="beta subhead">Just-add-water CSS animations</span>
+    </div>
+  </header>
+
+</ion-content>
