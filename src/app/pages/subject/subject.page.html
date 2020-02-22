@@ -1,0 +1,29 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button [defaultHref]="defaultHref"></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{subject?.name}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div *ngIf="subject" class="ion-padding">
+    <h1>{{subject.name}}</h1>
+    <span *ngFor="let track of subject?.tracks" class="session-track">{{track}}</span>
+    <p>{{subject.description}}</p>
+    <ion-text color="medium">
+      {{subject.description}} &ndash;
+    </ion-text>
+
+  </div>
+  <ion-list *ngIf="subject">
+    <ion-item *ngFor="let key of getPropertyKeys()">
+      <ion-text>
+        {{key}} : {{subject.properties[key]}}
+      </ion-text>
+    </ion-item>
+
+  </ion-list>
+
+</ion-content>

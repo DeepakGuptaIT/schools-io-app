@@ -71,7 +71,7 @@ export class SchoolPage implements OnInit {
         console.log(res);
         const toast = await this.toastCtrl.create({
           message: 'School Added successfully',
-          showCloseButton: true,
+          // showCloseButton: true,
           position: 'bottom',
           duration: 2000
         });
@@ -84,12 +84,12 @@ export class SchoolPage implements OnInit {
         console.log(res);
         const toast = await this.toastCtrl.create({
           message: 'School Updated successfully',
-          showCloseButton: true,
+          // showCloseButton: true,
           position: 'bottom',
           duration: 2000
         });
         await toast.present();
-        this.dismiss(res);
+        this.dismiss({ ...this.schoolForm.value, _id: this.navParams.get('school')._id });
       })
     }
 

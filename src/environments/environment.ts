@@ -5,6 +5,7 @@
 export const environment = {
   production: false,
   apiBaseUrl: "http://localhost:5000/schools-io-d0066/us-central1",
+  apiBaseUrlD: "http://localhost:8010/schools-io-d0066/us-central1",
   prodApiBaseUrl: "https://us-central1-schools-io-d0066.cloudfunctions.net"
 };
 

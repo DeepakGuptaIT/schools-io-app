@@ -16,7 +16,7 @@ import { AngularFireModule } from '@angular/fire';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFireDatabaseModule } from "@angular/fire/database";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { AnimationService, AnimatesDirective } from 'css-animator';
+import { AnimationService } from 'css-animator';
 // import { GooglePlus } from '@ionic-native/google-plus'; // We'll install this in the next section
 
 const firebaseConfig = {
@@ -46,7 +46,7 @@ const firebaseConfig = {
     AngularFireAuthModule,
     AngularFireDatabaseModule
   ],
-  declarations: [AppComponent, AnimatesDirective],
+  declarations: [AppComponent],
   providers: [InAppBrowser, SplashScreen, StatusBar, AnimationService],
   bootstrap: [AppComponent]
 })

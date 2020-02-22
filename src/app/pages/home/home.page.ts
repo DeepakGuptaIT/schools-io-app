@@ -1,26 +1,26 @@
 import { Component, OnInit } from '@angular/core';
-import { SchoolService } from './../../providers/school/school.service';
 import { AlertController, IonList, LoadingController, ModalController, ToastController } from '@ionic/angular';
-import { School } from './../../interfaces/school';
-import { SchoolPage } from './../school/school.page';
+import { SubjectDocument } from './../../interfaces/models/SubjectModel';
+import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { AngularFireAuth } from '@angular/fire/auth';
-import { Router } from '@angular/router';
+import { SubjectService } from './../../providers/subject/subject.service';
 
 @Component({
-  selector: 'schools',
-  templateUrl: './schools.page.html',
-  styleUrls: ['./schools.page.scss'],
+  selector: 'home',
+  templateUrl: './home.page.html',
+  styleUrls: ['./home.page.scss'],
 })
-export class SchoolsPage implements OnInit {
 
-  schoolList: School[];
+export class HomePage implements OnInit {
+
+  subjectList: SubjectDocument[];
   user: Observable<firebase.User>;
   toastMessage: string;
   error: any = "";
 
   constructor(
-    public schoolService: SchoolService,
+    private subjectService: SubjectService,
     public modalCtrl: ModalController,
     public loadingCtrl: LoadingController,
     public toastCtrl: ToastController,
@@ -34,51 +34,43 @@ export class SchoolsPage implements OnInit {
   ngOnInit() {
     // reset the components here
     if (this.user)
-      this.user.subscribe(e => console.log("user details from school page", e));
-    /* this.router.events
-      .pipe(
-        filter(value => value instanceof NavigationEnd),
-      )
-      .subscribe(event => {
-        if (event.url === 'http://mypreviousUrl.com') {
-          this.window.location.reload();
-        }
-      }); */
+      this.user.subscribe(e => console.log("user details from subject page", e));
+
   }
 
   async ionViewDidEnter() {
     const loading = await this.loadingCtrl.create({
-      message: `Loading Schools..`,
+      message: `Loading Home..`,
       cssClass: 'custom-loading',
       spinner: 'crescent'
     });
     await loading.present();
-    // message: 'School Data Loaded successfully',
-    //message: this.error ? 'School Data Loading Failed' : 'School Data Loaded successfully', //this is not working
+    // message: 'Subject Data Loaded successfully',
+    //message: this.error ? 'Subject Data Loading Failed' : 'Subject Data Loaded successfully', //this is not working
     const toast = await this.toastCtrl.create({
-      message: 'School Data Loaded successfully',
+      message: 'Subject Data Loaded successfully',
       // showCloseButton: true,
       position: 'top',
       duration: 3000
     });
     const errToast = await this.toastCtrl.create({
-      message: 'School Data Loading Failed',
+      message: 'Subject Data Loading Failed',
       // showCloseButton: true,
       position: 'top',
       duration: 3000
     });
 
     // await loading.onWillDismiss();
-    this.schoolService.getSchoolList2().subscribe(
-      async (schoolList: any[]) => {
-        this.schoolList = schoolList;
-        console.log('schoolList', this.schoolList);
+    this.subjectService.getSubjectList().subscribe(
+      async (subjectList: any[]) => {
+        this.subjectList = subjectList;
+        console.log('subjectList', this.subjectList);
         loading.dismiss();
         await toast.present();
       },
       async (error) => {
         this.error = error;
-        this.schoolList = [];
+        this.subjectList = [];
         loading.dismiss();
         await errToast.present();
       }
@@ -94,14 +86,7 @@ export class SchoolsPage implements OnInit {
     }, 2000);
   }
 
-  async helloFunction(id) {
-    this.schoolService.helloFunction(id).subscribe(async res => {
-      console.log("helloFunction", res);
-    });
-
-  }
-
-  async deleteSchool(id) {
+  async deleteSubject(id) {
     const alert = await this.alertController.create({
       header: 'Confirm!',
       message: 'Message <strong>Are you sure you want to delete ?</strong>!!!',
@@ -118,15 +103,15 @@ export class SchoolsPage implements OnInit {
           handler: async () => {
             console.log('Confirm Okay');
             const loading = await this.loadingCtrl.create({
-              message: `Deleting  School..`
+              message: `Deleting  Subject..`
             });
             await loading.present();
-            this.schoolService.deleteSchool(id).subscribe(async res => {
+            this.subjectService.deleteSubject(id).subscribe(async res => {
               console.log(res);
-              this.schoolList = this.schoolList.filter(e => e._id != id);
+              this.subjectList = this.subjectList.filter(e => e.id != id);
               loading.dismiss();
               const toast = await this.toastCtrl.create({
-                message: 'School Deleted successfully',
+                message: 'Subject Deleted successfully',
                 // showCloseButton: true,
                 position: 'bottom',
                 duration: 3000
@@ -148,25 +133,25 @@ export class SchoolsPage implements OnInit {
 
   }
 
-  async updateSchool(school: School) {
-    const id = school._id;
+  async updateSchool(subject: SubjectDocument) {
+    const id = subject.id;
     const modal = await this.modalCtrl.create({
-      component: SchoolPage,
-      componentProps: { school: school, isNew: false },
+      component: ``,
+      componentProps: { subject: subject, isNew: false },
       animated: true,
-      cssClass: 'update-school'
+      cssClass: 'update-subject'
     });
     await modal.present();
     const data = await modal.onWillDismiss();
     if (data.data) {
-      school = <School>data.data;
-      this.schoolList = this.schoolList.map(e => {
-        if (e._id === id)
-          return school;
+      subject = <SubjectDocument>data.data;
+      this.subjectList = this.subjectList.map(e => {
+        if (e.id === id)
+          return subject;
         else return e;
       });
 
-      console.log(this.schoolList.filter(e => e._id === id));
+      console.log(this.subjectList.filter(e => e.id === id));
     }
 
 
@@ -174,26 +159,26 @@ export class SchoolsPage implements OnInit {
 
   }
 
-  async cloneSchool(schoolOriginal: School) {
-    let school: School = { ...schoolOriginal };//Object.assign({}, schoolOriginal);
-    const id = school._id;
-    school._id = "0";
+  async cloneSchool(subjectOriginal: SubjectDocument) {
+    let subject: SubjectDocument = { ...subjectOriginal };//Object.assign({}, subjectOriginal);
+    const id = subject.id;
+    subject.id = "0";
     const modal = await this.modalCtrl.create({
-      component: SchoolPage,
-      componentProps: { school: school, isNew: true }
+      component: ``,
+      componentProps: { subject: subject, isNew: true }
     });
     await modal.present();
     const data = await modal.onWillDismiss();
     if (data.data) {
-      school = <School>data.data;
-      /* this.schoolList = this.schoolList.map(e => {
-        if (e._id === id)
-          return school;
+      subject = <SubjectDocument>data.data;
+      /* this.subjectList = this.subjectList.map(e => {
+        if (e.id === id)
+          return subject;
         else return e;
       }); */
-      this.schoolList = [...this.schoolList, school];
+      this.subjectList = [...this.subjectList, subject];
 
-      console.log(this.schoolList.filter(e => e._id === id));
+      console.log(this.subjectList.filter(e => e.id === id));
     }
 
 

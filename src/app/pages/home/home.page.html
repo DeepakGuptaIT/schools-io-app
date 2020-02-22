@@ -1,0 +1,28 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Subjects Io Home Page</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="outer-content ion-content">
+  <ion-list>
+    <ion-grid fixed>
+      <ion-row class="ion-align-items-stretch">
+        <ion-col size="12" size-md="6" class="ion-padding-bottom" *ngFor="let subject of subjectList">
+          <ion-card color="secondary" class="subject-card" routerLink="/app/tabs/home/subject-detail/{{subject.id}}">
+            <ion-card-header class=" ion-text-capitalize">
+              <h1 class="fadeIn">{{subject.name}}</h1>
+            </ion-card-header>
+
+
+          </ion-card>
+
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-list>
+
+</ion-content>

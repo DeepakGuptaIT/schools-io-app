@@ -22,6 +22,11 @@ import { timer } from 'rxjs';
 export class AppComponent implements OnInit {
   appPages = [
     {
+      title: 'Home',
+      url: '/app/tabs/home',
+      icon: 'home'
+    },
+    {
       title: 'Schools',
       url: '/app/tabs/schools',
       icon: 'school'
@@ -30,7 +35,7 @@ export class AppComponent implements OnInit {
       title: 'About',
       url: '/app/tabs/about',
       icon: 'information-circle'
-    }
+    },
   ];
   adminAppPages = [
     {
@@ -41,7 +46,7 @@ export class AppComponent implements OnInit {
     {
       title: 'Speakers',
       url: '/app/tabs/speakers',
-      icon: 'contacts'
+      icon: 'people'
     },
     {
       title: 'Map',
@@ -111,11 +116,18 @@ export class AppComponent implements OnInit {
     this.listenForLoginEvents();
 
     this.swUpdate.available.subscribe(async res => {
+      /*  const toast = await this.toastCtrl.create({
+         message: 'Update available!',
+         showCloseButton: true,
+         position: 'bottom',
+         closeButtonText: `Reload`
+       }); */
       const toast = await this.toastCtrl.create({
         message: 'Update available!',
-        showCloseButton: true,
+        // showCloseButton: true,
         position: 'bottom',
-        closeButtonText: `Reload`
+        // closeButtonText: `Reload`,
+        duration: 3000
       });
 
       await toast.present();

@@ -67,6 +67,19 @@ const routes: Routes = [
         ]
       },
       {
+        path: 'home',
+        children: [
+          {
+            path: '',
+            loadChildren: () => import('../home/home.module').then(m => m.HomePageModule)
+          },
+          {
+            path: 'subject-detail/:subjectId',
+            loadChildren: () => import('../subject/subject.module').then(m => m.SubjectPageModule)
+          }
+        ]
+      },
+      {
         path: 'user-profile',
         children: [
           {

@@ -1,0 +1,16 @@
+.subject-card {
+  height: 100% !important;
+  display: flex !important;
+  flex-direction: column !important;
+  text-align: center !important;
+  min-height: 200px;
+  justify-content: center !important;
+  cursor: pointer !important;
+
+  &:hover {
+    box-shadow: 0 8px 16px var(--ion-color-medium-shade), 0 3px 6px var(--ion-color-medium-shade);
+    transform: translateY(-2px);
+  }
+
+
+}

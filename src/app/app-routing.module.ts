@@ -51,6 +51,14 @@ const routes: Routes = [
   },  {
     path: 'animation',
     loadChildren: () => import('./demos/animation/animation.module').then( m => m.AnimationPageModule)
+  },
+  {
+    path: 'home',
+    loadChildren: () => import('./pages/home/home.module').then( m => m.HomePageModule)
+  },
+  {
+    path: 'subject',
+    loadChildren: () => import('./pages/subject/subject.module').then( m => m.SubjectPageModule)
   }
 
 
