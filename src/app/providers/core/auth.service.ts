@@ -205,7 +205,7 @@ export class AuthService {
               await this.storage.remove(this.HAS_LOGGED_IN);
               await this.storage.remove(this.IS_ADMIN_USER);
               this.dispatchEvent(EVENT_TYPE.LOGOUT);
-              this.router.navigateByUrl('/app/tabs/schools');
+              this.router.navigateByUrl('/app/tabs/home');
             }
           }
         ]
@@ -215,7 +215,7 @@ export class AuthService {
       // await this.storage.remove(this.HAS_LOGGED_IN);
       // await this.storage.remove(this.IS_ADMIN_USER);
       // this.dispatchEvent(EVENT_TYPE.LOGOUT);
-      // this.router.navigateByUrl('/app/tabs/schools');
+      // this.router.navigateByUrl('/app/tabs/home');
     } catch (error) {
       console.log("logg out error", error)
     }
@@ -252,7 +252,7 @@ export class AuthService {
     }
     this.dispatchEvent(EVENT_TYPE.LOGIN);
     // this.updateUserData();
-    this.router.navigateByUrl('/app/tabs/schools');
+    this.router.navigateByUrl('/app/tabs/home');
 
 
   }
@@ -265,7 +265,7 @@ export class AuthService {
     }
     this.dispatchEvent(EVENT_TYPE.SIGNUP);
     this.updateUserData();
-    this.router.navigateByUrl('/app/tabs/schools');
+    this.router.navigateByUrl('/app/tabs/home');
   }
 
 

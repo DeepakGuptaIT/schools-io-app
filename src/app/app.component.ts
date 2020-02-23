@@ -204,7 +204,7 @@ export class AppComponent implements OnInit {
   logout() {
     this.authService.signOut().then(() => {
       //we are already navigating to schools page in the signOut Service method
-      // return this.router.navigateByUrl('/app/tabs/schools');
+      // return this.router.navigateByUrl('/app/tabs/home');
     });
   }
 

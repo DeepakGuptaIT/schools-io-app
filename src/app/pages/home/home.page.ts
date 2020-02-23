@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { SubjectService } from './../../providers/subject/subject.service';
+import * as _ from "lodash";
 
 @Component({
   selector: 'home',
@@ -18,6 +19,7 @@ export class HomePage implements OnInit {
   user: Observable<firebase.User>;
   toastMessage: string;
   error: any = "";
+  needSubjectLoad: boolean = true;
 
   constructor(
     private subjectService: SubjectService,
@@ -39,42 +41,52 @@ export class HomePage implements OnInit {
   }
 
   async ionViewDidEnter() {
-    const loading = await this.loadingCtrl.create({
-      message: `Loading Home..`,
-      cssClass: 'custom-loading',
-      spinner: 'crescent'
-    });
-    await loading.present();
-    // message: 'Subject Data Loaded successfully',
-    //message: this.error ? 'Subject Data Loading Failed' : 'Subject Data Loaded successfully', //this is not working
-    const toast = await this.toastCtrl.create({
-      message: 'Subject Data Loaded successfully',
-      // showCloseButton: true,
-      position: 'top',
-      duration: 3000
-    });
-    const errToast = await this.toastCtrl.create({
-      message: 'Subject Data Loading Failed',
-      // showCloseButton: true,
-      position: 'top',
-      duration: 3000
-    });
+    if (!_.isEmpty(this.subjectList)) {
+      this.needSubjectLoad = false;
 
-    // await loading.onWillDismiss();
-    this.subjectService.getSubjectList().subscribe(
-      async (subjectList: any[]) => {
-        this.subjectList = subjectList;
-        console.log('subjectList', this.subjectList);
-        loading.dismiss();
-        await toast.present();
-      },
-      async (error) => {
-        this.error = error;
-        this.subjectList = [];
-        loading.dismiss();
-        await errToast.present();
-      }
-    )
+    }
+    if (this.needSubjectLoad) {
+      const loading = await this.loadingCtrl.create({
+        message: `Loading Home..`,
+        cssClass: 'custom-loading',
+        spinner: 'crescent'
+      });
+
+      await loading.present();
+      // message: 'Subject Data Loaded successfully',
+      //message: this.error ? 'Subject Data Loading Failed' : 'Subject Data Loaded successfully', //this is not working
+      const toast = await this.toastCtrl.create({
+        message: 'Subject Data Loaded successfully',
+        // showCloseButton: true,
+        position: 'top',
+        duration: 3000
+      });
+      const errToast = await this.toastCtrl.create({
+        message: 'Subject Data Loading Failed',
+        // showCloseButton: true,
+        position: 'top',
+        duration: 3000
+      });
+
+      // await loading.onWillDismiss();
+      this.subjectService.getSubjectList().subscribe(
+        async (subjectList: any[]) => {
+          this.subjectList = subjectList;
+          console.log('subjectList', this.subjectList);
+          loading.dismiss();
+          await toast.present();
+        },
+        async (error) => {
+          this.error = error;
+          this.subjectList = [];
+          loading.dismiss();
+          await errToast.present();
+        }
+      )
+
+    } else {
+      console.log('needSubjectLoad=>', this.needSubjectLoad);
+    }
   }
 
   doRefresh(event) {

@@ -99,7 +99,7 @@ const routes: Routes = [
       },
       {
         path: '',
-        redirectTo: '/app/tabs/schools',
+        redirectTo: '/app/tabs/home',
         pathMatch: 'full'
       }
     ]

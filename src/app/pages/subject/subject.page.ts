@@ -25,7 +25,7 @@ export class SubjectPage implements OnInit {
     const subjectId = this.route.snapshot.paramMap.get('subjectId');
     console.log('subjectId', subjectId);
     const loading = await this.loadingCtrl.create({
-      message: `Loading ${subjectId}`
+      message: `Loading ...`
     });
     await loading.present();
     this.subjectService.getSubjectById(subjectId).subscribe(
@@ -40,6 +40,9 @@ export class SubjectPage implements OnInit {
         loading.dismiss();
       }
     )
+  }
+  ionViewDidEnter() {
+    this.defaultHref = `/app/tabs/home`;
   }
 
   getProperties() {
