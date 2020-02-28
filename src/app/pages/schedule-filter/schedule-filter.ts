@@ -12,7 +12,7 @@ import { ConferenceData } from '../../providers/conference-data';
 export class ScheduleFilterPage implements AfterViewInit {
   ios: boolean;
 
-  tracks: {name: string, icon: string, isChecked: boolean}[] = [];
+  tracks: { name: string, icon: string, isChecked: boolean }[] = [];
 
   constructor(
     public confData: ConferenceData,
@@ -38,6 +38,7 @@ export class ScheduleFilterPage implements AfterViewInit {
           isChecked: (excludedTrackNames.indexOf(track.name) === -1)
         });
       });
+      console.log('tracks', this.tracks);
     });
   }
 

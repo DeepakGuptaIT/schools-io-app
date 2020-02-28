@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { SchoolService } from './../../providers/school/school.service';
+import { CommonService } from './../../providers/core/common.service';
 import { AlertController, IonList, LoadingController, ModalController, ToastController } from '@ionic/angular';
 import { School } from './../../interfaces/school';
 import { SchoolPage } from './../school/school.page';
@@ -18,6 +19,10 @@ export class SchoolsPage implements OnInit {
   user: Observable<firebase.User>;
   toastMessage: string;
   error: any = "";
+  loading: HTMLIonLoadingElement;
+  toast: HTMLIonToastElement;
+  status = 'ONLINE';
+  isConnected = true;
 
   constructor(
     public schoolService: SchoolService,
@@ -26,9 +31,11 @@ export class SchoolsPage implements OnInit {
     public toastCtrl: ToastController,
     public alertController: AlertController,
     private afAuth: AngularFireAuth,
-    public router: Router
+    public router: Router,
+    private commonService: CommonService
   ) {
     this.user = this.afAuth.authState;
+
   }
 
   ngOnInit() {
@@ -69,17 +76,19 @@ export class SchoolsPage implements OnInit {
     });
 
     // await loading.onWillDismiss();
-    this.schoolService.getSchoolList2().subscribe(
+    (await this.schoolService.getSchoolList()).subscribe(
       async (schoolList: any[]) => {
         this.schoolList = schoolList;
         console.log('schoolList', this.schoolList);
         loading.dismiss();
+        this.toast = toast;
         await toast.present();
       },
       async (error) => {
-        this.error = error;
+        this.commonService.handleApiError(error);
         this.schoolList = [];
         loading.dismiss();
+        this.toast = errToast;
         await errToast.present();
       }
     )
@@ -92,13 +101,6 @@ export class SchoolsPage implements OnInit {
       console.log('Async operation has ended');
       event.target.complete();
     }, 2000);
-  }
-
-  async helloFunction(id) {
-    this.schoolService.helloFunction(id).subscribe(async res => {
-      console.log("helloFunction", res);
-    });
-
   }
 
   async deleteSchool(id) {
@@ -121,7 +123,7 @@ export class SchoolsPage implements OnInit {
               message: `Deleting  School..`
             });
             await loading.present();
-            this.schoolService.deleteSchool(id).subscribe(async res => {
+            (await this.schoolService.deleteSchool(id)).subscribe(async res => {
               console.log(res);
               this.schoolList = this.schoolList.filter(e => e._id != id);
               loading.dismiss();
@@ -134,7 +136,7 @@ export class SchoolsPage implements OnInit {
               await toast.present();
             },
               async (error) => {
-                loading.dismiss();
+                await loading.dismiss();
               }
             )
 
@@ -199,6 +201,11 @@ export class SchoolsPage implements OnInit {
 
 
 
+  }
+
+  ionViewDidLeave() {
+    // enable the root left menu when leaving the tutorial page
+    this.toast.dismiss();
   }
 
 }

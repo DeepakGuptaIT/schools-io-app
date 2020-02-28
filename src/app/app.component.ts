@@ -12,6 +12,7 @@ import { Storage } from '@ionic/storage';
 import { UserData } from './providers/user-data';
 import { AuthService } from './providers/core/auth.service';
 import { timer } from 'rxjs';
+import { CommonService } from './providers/core/common.service';
 
 @Component({
   selector: 'app-root',
@@ -95,6 +96,8 @@ export class AppComponent implements OnInit {
   user: firebase.User = null;
   isAdminUser: boolean = false;
   adminUserEmailList = ['deepak.gupta.sky@gmail.com', 'deepakguptaoptimistic@gmail.com', 'uvzdeepak789@gmail.com'];
+  status = 'ONLINE';
+  isConnected = true;
 
   constructor(
     private menu: MenuController,
@@ -106,7 +109,8 @@ export class AppComponent implements OnInit {
     private userData: UserData,
     private swUpdate: SwUpdate,
     private toastCtrl: ToastController,
-    private authService: AuthService
+    private authService: AuthService,
+    private commonService: CommonService
   ) {
     this.initializeApp();
   }
@@ -114,6 +118,7 @@ export class AppComponent implements OnInit {
   async ngOnInit() {
     this.checkLoginStatus();
     this.listenForLoginEvents();
+    this.listenNetworkConnectivity();
 
     this.swUpdate.available.subscribe(async res => {
       /*  const toast = await this.toastCtrl.create({
@@ -199,6 +204,22 @@ export class AppComponent implements OnInit {
     window.addEventListener('user:logout', () => {
       this.updateLoggedInStatus(false);
     });
+  }
+
+  listenNetworkConnectivity() {
+    this.commonService.monitor().subscribe(isConnected => {
+      this.isConnected = isConnected;
+      if (this.isConnected) {
+        this.status = "ONLINE";
+        this.commonService.setIsOnline(true)
+      }
+      else {
+        this.status = "OFFLINE";
+        this.commonService.setIsOnline(false)
+      }
+      console.log('Network connection', this.status);
+    });
+
   }
 
   logout() {

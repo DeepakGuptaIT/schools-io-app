@@ -28,7 +28,7 @@ export class SubjectPage implements OnInit {
       message: `Loading ...`
     });
     await loading.present();
-    this.subjectService.getSubjectById(subjectId).subscribe(
+    (await this.subjectService.getSubjectById(subjectId)).subscribe(
       async (res: any) => {
         this.subject = res;
         console.log('subject', this.subject);

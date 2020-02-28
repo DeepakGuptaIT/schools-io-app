@@ -1,4 +1,4 @@
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
@@ -17,6 +17,8 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFireDatabaseModule } from "@angular/fire/database";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AnimationService } from 'css-animator';
+import { Interceptor, DEFAULT_TIMEOUT } from './providers/core/interceptor';
+import { CommonService } from './providers/core/common.service'
 // import { GooglePlus } from '@ionic-native/google-plus'; // We'll install this in the next section
 
 const firebaseConfig = {
@@ -47,7 +49,10 @@ const firebaseConfig = {
     AngularFireDatabaseModule
   ],
   declarations: [AppComponent],
-  providers: [InAppBrowser, SplashScreen, StatusBar, AnimationService],
+  providers: [
+    [{ provide: HTTP_INTERCEPTORS, useClass: Interceptor, multi: true }],
+    [{ provide: DEFAULT_TIMEOUT, useValue: 10000 }],
+    InAppBrowser, SplashScreen, StatusBar, AnimationService, CommonService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

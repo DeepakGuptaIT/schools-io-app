@@ -14,12 +14,12 @@
 }
 
 .school-card:hover {
-    // height: 110%;
-    // background: blueviolet;
-    // transform: scale(1.1);
-    // box-shadow: 0 8px 16px rgba(0,0,0,.08), 0 3px 6px rgba(0,0,0,.08);
-    box-shadow: 0 8px 16px var(--ion-color-medium-shade), 0 3px 6px var(--ion-color-medium-shade);
-    transform: translateY(-2px);
+  // height: 110%;
+  // background: blueviolet;
+  // transform: scale(1.1);
+  // box-shadow: 0 8px 16px rgba(0,0,0,.08), 0 3px 6px rgba(0,0,0,.08);
+  box-shadow: 0 8px 16px var(--ion-color-medium-shade), 0 3px 6px var(--ion-color-medium-shade);
+  transform: translateY(-2px);
 
 }
 
@@ -38,11 +38,6 @@
   padding: 0;
 }
 
-.ion-button{
-    --background-hover : grey;
-}
-.update-school {
-  --border-color : blueviolet;
-  background: rgba(0, 0, 0, 0.5) !important;
-   padding: 20% 10%  !important;
+.ion-button {
+  --background-hover: grey;
 }

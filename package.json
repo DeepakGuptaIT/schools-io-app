@@ -13,7 +13,7 @@
     "lint": "ng lint",
     "e2e": "ng e2e",
     "postinstall": "webdriver-manager update --standalone false --gecko false",
-    "deploy": "firebase deploy --only hosting",
+    "deploy": "ionic build --prod && firebase deploy --only hosting",
     "build-prod": "ionic build --prod"
   },
   "repository": {

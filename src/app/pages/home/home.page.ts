@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { SubjectService } from './../../providers/subject/subject.service';
+import { CommonService } from './../../providers/core/common.service';
 import * as _ from "lodash";
 
 @Component({
@@ -20,6 +21,8 @@ export class HomePage implements OnInit {
   toastMessage: string;
   error: any = "";
   needSubjectLoad: boolean = true;
+  loading: HTMLIonLoadingElement;
+  toast: HTMLIonToastElement;
 
   constructor(
     private subjectService: SubjectService,
@@ -28,7 +31,8 @@ export class HomePage implements OnInit {
     public toastCtrl: ToastController,
     public alertController: AlertController,
     private afAuth: AngularFireAuth,
-    public router: Router
+    public router: Router,
+    private commonService: CommonService
   ) {
     this.user = this.afAuth.authState;
   }
@@ -37,52 +41,27 @@ export class HomePage implements OnInit {
     // reset the components here
     if (this.user)
       this.user.subscribe(e => console.log("user details from subject page", e));
-
   }
 
   async ionViewDidEnter() {
     if (!_.isEmpty(this.subjectList)) {
       this.needSubjectLoad = false;
-
     }
     if (this.needSubjectLoad) {
-      const loading = await this.loadingCtrl.create({
-        message: `Loading Home..`,
-        cssClass: 'custom-loading',
-        spinner: 'crescent'
-      });
+      this.loading = await this.commonService.presentLoading('Loading HomePage..');
 
-      await loading.present();
-      // message: 'Subject Data Loaded successfully',
-      //message: this.error ? 'Subject Data Loading Failed' : 'Subject Data Loaded successfully', //this is not working
-      const toast = await this.toastCtrl.create({
-        message: 'Subject Data Loaded successfully',
-        // showCloseButton: true,
-        position: 'top',
-        duration: 3000
-      });
-      const errToast = await this.toastCtrl.create({
-        message: 'Subject Data Loading Failed',
-        // showCloseButton: true,
-        position: 'top',
-        duration: 3000
-      });
-
-      // await loading.onWillDismiss();
-      this.subjectService.getSubjectList().subscribe(
+      (await this.subjectService.getSubjectList()).subscribe(
         async (subjectList: any[]) => {
           this.subjectList = subjectList;
           console.log('subjectList', this.subjectList);
-          loading.dismiss();
-          await toast.present();
+          this.toast = await this.commonService.presentToast('Subject Data Loaded successfully');
+          await this.loading.dismiss();
         },
         async (error) => {
-          this.error = error;
-          this.subjectList = [];
-          loading.dismiss();
-          await errToast.present();
+          this.commonService.handleApiError(error);
+          await this.loading.dismiss();
         }
-      )
+      );
 
     } else {
       console.log('needSubjectLoad=>', this.needSubjectLoad);
@@ -118,7 +97,7 @@ export class HomePage implements OnInit {
               message: `Deleting  Subject..`
             });
             await loading.present();
-            this.subjectService.deleteSubject(id).subscribe(async res => {
+            (await this.subjectService.deleteSubject(id)).subscribe(async res => {
               console.log(res);
               this.subjectList = this.subjectList.filter(e => e.id != id);
               loading.dismiss();
@@ -145,7 +124,7 @@ export class HomePage implements OnInit {
 
   }
 
-  async updateSchool(subject: SubjectDocument) {
+  async updateSubject(subject: SubjectDocument) {
     const id = subject.id;
     const modal = await this.modalCtrl.create({
       component: ``,
@@ -171,7 +150,7 @@ export class HomePage implements OnInit {
 
   }
 
-  async cloneSchool(subjectOriginal: SubjectDocument) {
+  async cloneSubject(subjectOriginal: SubjectDocument) {
     let subject: SubjectDocument = { ...subjectOriginal };//Object.assign({}, subjectOriginal);
     const id = subject.id;
     subject.id = "0";
@@ -192,10 +171,11 @@ export class HomePage implements OnInit {
 
       console.log(this.subjectList.filter(e => e.id === id));
     }
+  }
 
-
-
-
+  ionViewDidLeave() {
+    // enable the root left menu when leaving the tutorial page
+    // this.toast.dismiss();
   }
 
 }

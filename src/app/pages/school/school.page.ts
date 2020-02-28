@@ -4,6 +4,7 @@ import { Config, ModalController, NavParams, AlertController, LoadingController,
 import { School } from '../../interfaces/school';
 import { FormBuilder, FormGroup, FormControl, Validators, AbstractControl, FormArray } from '@angular/forms';
 import { SchoolService } from './../../providers/school/school.service';
+import { CommonService } from './../../providers/core/common.service';
 
 @Component({
   selector: 'school',
@@ -23,7 +24,8 @@ export class SchoolPage implements OnInit {
     public schoolService: SchoolService,
     public loadingCtrl: LoadingController,
     public toastCtrl: ToastController,
-    public alertController: AlertController
+    public alertController: AlertController,
+    private commonService: CommonService
   ) {
     console.log(navParams.get('school'));
 
@@ -63,34 +65,46 @@ export class SchoolPage implements OnInit {
     }); */
   }
 
-  onSubmit() {
+  async onSubmit() {
     // TODO: Use EventEmitter with form value
     console.warn(this.schoolForm.value);
     if (this.isNew) {
-      this.schoolService.addSchool(this.schoolForm.value).subscribe(async res => {
-        console.log(res);
-        const toast = await this.toastCtrl.create({
-          message: 'School Added successfully',
-          // showCloseButton: true,
-          position: 'bottom',
-          duration: 2000
-        });
-        await toast.present();
-        this.dismiss(res);
-      })
+      (await this.schoolService.addSchool(this.schoolForm.value)).subscribe(
+        async res => {
+          console.log(res);
+          const toast = await this.toastCtrl.create({
+            message: 'School Added successfully',
+            // showCloseButton: true,
+            position: 'bottom',
+            duration: 2000
+          });
+          await toast.present();
+          this.dismiss(res);
+        },
+        async (error) => {
+          this.commonService.handleApiError(error);
+          // await this.loading.dismiss();
+        }
+      )
 
     } else {
-      this.schoolService.updateSchool(this.navParams.get('school')._id, this.schoolForm.value).subscribe(async res => {
-        console.log(res);
-        const toast = await this.toastCtrl.create({
-          message: 'School Updated successfully',
-          // showCloseButton: true,
-          position: 'bottom',
-          duration: 2000
-        });
-        await toast.present();
-        this.dismiss({ ...this.schoolForm.value, _id: this.navParams.get('school')._id });
-      })
+      (await this.schoolService.updateSchool(this.navParams.get('school')._id, this.schoolForm.value)).subscribe(
+        async res => {
+          console.log(res);
+          const toast = await this.toastCtrl.create({
+            message: 'School Updated successfully',
+            // showCloseButton: true,
+            position: 'bottom',
+            duration: 2000
+          });
+          await toast.present();
+          this.dismiss({ ...this.schoolForm.value, _id: this.navParams.get('school')._id });
+        },
+        async (error) => {
+          this.commonService.handleApiError(error);
+          // await this.loading.dismiss();
+        }
+      )
     }
 
   }

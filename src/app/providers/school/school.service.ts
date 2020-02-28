@@ -4,6 +4,8 @@ import { map, catchError } from 'rxjs/operators';
 import { HttpClient, HttpErrorResponse } from "@angular/common/http";
 import { School } from './../../interfaces/school';
 import { environment } from './../../../environments/environment';
+import { timeout } from 'rxjs/operators';
+import { CommonService } from './../core/common.service'
 
 @Injectable({
   providedIn: 'root'
@@ -12,25 +14,9 @@ export class SchoolService {
   baseUrl = environment.apiBaseUrl;//environment.apiBaseUrl;
   schools: School[];
 
-  constructor(public http: HttpClient) { }
+  constructor(public http: HttpClient, private commonService: CommonService) { }
 
-  private handleError(error: HttpErrorResponse) {
-    if (error.error instanceof ErrorEvent) {
-      // A client-side or network error occurred. Handle it accordingly.
-      console.error('An error occurred:', error.error.message);
-    } else {
-      // The backend returned an unsuccessful response code.
-      // The response body may contain clues as to what went wrong,
-      console.error(
-        `Backend returned code ${error.status}, ` +
-        `body was: ${error.error}`);
-    }
-    // return an observable with a user-facing error message
-    return throwError(
-      'Something bad happened; please try again later.');
-  };
-
-  getSchoolList(): Observable<any> {
+  async getSchoolListFromJson(): Promise<Observable<any>> {
     let url = `${this.baseUrl}/school/`;
     if (this.schools) {
       return of(this.schools);
@@ -40,13 +26,16 @@ export class SchoolService {
     }
   }
 
-  getSchoolList2(): Observable<any> {
-    let url = `${this.baseUrl}/schoolApi/`;
-    return this.http.get(url)
-      .pipe(
-        map(this.processData),
-        catchError(this.handleError)
-      );
+  async getSchoolList(): Promise<Observable<any>> {
+    if (await this.commonService.getIsOnline()) {
+      let url = `${this.baseUrl}/schoolApi/`;
+      return this.http.get(url)
+        .pipe(
+          map(this.processData)
+        );
+    } else {
+      return this.commonService.getInternetFailedError();
+    }
   }
 
   processData(data: any) {
@@ -60,18 +49,21 @@ export class SchoolService {
     return schoolList;
   }
 
-  addSchool(school: School): Observable<any> {
-    let url = `${this.baseUrl}/schoolApi/`;
-    return this.http.post(url, school)
-      .pipe(
-        map(this.processAddResponse),
-        map(data => {
-          const res = { ...school };
-          res._id = data;
-          return res;
-        }),
-        catchError(this.handleError)
-      );
+  async addSchool(school: School): Promise<Observable<any>> {
+    if (await this.commonService.getIsOnline()) {
+      let url = `${this.baseUrl}/schoolApi/`;
+      return this.http.post(url, school)
+        .pipe(
+          map(this.processAddResponse),
+          map(data => {
+            const res = { ...school };
+            res._id = data;
+            return res;
+          })
+        );
+    } else {
+      return this.commonService.getInternetFailedError();
+    }
   }
   /**
    * 
@@ -89,20 +81,22 @@ export class SchoolService {
     return id;
   }
   // will not receive data key in res
-  updateSchool(id: String, school: School): Observable<any> {
-    let url = `${this.baseUrl}/schoolApi/id/${id}`;
-    return this.http.put(url, school)
-      .pipe(
-        catchError(this.handleError)
-      );
+  async updateSchool(id: String, school: School): Promise<Observable<any>> {
+    if (await this.commonService.getIsOnline()) {
+      let url = `${this.baseUrl}/schoolApi/id/${id}`;
+      return this.http.put(url, school);
+    } else {
+      return this.commonService.getInternetFailedError();
+    }
   }
   // will not receive data key in res
-  deleteSchool(id: String): Observable<any> {
-    let url = `${this.baseUrl}/schoolApi/id/${id}`;
-    return this.http.delete(url)
-      .pipe(
-        catchError(this.handleError)
-      );
+  async deleteSchool(id: String): Promise<Observable<any>> {
+    if (await this.commonService.getIsOnline()) {
+      let url = `${this.baseUrl}/schoolApi/id/${id}`;
+      return this.http.delete(url);
+    } else {
+      return this.commonService.getInternetFailedError();
+    }
   }
   helloFunction(id: String): Observable<any> {
     // const headers = new HttpHeaders().set('Content-Type', 'text/plain; charset=utf-8');
