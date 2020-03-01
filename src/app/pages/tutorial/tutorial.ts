@@ -18,6 +18,10 @@ export class TutorialPage {
   hidePrev = true;
   hideNext = false;
   slideOpts = {
+    pagination: {
+      el: '.swiper-pagination',
+      clickable: true
+    },
     on: {
       beforeInit() {
         const swiper = this;

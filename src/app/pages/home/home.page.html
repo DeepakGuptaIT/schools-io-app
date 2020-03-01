@@ -7,22 +7,25 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content class="outer-content ion-content">
-  <ion-list>
-    <ion-grid fixed>
-      <ion-row class="ion-align-items-stretch">
-        <ion-col size="12" size-md="6" class="ion-padding-bottom" *ngFor="let subject of subjectList">
-          <ion-card color="secondary" class="subject-card" routerLink="/app/tabs/home/subject-detail/{{subject.id}}">
-            <ion-card-header class=" ion-text-capitalize">
-              <h1 class="fadeIn">{{subject.name}}</h1>
-            </ion-card-header>
-
-
-          </ion-card>
-
+<ion-content class="ion-content ion-padding-xl">
+  <div [hidden]="!commonService.isMobileView()">
+    <ion-slides #slides (ionSlideWillChange)="onSlideChangeStart($event)" [options]="slideOpts" pager="true">
+      <ion-slide *ngFor="let subject of subjectList">
+        <card [data]="subject" type="SUBJECT" [additionalProps]="{cssClass: 'subject-card-scroll'}"></card>
+      </ion-slide>
+    </ion-slides>
+  </div>
+  <ion-list [hidden]="commonService.isMobileView()">
+    <ion-grid>
+      <ion-row class="ion-align-items-stretch ion-padding">
+        <ion-col size=" 12" size-sm="6" size-md="4" size-xl="4" *ngFor="let subject of subjectList">
+          <card [data]="subject" type="SUBJECT" [additionalProps]="{cssClass: 'subject-card-grid'}"></card>
         </ion-col>
       </ion-row>
     </ion-grid>
+  </ion-list>
+  <ion-list>
+    <!-- <card *ngFor="let name of names" [name]="name" color="green"></card> -->
   </ion-list>
 
 </ion-content>

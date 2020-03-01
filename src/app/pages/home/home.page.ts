@@ -1,11 +1,13 @@
-import { Component, OnInit } from '@angular/core';
-import { AlertController, IonList, LoadingController, ModalController, ToastController } from '@ionic/angular';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { AlertController, IonList, LoadingController, ModalController, ToastController, IonSlides } from '@ionic/angular';
 import { SubjectDocument } from './../../interfaces/models/SubjectModel';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { SubjectService } from './../../providers/subject/subject.service';
 import { CommonService } from './../../providers/core/common.service';
+import { coverflow } from './../../constants/SlideOptions';
+// import { CardComponent } from './../../components/card/card.component';
 import * as _ from "lodash";
 
 @Component({
@@ -23,6 +25,21 @@ export class HomePage implements OnInit {
   needSubjectLoad: boolean = true;
   loading: HTMLIonLoadingElement;
   toast: HTMLIonToastElement;
+  swiper: any;
+
+  //create the options based on screen size , using platform api
+  slideOpts: object = {
+    spaceBetween: 10,
+    centeredSlides: true,
+    slidesPerView: 1.6,
+    pagination: {
+      el: '.swiper-pagination',
+      clickable: true
+    }
+
+  };
+
+  @ViewChild('slides', { static: true }) slides: IonSlides;
 
   constructor(
     private subjectService: SubjectService,
@@ -32,7 +49,7 @@ export class HomePage implements OnInit {
     public alertController: AlertController,
     private afAuth: AngularFireAuth,
     public router: Router,
-    private commonService: CommonService
+    public commonService: CommonService
   ) {
     this.user = this.afAuth.authState;
   }
@@ -44,6 +61,8 @@ export class HomePage implements OnInit {
   }
 
   async ionViewDidEnter() {
+    // this.swiper = await this.slides.getSwiper();
+    // this.swiper.pagination.clickable = true;
     if (!_.isEmpty(this.subjectList)) {
       this.needSubjectLoad = false;
     }
@@ -66,6 +85,10 @@ export class HomePage implements OnInit {
     } else {
       console.log('needSubjectLoad=>', this.needSubjectLoad);
     }
+  }
+
+  onSlideChangeStart(event) {
+    // console.log('slide event', event);
   }
 
   doRefresh(event) {

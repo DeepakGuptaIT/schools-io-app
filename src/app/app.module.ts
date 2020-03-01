@@ -18,7 +18,7 @@ import { AngularFireDatabaseModule } from "@angular/fire/database";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AnimationService } from 'css-animator';
 import { Interceptor, DEFAULT_TIMEOUT } from './providers/core/interceptor';
-import { CommonService } from './providers/core/common.service'
+import { CommonService } from './providers/core/common.service';
 // import { GooglePlus } from '@ionic-native/google-plus'; // We'll install this in the next section
 
 const firebaseConfig = {

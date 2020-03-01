@@ -98,6 +98,7 @@ export class AppComponent implements OnInit {
   adminUserEmailList = ['deepak.gupta.sky@gmail.com', 'deepakguptaoptimistic@gmail.com', 'uvzdeepak789@gmail.com'];
   status = 'ONLINE';
   isConnected = true;
+  appVersion: string = '1-march-2020'
 
   constructor(
     private menu: MenuController,
@@ -132,7 +133,14 @@ export class AppComponent implements OnInit {
         // showCloseButton: true,
         position: 'bottom',
         // closeButtonText: `Reload`,
-        duration: 3000
+        duration: 3000,
+        buttons: [
+          {
+            text: 'Reload',
+            role: 'cancel'
+          }
+        ]
+
       });
 
       await toast.present();
@@ -163,7 +171,7 @@ export class AppComponent implements OnInit {
   getPlatformInfo() {
     console.log("platform source " + this.platform.platforms());
     this.platform.resize.subscribe(async () => {
-      console.log(`Resize event detected ${this.platform.width()}`);
+      console.log(`Resize event detected width: ${this.platform.width()} and height : ${this.platform.height()}`);
     });
 
   }

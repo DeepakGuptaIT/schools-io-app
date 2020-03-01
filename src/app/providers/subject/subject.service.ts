@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { of, Observable, throwError } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { map, retry } from 'rxjs/operators';
 import { HttpClient } from "@angular/common/http";
 import { SubjectDocument, SubjectProperties } from './../../interfaces/models/SubjectModel';
 import { environment } from './../../../environments/environment';
@@ -23,6 +23,7 @@ export class SubjectService {
       if (await this.commonService.getIsOnline()) {
         return this.http.get(url)
           .pipe(
+            retry(2),
             map(d => {
               const raw: object = (<any>d).data;
               return raw;

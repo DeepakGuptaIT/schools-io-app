@@ -1,0 +1,6 @@
+<ion-card *ngIf="isSubject" [color]="color" [class]="(additionalProps && additionalProps.cssClass)"
+  routerLink="/app/tabs/home/subject-detail/{{subject.id}}">
+  <ion-card-header class=" ion-text-capitalize">
+    <h1 class="fadeIn">{{subject.name}}</h1>
+  </ion-card-header>
+</ion-card>
