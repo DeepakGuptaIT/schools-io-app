@@ -1,0 +1,16 @@
+// @import '~highlight.js/styles/tomorrow-night-blue.css';
+ion-card {
+    ion-card-content {
+        padding: 0;
+
+        pre {
+            // border-left: .5rem solid var(--ion-color-primary);
+            margin: 0;
+
+            code {
+                padding: 1rem;
+            }
+        }
+    }
+
+}

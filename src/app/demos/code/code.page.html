@@ -1,0 +1,22 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>code</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <code-example [code]="javaSampleCode" heading="" [languageList]="javaLang" [showLineNumbers]="showLineNumbers">
+  </code-example>
+  <code-example [code]="typesscriptSampleCode" [languageList]="tsLang" [showLineNumbers]="showLineNumbers">
+  </code-example>
+  <code-example [code]="cssSampleCode" [languageList]="cssLang" heading="" [showLineNumbers]="showLineNumbers">
+  </code-example>
+  <code-example [code]="jsSampleCode" [languageList]="jsLang" heading="" [showLineNumbers]="showLineNumbers">
+  </code-example>
+  <code-example [code]="scssSampleCode" heading="" [showLineNumbers]="!showLineNumbers">
+  </code-example>
+
+</ion-content>

@@ -85,6 +85,11 @@ export class AppComponent implements OnInit {
       title: 'animation',
       url: '/animation',
       icon: 'color-wand'
+    },
+    {
+      title: 'code',
+      url: '/code',
+      icon: 'code-outline'
     }
 
 
@@ -171,7 +176,7 @@ export class AppComponent implements OnInit {
   getPlatformInfo() {
     console.log("platform source " + this.platform.platforms());
     this.platform.resize.subscribe(async () => {
-      console.log(`Resize event detected width: ${this.platform.width()} and height : ${this.platform.height()}`);
+      // console.log(`Resize event detected width: ${this.platform.width()} and height : ${this.platform.height()}`);
     });
 
   }

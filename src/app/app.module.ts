@@ -19,6 +19,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AnimationService } from 'css-animator';
 import { Interceptor, DEFAULT_TIMEOUT } from './providers/core/interceptor';
 import { CommonService } from './providers/core/common.service';
+import { HighlightModule, HIGHLIGHT_OPTIONS, HighlightOptions } from 'ngx-highlightjs';
 // import { GooglePlus } from '@ionic-native/google-plus'; // We'll install this in the next section
 
 const firebaseConfig = {
@@ -31,6 +32,18 @@ const firebaseConfig = {
   appId: "1:276194740345:web:715ed962a8565d6f9ceca8",
   measurementId: "G-RS2ZSDQDWC"
 };
+
+/**
+ * Import specific languages to avoid importing everything
+ * The following will lazy load highlight.js core script (~9.6KB) + the selected languages bundle (each lang. ~1kb)
+ */
+export function getHighlightLanguages() {
+  return {
+    typescript: () => import('highlight.js/lib/languages/typescript'),
+    css: () => import('highlight.js/lib/languages/css'),
+    xml: () => import('highlight.js/lib/languages/xml')
+  };
+}
 
 @NgModule({
   imports: [
@@ -46,10 +59,18 @@ const firebaseConfig = {
     }),
     AngularFireModule.initializeApp(firebaseConfig), // <-- firebase here
     AngularFireAuthModule,
-    AngularFireDatabaseModule
+    AngularFireDatabaseModule,
+    HighlightModule,
   ],
   declarations: [AppComponent],
   providers: [
+    {
+      provide: HIGHLIGHT_OPTIONS,
+      useValue: {
+        // languages: getHighlightLanguages(),
+        lineNumbers: true
+      }
+    },
     [{ provide: HTTP_INTERCEPTORS, useClass: Interceptor, multi: true }],
     [{ provide: DEFAULT_TIMEOUT, useValue: 10000 }],
     InAppBrowser, SplashScreen, StatusBar, AnimationService, CommonService],
