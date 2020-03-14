@@ -1,0 +1,12 @@
+<ion-row class="ion-justify-content-center">
+  <ion-col size="12" size-xl="9">
+    <ion-card [class]="cardClass">
+      <ion-card-header *ngIf="hasTitle" class="ion-text-uppercase" color="primary">
+        <ion-card-title>{{title}}</ion-card-title>
+      </ion-card-header>
+      <ion-card-content class="ion-text-justify">
+        {{content}}
+      </ion-card-content>
+    </ion-card>
+  </ion-col>
+</ion-row>

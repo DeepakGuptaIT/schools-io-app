@@ -1,0 +1,32 @@
+ion-col {
+    padding: 0;
+}
+
+ion-card {
+
+    ion-card-header {
+        padding: .5rem;
+    }
+
+    ion-card-content {
+        // font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+        background-color: rgba(25, 118, 210, 0.05);
+        color: rgb(68, 68, 68);
+        font-size: 16px;
+
+        b {
+            color: var(--ion-text-color, #000000);
+        }
+
+    }
+
+    &.note-card {
+        border-left: .5rem solid var(--ion-color-primary);
+    }
+
+    &.note-with-title-card {
+        ion-card-content {
+            padding-top: .5rem;
+        }
+    }
+}

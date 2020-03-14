@@ -100,10 +100,10 @@ export class AppComponent implements OnInit {
   showSplash = false; // <-- show animation
   user: firebase.User = null;
   isAdminUser: boolean = false;
-  adminUserEmailList = ['deepak.gupta.sky@gmail.com', 'deepakguptaoptimistic@gmail.com', 'uvzdeepak789@gmail.com'];
+  adminUserEmailList = ['deepak.gupta.sky@gmail.com', 'deepakguptaoptimistic@gmail.com', 'uvzdeepak789@gmail.com', 'gupta231296@gmail.com'];
   status = 'ONLINE';
   isConnected = true;
-  appVersion: string = '1-march-2020'
+  appVersion: string = '9-march-2020'
 
   constructor(
     private menu: MenuController,

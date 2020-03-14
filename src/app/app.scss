@@ -1,8 +1,16 @@
 @media(max-width : 768px) {
-// TODO test application level css-working fine
+
+  // TODO test application level css-working fine
   .prev-next {
     display: none;
   }
+}
+
+body {
+  -webkit-user-select: text;
+  -moz-user-select: text;
+  -ms-user-select: text;
+  user-select: text;
 }
 
 /* ion-menu {
@@ -16,14 +24,14 @@ ion-app {
 
 
 .splash {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    z-index: 999;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: #ff7400;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #ff7400;
 }
 
 .spinner {
@@ -37,19 +45,31 @@ ion-app {
 }
 
 @-webkit-keyframes sk-rotateplane {
-  0% { -webkit-transform: perspective(120px) }
-  50% { -webkit-transform: perspective(120px) rotateY(180deg) }
-  100% { -webkit-transform: perspective(120px) rotateY(180deg)  rotateX(180deg) }
+  0% {
+    -webkit-transform: perspective(120px)
+  }
+
+  50% {
+    -webkit-transform: perspective(120px) rotateY(180deg)
+  }
+
+  100% {
+    -webkit-transform: perspective(120px) rotateY(180deg) rotateX(180deg)
+  }
 }
 
 @keyframes sk-rotateplane {
-  0% { 
+  0% {
     transform: perspective(120px) rotateX(0deg) rotateY(0deg);
-    -webkit-transform: perspective(120px) rotateX(0deg) rotateY(0deg) 
-  } 50% { 
+    -webkit-transform: perspective(120px) rotateX(0deg) rotateY(0deg)
+  }
+
+  50% {
     transform: perspective(120px) rotateX(-180.1deg) rotateY(0deg);
-    -webkit-transform: perspective(120px) rotateX(-180.1deg) rotateY(0deg) 
-  } 100% { 
+    -webkit-transform: perspective(120px) rotateX(-180.1deg) rotateY(0deg)
+  }
+
+  100% {
     transform: perspective(120px) rotateX(-180deg) rotateY(-179.9deg);
     -webkit-transform: perspective(120px) rotateX(-180deg) rotateY(-179.9deg);
   }
