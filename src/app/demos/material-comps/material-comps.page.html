@@ -1,0 +1,52 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>material-comps</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <mat-form-field>
+    <mat-label>Ionites</mat-label>
+    <mat-select [(ngModel)]="ionite" name="ionite">
+      <mat-option value="Simon">Simon</mat-option>
+      <mat-option value="Max">Max</mat-option>
+      <mat-option value="Ben">Ben</mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-vertical-stepper linear="false" #stepper>
+
+    <mat-step [stepControl]="userForm">
+      <form [formGroup]="userForm">
+        <ng-template matStepLabel>Personal Data</ng-template>
+        <mat-form-field>
+          <input matInput placeholder="Your Name" formControlName="name" required>
+        </mat-form-field>
+      </form>
+    </mat-step>
+
+    <mat-step [stepControl]="userForm" label="Shipping Info">
+      <form [formGroup]="userForm">
+        <mat-form-field>
+          <input matInput placeholder="Address" formControlName="address" required>
+        </mat-form-field>
+        <div>
+          <button mat-button matStepperPrevious>Back</button>
+          <button mat-button matStepperNext>Next</button>
+        </div>
+      </form>
+    </mat-step>
+
+    <mat-step label="Confirm Order">
+      By clicking finish you accept our Terms & Conditions.
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button (click)="stepper.reset()">Reset</button>
+      </div>
+    </mat-step>
+
+  </mat-vertical-stepper>
+
+</ion-content>

@@ -14,6 +14,11 @@ import { AuthService } from './providers/core/auth.service';
 import { timer } from 'rxjs';
 import { CommonService } from './providers/core/common.service';
 
+interface Page {
+  title: string,
+  url: string,
+  icon: string
+}
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -21,7 +26,7 @@ import { CommonService } from './providers/core/common.service';
   encapsulation: ViewEncapsulation.None
 })
 export class AppComponent implements OnInit {
-  appPages = [
+  appPages: Page[] = [
     {
       title: 'Home',
       url: '/app/tabs/home',
@@ -38,7 +43,7 @@ export class AppComponent implements OnInit {
       icon: 'information-circle'
     },
   ];
-  adminAppPages = [
+  adminAppPages: Page[] = [
     {
       title: 'Schedule',
       url: '/app/tabs/schedule',
@@ -60,7 +65,12 @@ export class AppComponent implements OnInit {
       icon: 'person-add'
     }
   ];
-  demoPages = [
+  demoPages: Page[] = [
+    {
+      title: 'Material Design',
+      url: '/material-comps',
+      icon: 'logo-web-component'
+    },
     {
       title: 'platform',
       url: '/platform',
@@ -93,6 +103,7 @@ export class AppComponent implements OnInit {
     }
 
 
+
   ]
   loggedIn = false;
   dark = false;
@@ -103,7 +114,7 @@ export class AppComponent implements OnInit {
   adminUserEmailList = ['deepak.gupta.sky@gmail.com', 'deepakguptaoptimistic@gmail.com', 'uvzdeepak789@gmail.com', 'gupta231296@gmail.com'];
   status = 'ONLINE';
   isConnected = true;
-  appVersion: string = '9-march-2020'
+  appVersion: string = '14-march-2020'
 
   constructor(
     private menu: MenuController,
