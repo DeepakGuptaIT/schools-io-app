@@ -1,0 +1,17 @@
+table {
+    margin-top: 1rem;
+    width: 100%;
+}
+
+ion-searchbar {
+    max-width: 200px;
+
+    &.searchbar-has-focus,
+    &.searchbar-has-value {
+        max-width: 550px;
+    }
+}
+
+mat-accordion {
+    margin: 1rem;
+}

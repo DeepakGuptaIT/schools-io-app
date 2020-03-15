@@ -9,9 +9,21 @@ import {
   MatSelectModule,
   MatIconModule,
   MatPaginatorModule,
-  MatSortModule
+  MatSortModule,
+  MatTreeModule,
+  MatDialogModule,
+  MatSliderModule,
+  MatDividerModule,
+  MatSnackBarModule,
+  MatCheckboxModule,
+  MatDatepickerModule,
+  MatNativeDateModule,
+  MatTooltipModule
 } from "@angular/material";
-
+// import { MatSliderModule } from '@angular/material/slider';
+// import { MatDividerModule } from '@angular/material/divider';
+import { MatExpansionModule } from '@angular/material/expansion';
+// import { MatTreeModule } from '@angular/material/tree';
 
 @NgModule({
   exports: [
@@ -24,7 +36,17 @@ import {
     MatOptionModule,
     MatSelectModule,
     MatPaginatorModule,
-    MatSortModule
+    MatSortModule,
+    MatSliderModule,
+    MatDividerModule,
+    MatExpansionModule,
+    MatTreeModule,
+    MatDialogModule,
+    MatSnackBarModule,
+    MatCheckboxModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatTooltipModule
   ]
 })
 export class MaterialModule { }
