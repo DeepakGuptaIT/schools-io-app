@@ -1,33 +1,4 @@
-/* @font-face {
-    font-family: 'Source Code Pro';
-    src: url ('../assets/fonts/Source_Code_Pro/SourceCodePro-ExtraLight.ttf') format('truetype');
-    font-weight: 200;
-    font-style: normal;
-}
-
 @font-face {
     font-family: 'Source Code Pro';
-    src: url ('../assets/fonts/Source_Code_Pro/SourceCodePro-Regular.ttf');
-    font-weight: 400;
-    font-style: normal;
-}
-
-@font-face {
-    font-family: 'Source Code Pro';
-    src: url ('../assets/fonts/Source_Code_Pro/SourceCodePro-Black.ttf');
-    font-weight: 900;
-    font-style: normal;
-} */
-@font-face {
-    font-family: 'Source Code Pro R';
-    src: local('../assets/fonts/Source_Code_Pro/SourceCodePro-Regular.ttf');
-    // font-weight: 200;
-    font-style: normal;
-}
-
-@font-face {
-    font-family: 'Source Code Pro B';
-    src: local('../assets/fonts/Source_Code_Pro/SourceCodePro-Black.ttf');
-    font-weight: 200;
-    font-style: normal;
+    src: url('../assets/fonts/Source_Code_Pro/SourceCodePro-Regular.ttf');
 }

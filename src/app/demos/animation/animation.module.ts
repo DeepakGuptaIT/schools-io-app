@@ -7,12 +7,16 @@ import { IonicModule } from '@ionic/angular';
 import { AnimationPageRoutingModule } from './animation-routing.module';
 
 import { AnimationPage } from './animation.page';
+import { AnimateModule } from './../../components/animate/animate.module'
+import { ScrollingModule } from '@angular/cdk/scrolling';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
+    AnimateModule,
+    ScrollingModule,
     AnimationPageRoutingModule
   ],
   declarations: [AnimationPage]

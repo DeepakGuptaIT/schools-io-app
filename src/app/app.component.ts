@@ -13,6 +13,7 @@ import { UserData } from './providers/user-data';
 import { AuthService } from './providers/core/auth.service';
 import { timer } from 'rxjs';
 import { CommonService } from './providers/core/common.service';
+import * as AOS from 'aos';
 
 interface Page {
   title: string,
@@ -173,6 +174,7 @@ export class AppComponent implements OnInit {
       this.statusBar.styleDefault();
       this.splashScreen.hide();
       this.getPlatformInfo();
+      this.initAOS();
     });
   }
 
@@ -190,6 +192,11 @@ export class AppComponent implements OnInit {
       // console.log(`Resize event detected width: ${this.platform.width()} and height : ${this.platform.height()}`);
     });
 
+  }
+  initAOS() {
+    AOS.init({
+      duration: 1200,
+    });
   }
 
   checkLoginStatus() {
