@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { typesscriptSampleCode, cssSampleCode, jsSampleCode, scssSampleCode, javaSampleCode } from './../../constants/CodeExamples';
-import { AppConstants } from './../../constants/AppConstants'
+import { AppConstants } from './../../constants/AppConstants';
+
 
 @Component({
   selector: 'code',
@@ -25,6 +26,7 @@ In actual development you will typically use the Angular CLI, a powerful command
   constructor() { }
 
   ngOnInit() {
+    // new WOW().init();
   }
 
 }

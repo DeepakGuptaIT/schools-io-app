@@ -20,6 +20,7 @@ import { AnimationService } from 'css-animator';
 import { Interceptor, DEFAULT_TIMEOUT } from './providers/core/interceptor';
 import { CommonService } from './providers/core/common.service';
 import { HighlightModule, HIGHLIGHT_OPTIONS, HighlightOptions } from 'ngx-highlightjs';
+import { NgwWowModule } from 'ngx-wow';
 // import { GooglePlus } from '@ionic-native/google-plus'; // We'll install this in the next section
 
 const firebaseConfig = {
@@ -61,6 +62,7 @@ export function getHighlightLanguages() {
     AngularFireAuthModule,
     AngularFireDatabaseModule,
     HighlightModule,
+    NgwWowModule
   ],
   declarations: [AppComponent],
   providers: [

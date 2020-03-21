@@ -31,6 +31,7 @@ import { AnimationService, AnimationBuilder } from 'css-animator';
 export class AnimationPage implements OnInit {
   visibleState = 'visible';
   dark: boolean = false;
+  fadeInRight = false;
   private animator: AnimationBuilder;
   // @ViewChild('slides', { static: true }) slides: IonSlides;
   @ViewChild('myElement', { static: false }) myElem: any;
@@ -53,7 +54,8 @@ export class AnimationPage implements OnInit {
     console.log(this.visibleState);
   }
   animateElem() {
-    this.animator.setType('flipInX').animate(this.para);
+    this.fadeInRight = !this.fadeInRight;
+
   }
 
 

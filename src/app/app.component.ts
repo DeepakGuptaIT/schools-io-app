@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, NavigationEnd, ActivatedRoute } from '@angular/router';
 import { SwUpdate } from '@angular/service-worker';
 
 import { MenuController, Platform, ToastController } from '@ionic/angular';
@@ -11,9 +11,11 @@ import { Storage } from '@ionic/storage';
 
 import { UserData } from './providers/user-data';
 import { AuthService } from './providers/core/auth.service';
-import { timer } from 'rxjs';
+import { timer, Subscription } from 'rxjs';
+import { filter } from 'rxjs/operators';
 import { CommonService } from './providers/core/common.service';
-import * as AOS from 'aos';
+import { NgwWowService } from 'ngx-wow';
+// import * as AOS from 'aos';
 
 interface Page {
   title: string,
@@ -116,6 +118,11 @@ export class AppComponent implements OnInit {
   status = 'ONLINE';
   isConnected = true;
   appVersion: string = '15-march-2020 v3'
+  // keep refs to subscription to be abble to unsubscribe later
+  // (NOTE: unless you want to be notified when an item is revealed by WOW,
+  //  you absolutely don't need this line and related, for the library to work
+  // only the call to `this.wowService.init()` at some point is necessary
+  private wowSubscription: Subscription;
 
   constructor(
     private menu: MenuController,
@@ -128,7 +135,9 @@ export class AppComponent implements OnInit {
     private swUpdate: SwUpdate,
     private toastCtrl: ToastController,
     private authService: AuthService,
-    private commonService: CommonService
+    private commonService: CommonService,
+    private wowService: NgwWowService,
+    private activatedRoute: ActivatedRoute
   ) {
     this.initializeApp();
   }
@@ -137,6 +146,7 @@ export class AppComponent implements OnInit {
     this.checkLoginStatus();
     this.listenForLoginEvents();
     this.listenNetworkConnectivity();
+    this.listenForWowEvent();
 
     this.swUpdate.available.subscribe(async res => {
       /*  const toast = await this.toastCtrl.create({
@@ -175,6 +185,7 @@ export class AppComponent implements OnInit {
       this.splashScreen.hide();
       this.getPlatformInfo();
       this.initAOS();
+      this.initWow();
     });
   }
 
@@ -194,8 +205,21 @@ export class AppComponent implements OnInit {
 
   }
   initAOS() {
-    AOS.init({
-      duration: 1200,
+    /*  AOS.init({
+       duration: 1200,
+     }); */
+  }
+  initWow() {
+    this.router.events.pipe(
+      filter(event => event instanceof NavigationEnd)
+    ).subscribe((event) => {
+      // Reload WoW animations when done navigating to page,
+      // but you are free to call it whenever/wherever you like
+      this.wowService.init({
+        // scrollContainer: '.',
+
+      });
+      console.log(this.activatedRoute.root, this.activatedRoute.url);
     });
   }
 
@@ -253,6 +277,15 @@ export class AppComponent implements OnInit {
 
   }
 
+  listenForWowEvent() {
+    // you can subscribe to WOW observable to react when an element is revealed
+    this.wowSubscription = this.wowService.itemRevealed$.subscribe(
+      (item: HTMLElement) => {
+        // do whatever you want with revealed element
+        console.log(item)
+      });
+  }
+
   logout() {
     this.authService.signOut().then(() => {
       //we are already navigating to schools page in the signOut Service method
@@ -278,5 +311,9 @@ export class AppComponent implements OnInit {
       this.menu.open(toggleCustomMenu);
       this.isSplitPaneDisabled = false;
     }
+  }
+  ionViewDidLeave() {
+    // unsubscribe (if necessary) to WOW observable to prevent memory leaks
+    this.wowSubscription.unsubscribe();
   }
 }

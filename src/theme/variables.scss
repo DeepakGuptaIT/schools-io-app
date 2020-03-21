@@ -437,12 +437,20 @@
   --ion-tab-bar-background: #1f1f1f;
 }
 
-html,
+/* html,
 body {
   height: 100%;
-}
+} */
 
 body {
   margin: 0;
   // font-family: Roboto, "Helvetica Neue", sans-serif;
+  -webkit-user-select: text !important;
+  /* Chrome all / Safari all */
+  -moz-user-select: text !important;
+  /* Firefox all */
+  -ms-user-select: text !important;
+  /* IE 10+ */
+  user-select: text !important;
+
 }
