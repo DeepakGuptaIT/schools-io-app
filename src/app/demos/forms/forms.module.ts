@@ -4,8 +4,9 @@ import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 
-import { SignupPage } from './signup';
-import { SignupPageRoutingModule } from './signup-routing.module';
+import { FormsPageRoutingModule } from './forms-routing.module';
+
+import { FormsPage } from './forms.page';
 import { MaterialModule } from '../../ng-marerial/material.module';
 
 @NgModule({
@@ -13,12 +14,11 @@ import { MaterialModule } from '../../ng-marerial/material.module';
     CommonModule,
     FormsModule,
     IonicModule,
-    SignupPageRoutingModule,
+    FormsPageRoutingModule,
     ReactiveFormsModule,
     MaterialModule
+
   ],
-  declarations: [
-    SignupPage,
-  ]
+  declarations: [FormsPage]
 })
-export class SignUpModule { }
+export class FormsPageModule { }

@@ -23,7 +23,7 @@ export class SubjectService {
       if (await this.commonService.getIsOnline()) {
         return this.http.get(url)
           .pipe(
-            retry(2),
+            // retry(2),
             map(d => {
               const raw: object = (<any>d).data;
               return raw;

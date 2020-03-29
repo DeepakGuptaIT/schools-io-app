@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { typesscriptSampleCode, cssSampleCode, jsSampleCode, scssSampleCode, javaSampleCode } from './../../constants/CodeExamples';
 import { AppConstants } from './../../constants/AppConstants';
+import { IonContent } from '@ionic/angular';
 
 
 @Component({
@@ -9,6 +10,7 @@ import { AppConstants } from './../../constants/AppConstants';
   styleUrls: ['./code.page.scss'],
 })
 export class CodePage implements OnInit {
+  @ViewChild(IonContent, { static: true }) ionContent: IonContent;
   cssLang: string[] = AppConstants.cssLang;
   javaLang: string[] = AppConstants.javaLang;
   tsLang: string[] = AppConstants.tsLang;
@@ -27,6 +29,21 @@ In actual development you will typically use the Angular CLI, a powerful command
 
   ngOnInit() {
     // new WOW().init();
+    // This code loads the IFrame Player API code asynchronously, according to the instructions at
+    // https://developers.google.com/youtube/iframe_api_reference#Getting_Started
+    // const tag = document.createElement('script');
+
+    // tag.src = "https://www.youtube.com/iframe_api";
+    // document.body.appendChild(tag);
+  }
+  getContent() {
+    return document.querySelector('ion-content');
+  }
+  scrollToBottom() {
+    this.ionContent.scrollToBottom(500);
+  }
+  scrollToTop() {
+    this.ionContent.scrollToTop(500);
   }
 
 }

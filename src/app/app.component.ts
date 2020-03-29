@@ -103,10 +103,12 @@ export class AppComponent implements OnInit {
       title: 'code',
       url: '/code',
       icon: 'code-outline'
+    },
+    {
+      title: 'Forms Demo',
+      url: '/forms',
+      icon: 'document-outline'
     }
-
-
-
   ]
   loggedIn = false;
   dark = false;
@@ -117,7 +119,7 @@ export class AppComponent implements OnInit {
   adminUserEmailList = ['deepak.gupta.sky@gmail.com', 'deepakguptaoptimistic@gmail.com', 'uvzdeepak789@gmail.com', 'gupta231296@gmail.com'];
   status = 'ONLINE';
   isConnected = true;
-  appVersion: string = '15-march-2020 v3'
+  appVersion: string = '21-march-2020 v1'
   // keep refs to subscription to be abble to unsubscribe later
   // (NOTE: unless you want to be notified when an item is revealed by WOW,
   //  you absolutely don't need this line and related, for the library to work

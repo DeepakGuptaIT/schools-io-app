@@ -67,6 +67,10 @@ const routes: Routes = [
   {
     path: 'material-comps',
     loadChildren: () => import('./demos/material-comps/material-comps.module').then( m => m.MaterialCompsPageModule)
+  },
+  {
+    path: 'forms',
+    loadChildren: () => import('./demos/forms/forms.module').then( m => m.FormsPageModule)
   }
 
 

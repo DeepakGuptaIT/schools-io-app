@@ -6,9 +6,11 @@ import { IonicModule } from '@ionic/angular';
 
 import { CodePageRoutingModule } from './code-routing.module';
 import { CodeExampleModule } from './../../components/code-example/code-example.module';
+import { YoutubeModule } from './../../components/youtube/youtube.module';
 
 import { CodePage } from './code.page';
 import { NotesCardComponent } from './../../components/notes-card/notes-card.component'
+
 
 @NgModule({
   imports: [
@@ -16,7 +18,8 @@ import { NotesCardComponent } from './../../components/notes-card/notes-card.com
     FormsModule,
     IonicModule,
     CodePageRoutingModule,
-    CodeExampleModule
+    CodeExampleModule,
+    YoutubeModule
   ],
   declarations: [CodePage, NotesCardComponent],
   entryComponents: [NotesCardComponent]

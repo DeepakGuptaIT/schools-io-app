@@ -8,6 +8,37 @@
 </ion-header>
 
 <ion-content>
+  <!-- Custom Refresher Content -->
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content>
+    </ion-refresher-content>
+  </ion-refresher>
+  <!-- Infinite scroll -->
+  <ion-button (click)="toggleInfiniteScroll()">
+    Toggle Infinite Scroll {{!this.infiniteScroll.disabled}}
+  </ion-button>
+
+  <ion-list>
+    <ion-item *ngFor="let user of users">
+      <ion-label>
+        <h2>{{user.name}}</h2>
+        <h4>> {{user.id}}</h4>
+        <h4>> {{user.color}}</h4>
+
+      </ion-label>
+
+    </ion-item>
+
+  </ion-list>
+
+  <ion-infinite-scroll threshold="10px" (ionInfinite)="loadData($event)">
+    <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Loading more data...">
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+
+
+
+  <!-- Card Demo -->
   <ion-grid fixed>
     <ion-row class="ion-align-items-stretch">
       <ion-col size="12" size-md="6" class="ion-padding-bottom">
@@ -74,6 +105,26 @@
 
     </ion-row>
 
+  </ion-grid>
+
+  <!--vertual scroll demo start-->
+
+  <ion-grid fixed>
+    <ion-row class="ion-align-items-stretch">
+      <ion-virtual-scroll [items]="items" approxItemHeight="320px">
+        <ion-col size="12" size-md="5" class="ion-padding-bottom" *virtualItem="let item; let itemBounds = bounds;">
+          <ion-card class="vertual-list-card">
+            <div>
+              <ion-img [src]="item.imgSrc" [style.height]="item.imgHeight" [alt]="item.name"></ion-img>
+            </div>
+            <ion-card-header>
+              <ion-card-title>{{ item.name }}</ion-card-title>
+            </ion-card-header>
+            <ion-card-content>{{ item.content }}</ion-card-content>
+          </ion-card>
+        </ion-col>
+      </ion-virtual-scroll>
+    </ion-row>
   </ion-grid>
 
 </ion-content>

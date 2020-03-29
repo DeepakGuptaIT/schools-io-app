@@ -1,0 +1,241 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Forms</ion-title>
+  </ion-toolbar>
+  <ion-toolbar>
+    <ion-segment [(ngModel)]="segment" (ionChange)="segmentChanged($event)" value="1">
+      <ion-segment-button value="1">
+        forms
+      </ion-segment-button>
+      <ion-segment-button value="2">
+        segment
+      </ion-segment-button>
+    </ion-segment>
+  </ion-toolbar>
+
+
+</ion-header>
+
+<ion-content class="ion-justify-content-center">
+  <!-- Scrollable Segment -->
+  <section class="ion-margin-top" *ngIf="segment == 2">
+    <ion-segment scrollable value="heart" mode="ios">
+      <ion-segment-button value="home">
+        <ion-icon name="home"></ion-icon>
+      </ion-segment-button>
+      <ion-segment-button value="heart">
+        <ion-icon name="heart"></ion-icon>
+      </ion-segment-button>
+      <ion-segment-button value="pin">
+        <ion-icon name="pin"></ion-icon>
+      </ion-segment-button>
+      <ion-segment-button value="star">
+        <ion-icon name="star"></ion-icon>
+      </ion-segment-button>
+      <ion-segment-button value="call">
+        <ion-icon name="call"></ion-icon>
+      </ion-segment-button>
+      <ion-segment-button value="globe">
+        <ion-icon name="globe"></ion-icon>
+      </ion-segment-button>
+      <ion-segment-button value="basket">
+        <ion-icon name="basket"></ion-icon>
+      </ion-segment-button>
+    </ion-segment>
+
+    <ion-row class="ion-justify-content-center">
+      <ion-col size="12" size-xl="9">
+        <ion-card class="ion-padding signup-card">
+          <!-- Segment with default selection -->
+          <ion-segment (ionChange)="segmentChanged($event)">
+            <ion-segment-button value="python">
+              <ion-label>Python</ion-label>
+            </ion-segment-button>
+            <ion-segment-button value="javascript">
+              <ion-label>Javascript</ion-label>
+            </ion-segment-button>
+          </ion-segment>
+          <ion-item-divider></ion-item-divider>
+
+        </ion-card>
+      </ion-col>
+    </ion-row>
+
+
+  </section>
+  <section *ngIf="segment == 1">
+
+    <ion-row class="ion-justify-content-center">
+      <ion-col size="12" size-xl="9">
+        <ion-card color="primary" class="ion-padding signup-card">
+          <ion-card-header>
+            Create a New Account
+          </ion-card-header>
+          <form [formGroup]="registerForm" (ngSubmit)="onSignup()">
+            <ion-list>
+              <ion-item>
+                <ion-label position="fixed" color="primary">First Name<ion-text color="danger">*</ion-text>
+                </ion-label>
+                <ion-input type="text" formControlName="firstName" placeholder="First Name"></ion-input>
+              </ion-item>
+              <div *ngIf="submitted && f.firstName.errors" class="invalid-feedback">
+                <ion-text color="danger">
+                  <p *ngIf="f.firstName.errors.required" class="ion-padding-start">
+                    <ion-icon name="alert"></ion-icon>
+                    First Name is required
+                  </p>
+                  <p *ngIf="f.firstName.errors.minlength" class="ion-padding-start">
+                    <ion-icon name="alert"></ion-icon>
+                    First Name must be at least 6 characters
+                  </p>
+                </ion-text>
+              </div>
+            </ion-list>
+            <ion-row class="ion-justify-content-center">
+              <ion-col size="12" size-md="6">
+                <ion-button type="submit" color="github" expand="block">Create</ion-button>
+              </ion-col>
+            </ion-row>
+          </form>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+
+    <ion-card class="school-card">
+      <p>
+        Form Value: {{ registerForm.value | json }}
+      </p>
+      <p>
+        Form Status: {{ registerForm.status }}
+      </p>
+
+    </ion-card>
+    <form [formGroup]="registerForm" (ngSubmit)="onSignup()">
+      <ion-grid fixed>
+        <ion-row class="ion-align-items-stretch">
+          <ion-col size="12" size-md="6" class="ion-padding-bottom">
+            <ion-item>
+              <mat-form-field appearance="outline">
+                <mat-label>First Name</mat-label>
+                <input matInput formControlName="firstName">
+                <!-- <mat-icon matSuffix>sentiment_very_satisfied</mat-icon> -->
+                <ion-icon name="eye" color="medium" matSuffix></ion-icon>
+                <mat-hint>Enter your First Name</mat-hint>
+              </mat-form-field>
+            </ion-item>
+            <div *ngIf="submitted && f.firstName.errors" class="invalid-feedback">
+              <ion-text color="danger">
+                <p *ngIf="f.firstName.errors.required" class="ion-padding-start">
+                  <ion-icon name="alert"></ion-icon>
+                  First Name is required
+                </p>
+                <p *ngIf="f.firstName.errors.minlength" class="ion-padding-start">
+                  <ion-icon name="alert"></ion-icon>
+                  First Name must be at least 6 characters
+                </p>
+              </ion-text>
+            </div>
+
+          </ion-col>
+          <ion-col size="12" size-md="6" class="ion-padding-bottom">
+            <ion-item>
+              <mat-form-field appearance="outline">
+                <mat-label>First Name</mat-label>
+                <input matInput formControlName="firstName">
+                <!-- <mat-icon matSuffix>sentiment_very_satisfied</mat-icon> -->
+                <ion-icon name="eye" color="medium" matSuffix></ion-icon>
+                <mat-hint>Enter your First Name</mat-hint>
+              </mat-form-field>
+            </ion-item>
+            <div *ngIf="submitted && f.firstName.errors" class="invalid-feedback">
+              <ion-text color="danger">
+                <p *ngIf="f.firstName.errors.required" class="ion-padding-start">
+                  <ion-icon name="alert"></ion-icon>
+                  First Name is required
+                </p>
+                <p *ngIf="f.firstName.errors.minlength" class="ion-padding-start">
+                  <ion-icon name="alert"></ion-icon>
+                  First Name must be at least 6 characters
+                </p>
+              </ion-text>
+            </div>
+
+          </ion-col>
+          <ion-col size="12" size-md="6" class="ion-padding-bottom">
+            <ion-item>
+              <mat-form-field appearance="outline">
+                <mat-label>First Name</mat-label>
+                <input matInput formControlName="firstName">
+                <!-- <mat-icon matSuffix>sentiment_very_satisfied</mat-icon> -->
+                <ion-icon name="eye" color="medium" matSuffix></ion-icon>
+                <mat-hint>Enter your First Name</mat-hint>
+              </mat-form-field>
+            </ion-item>
+            <div *ngIf="submitted && f.firstName.errors" class="invalid-feedback">
+              <ion-text color="danger">
+                <p *ngIf="f.firstName.errors.required" class="ion-padding-start">
+                  <ion-icon name="alert"></ion-icon>
+                  First Name is required
+                </p>
+                <p *ngIf="f.firstName.errors.minlength" class="ion-padding-start">
+                  <ion-icon name="alert"></ion-icon>
+                  First Name must be at least 6 characters
+                </p>
+              </ion-text>
+            </div>
+
+          </ion-col>
+          <ion-col>
+            <ion-item>
+              <mat-form-field appearance="outline">
+                <mat-label>Choose a date</mat-label>
+                <input matInput [matDatepicker]="picker">
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+              </mat-form-field>
+            </ion-item>
+          </ion-col>
+          <ion-col>
+            <ion-item>
+              <mat-form-field appearance="outline">
+                <mat-label>Favorite animal</mat-label>
+                <mat-select [formControl]="animalControl" required>
+                  <mat-option>--</mat-option>
+                  <mat-option *ngFor="let animal of animals" [value]="animal">
+                    {{animal.name}}
+                  </mat-option>
+                </mat-select>
+                <mat-error *ngIf="animalControl.hasError('required')">Please choose an animal</mat-error>
+                <mat-hint>{{animalControl.value?.sound}}</mat-hint>
+              </mat-form-field>
+            </ion-item>
+          </ion-col>
+          <ion-col>
+            <ion-item>
+              <mat-form-field appearance="outline">
+                <mat-label>Favorite animal</mat-label>
+                <mat-select [formControl]="animalControl" required>
+                  <mat-option>--</mat-option>
+                  <mat-option *ngFor="let animal of animals" [value]="animal">
+                    {{animal.name}}
+                  </mat-option>
+                </mat-select>
+                <mat-error *ngIf="animalControl.hasError('required')">Please choose an animal</mat-error>
+                <mat-hint>{{animalControl.value?.sound}}</mat-hint>
+              </mat-form-field>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+      <ion-row class="ion-justify-content-center">
+        <ion-col size="12" size-md="6">
+          <ion-button type="submit" color="github" expand="block">Create</ion-button>
+        </ion-col>
+      </ion-row>
+    </form>
+  </section>
+
+</ion-content>
