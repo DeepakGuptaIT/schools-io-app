@@ -21,6 +21,8 @@ import { Interceptor, DEFAULT_TIMEOUT } from './providers/core/interceptor';
 import { CommonService } from './providers/core/common.service';
 import { HighlightModule, HIGHLIGHT_OPTIONS, HighlightOptions } from 'ngx-highlightjs';
 import { NgwWowModule } from 'ngx-wow';
+import { StoreModule } from '@ngrx/store';
+import { reducers, metaReducers } from './reducers';
 // import { GooglePlus } from '@ionic-native/google-plus'; // We'll install this in the next section
 
 const firebaseConfig = {
@@ -62,7 +64,14 @@ export function getHighlightLanguages() {
     AngularFireAuthModule,
     AngularFireDatabaseModule,
     HighlightModule,
-    NgwWowModule
+    NgwWowModule,
+    StoreModule.forRoot(reducers, {
+      metaReducers,
+      runtimeChecks: {
+        strictStateImmutability: true,
+        strictActionImmutability: true
+      }
+    })
   ],
   declarations: [AppComponent],
   providers: [
