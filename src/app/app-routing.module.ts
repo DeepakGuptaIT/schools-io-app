@@ -48,30 +48,40 @@ const routes: Routes = [
   {
     path: 'css-utilities',
     loadChildren: () => import('./demos/css-utilities/css-utilities.module').then(m => m.CssUtilitiesPageModule)
-  },  {
+  },
+  {
     path: 'animation',
-    loadChildren: () => import('./demos/animation/animation.module').then( m => m.AnimationPageModule)
+    loadChildren: () => import('./demos/animation/animation.module').then(m => m.AnimationPageModule)
   },
   {
     path: 'home',
-    loadChildren: () => import('./pages/home/home.module').then( m => m.HomePageModule)
+    loadChildren: () => import('./pages/home/home.module').then(m => m.HomePageModule)
   },
   {
     path: 'subject',
-    loadChildren: () => import('./pages/subject/subject.module').then( m => m.SubjectPageModule)
+    loadChildren: () => import('./pages/subject/subject.module').then(m => m.SubjectPageModule)
   },
   {
     path: 'code',
-    loadChildren: () => import('./demos/code/code.module').then( m => m.CodePageModule)
+    loadChildren: () => import('./demos/code/code.module').then(m => m.CodePageModule)
   },
   {
     path: 'material-comps',
-    loadChildren: () => import('./demos/material-comps/material-comps.module').then( m => m.MaterialCompsPageModule)
+    loadChildren: () => import('./demos/material-comps/material-comps.module').then(m => m.MaterialCompsPageModule)
   },
   {
     path: 'forms',
-    loadChildren: () => import('./demos/forms/forms.module').then( m => m.FormsPageModule)
+    loadChildren: () => import('./demos/forms/forms.module').then(m => m.FormsPageModule)
+  },
+  {
+    path: 'ionic-animation',
+    loadChildren: () => import('./demos/ionic-animation/ionic-animation.module').then(m => m.IonicAnimationPageModule)
+  },
+  {
+    path: '**',
+    loadChildren: () => import('./pages/shared/not-found/not-found.module').then(m => m.NotFoundPageModule)
   }
+
 
 
 ];

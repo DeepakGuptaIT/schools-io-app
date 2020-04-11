@@ -26,7 +26,8 @@
       <img src="assets/img/ica-slidebox-img-2.png" class="slide-image" />
       <h2 class="slide-title">What is Ionic?</h2>
       <p>
-        <b>Ionic Framework</b> is an open source SDK that enables developers to build high quality mobile apps with web
+        <b>Ionic Framework</b> is an open source SDK that enables developers to build high quality mobile apps with
+        web
         technologies
         like HTML, CSS, and JavaScript.</p>
     </ion-slide>
@@ -49,8 +50,12 @@
       </ion-button>
     </ion-slide>
   </ion-slides>
+  <!-- Add Arrows -->
+  <div class="swiper-button-next" [hidden]="hideNext" (click)="slideNext()"></div>
+  <div class="swiper-button-prev" [hidden]="hidePrev" (click)="slidePrev()"></div>
+
 </ion-content>
-<ion-footer no-border>
+<!-- <ion-footer class="ion-hide ion-no-border ">
   <ion-toolbar class="ion-hide prev-next">
     <ion-buttons class="ion-padding-end" slot="end">
       <ion-button color='primary' strong="true" (click)="slidePrev()" [hidden]="hidePrev"> Prev
@@ -62,4 +67,4 @@
     </ion-buttons>
   </ion-toolbar>
 
-</ion-footer>
+</ion-footer> -->

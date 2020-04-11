@@ -1,0 +1,70 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>ionic-animation</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-header>
+    <ion-toolbar>
+      <ion-title size="large">Settings</ion-title>
+    </ion-toolbar>
+    <ion-toolbar>
+      <ion-searchbar></ion-searchbar>
+    </ion-toolbar>
+  </ion-header>
+  <div #square class="square"></div>
+  <div #squareA class="square square-a"></div>
+  <div #squareB class="square square-b"></div>
+  <div #squareC class="square square-c"></div>
+
+  <ion-chip color="success" button (click)="play()">
+    <ion-icon name="play"></ion-icon>
+    <ion-label>Play</ion-label>
+  </ion-chip>
+
+
+  <ion-chip color="warning" button (click)="pause()">
+    <ion-icon name="pause"></ion-icon>
+    <ion-label>Pause</ion-label>
+  </ion-chip>
+
+  <ion-chip color="danger" button (click)="stop()">
+    <ion-icon name="stop"></ion-icon>
+    <ion-label>Stop</ion-label>
+  </ion-chip>
+
+  <ion-chip color="success" button (click)="chainedAnimmation()">
+    <ion-icon name="play"></ion-icon>
+    <ion-label>PlayChainAnimation</ion-label>
+  </ion-chip>
+  <ion-item lines="none">
+    <ion-chip color="success" button (click)="presentModal()">
+      <ion-icon name="play"></ion-icon>
+      <ion-label>presentModal</ion-label>
+    </ion-chip>
+  </ion-item>
+  <ion-text color="secondary">
+    <h1>H1: The quick brown fox jumps over the lazy dog</h1>
+  </ion-text>
+  <ion-text color="primary">
+    <h2>H2: The quick brown fox jumps over the lazy dog</h2>
+  </ion-text>
+  <p>
+    I saw a werewolf with a Chinese menu in his hand.
+    Walking through <ion-chip outline=true color="success">
+      <ion-label size="small">Button Chip</ion-label>
+    </ion-chip>the <ion-text color="danger"><sub>streets</sub>
+    </ion-text>
+    of Soho in the rain.
+    He <ion-text color="primary"><i>was</i></ion-text> looking for a place called Lee Ho Fook's.
+    Gonna get a <ion-text color="secondary"><a>big dish of beef chow mein.</a></ion-text>
+    <ion-text color="danger">
+      <ion-icon name="cut"></ion-icon>
+    </ion-text>
+  </p>
+
+</ion-content>

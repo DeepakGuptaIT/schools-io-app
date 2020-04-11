@@ -70,6 +70,16 @@ export class AppComponent implements OnInit {
   ];
   demoPages: Page[] = [
     {
+      title: '404 page',
+      url: '404',
+      icon: 'map'
+    },
+    {
+      title: 'ionic animation',
+      url: '/ionic-animation',
+      icon: 'videocam-outline'
+    },
+    {
       title: 'Material Design',
       url: '/material-comps',
       icon: 'logo-web-component'
