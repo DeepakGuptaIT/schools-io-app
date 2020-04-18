@@ -51,6 +51,9 @@ export class CommonService {
   async getIsOnline(): Promise<boolean> {
     return navigator.onLine;
   }
+  getIsOnline3(): boolean {
+    return navigator.onLine;
+  }
 
   async setIsOnline(isOnline: boolean) {
     this.isOnline = isOnline;
@@ -182,5 +185,13 @@ export class CommonService {
   }
   getWidth(): any {
     return this.getPlatformDetail(PlatformEnum.width);
+  }
+
+  async setSavedState(state: any, localStorageKey: string) {
+    await this.storage.set(localStorageKey, JSON.stringify(state));
+  }
+
+  async getSavedState(localStorageKey: string): Promise<any> {
+    return await this.storage.get(localStorageKey);
   }
 }

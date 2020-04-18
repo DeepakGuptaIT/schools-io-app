@@ -2,6 +2,9 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { typesscriptSampleCode, cssSampleCode, jsSampleCode, scssSampleCode, javaSampleCode } from './../../constants/CodeExamples';
 import { AppConstants } from './../../constants/AppConstants';
 import { IonContent } from '@ionic/angular';
+import { Store, select } from '@ngrx/store';
+import { Observable } from 'rxjs';
+import * as fromRoot from './../../reducers/index';
 
 
 @Component({
@@ -24,8 +27,10 @@ export class CodePage implements OnInit {
   content: string = `If you go directly to the StackBlitz online development environment and choose to start a new Angular workspace, you get a generic stub application, rather than this illustrative sample. Once you have been introduced to the basic concepts here, this can be helpful for working interactively while you are learning Angular.
 
 In actual development you will typically use the Angular CLI, a powerful command-line tool that lets you generate and modify applications. For more information, see the CLI Overview.`;
-
-  constructor() { }
+  count$: Observable<number>;
+  constructor(private store: Store<fromRoot.AppState>) {
+    this.count$ = store.pipe(select(fromRoot.getAllCount));
+  }
 
   ngOnInit() {
     // new WOW().init();
@@ -35,6 +40,7 @@ In actual development you will typically use the Angular CLI, a powerful command
 
     // tag.src = "https://www.youtube.com/iframe_api";
     // document.body.appendChild(tag);
+    // this.count$ = this.store.pipe(select('count'));
   }
   getContent() {
     return document.querySelector('ion-content');

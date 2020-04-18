@@ -11,10 +11,13 @@ import { Storage } from '@ionic/storage';
 
 import { UserData } from './providers/user-data';
 import { AuthService } from './providers/core/auth.service';
-import { timer, Subscription } from 'rxjs';
+import { timer, Subscription, Observable } from 'rxjs';
 import { filter } from 'rxjs/operators';
 import { CommonService } from './providers/core/common.service';
 import { NgwWowService } from 'ngx-wow';
+import * as fromRoot from './reducers/index';
+import { Store } from '@ngrx/store';
+import * as UserActions from './actions/user.actions';
 // import * as AOS from 'aos';
 
 interface Page {
@@ -70,9 +73,14 @@ export class AppComponent implements OnInit {
   ];
   demoPages: Page[] = [
     {
+      title: 'store demo',
+      url: 'ngrx-store-demo',
+      icon: 'cloud'
+    },
+    {
       title: '404 page',
       url: '404',
-      icon: 'map'
+      icon: 'hand-left'
     },
     {
       title: 'ionic animation',
@@ -121,6 +129,7 @@ export class AppComponent implements OnInit {
     }
   ]
   loggedIn = false;
+  darkObj: Observable<boolean> = this.store.select(fromRoot.getTheme);
   dark = false;
   isSplitPaneDisabled = false;
   showSplash = false; // <-- show animation
@@ -149,7 +158,8 @@ export class AppComponent implements OnInit {
     private authService: AuthService,
     private commonService: CommonService,
     private wowService: NgwWowService,
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
+    private store: Store<fromRoot.AppState>
   ) {
     this.initializeApp();
   }
@@ -198,6 +208,9 @@ export class AppComponent implements OnInit {
       this.getPlatformInfo();
       this.initAOS();
       this.initWow();
+      this.darkObj.subscribe((dark) => {
+        this.dark = dark;
+      })
     });
   }
 
@@ -271,6 +284,15 @@ export class AppComponent implements OnInit {
     window.addEventListener('user:logout', () => {
       this.updateLoggedInStatus(false);
     });
+  }
+
+  onThemeToggle($event) {
+    const checked = $event.detail.checked;
+
+    this.store.dispatch(UserActions.SetTheme({ darkTheme: checked }));
+
+
+
   }
 
   listenNetworkConnectivity() {

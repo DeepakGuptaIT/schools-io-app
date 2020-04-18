@@ -1,0 +1,31 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>ngrx-store-demo</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <ion-item>
+      Current Count: {{ count$ | async }}
+    </ion-item>
+    <ion-chip color="dark" button (click)="increment()">Increment</ion-chip>
+    <ion-chip color="dark" button (click)="decrement()">Decrement</ion-chip>
+    <ion-chip color="dark" button (click)="reset()">Reset Counter</ion-chip>
+    <ion-chip color="dark" button (click)="setTheme()">SetTheme</ion-chip>
+
+  </ion-card>
+  <ion-card>
+    <ion-card-content>
+      <ion-list>
+        <ion-item *ngFor="let item of data.items?.items">
+          <h3>{{item}}</h3>
+        </ion-item>
+      </ion-list>
+    </ion-card-content>
+
+  </ion-card>
+</ion-content>

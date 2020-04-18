@@ -170,7 +170,7 @@
             <ion-label>
               Dark Theme
             </ion-label>
-            <ion-toggle [(ngModel)]="dark"></ion-toggle>
+            <ion-toggle [(ngModel)]="dark" (ionChange)="onThemeToggle($event)"></ion-toggle>
           </ion-item>
         </ion-list>
         <ion-list *ngIf="!(loggedIn && isAdminUser)" lines="none">

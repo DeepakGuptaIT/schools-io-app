@@ -23,6 +23,9 @@ import { HighlightModule, HIGHLIGHT_OPTIONS, HighlightOptions } from 'ngx-highli
 import { NgwWowModule } from 'ngx-wow';
 import { StoreModule } from '@ngrx/store';
 import { reducers, metaReducers } from './reducers';
+import { EffectsModule } from '@ngrx/effects';
+import { AppEffects, effects } from './effects/app.effects';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 // import { GooglePlus } from '@ionic-native/google-plus'; // We'll install this in the next section
 
 const firebaseConfig = {
@@ -71,7 +74,9 @@ export function getHighlightLanguages() {
         strictStateImmutability: true,
         strictActionImmutability: true
       }
-    })
+    }),
+    EffectsModule.forRoot(effects),
+    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production })
   ],
   declarations: [AppComponent],
   providers: [

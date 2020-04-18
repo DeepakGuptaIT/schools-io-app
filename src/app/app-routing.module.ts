@@ -78,11 +78,13 @@ const routes: Routes = [
     loadChildren: () => import('./demos/ionic-animation/ionic-animation.module').then(m => m.IonicAnimationPageModule)
   },
   {
+    path: 'ngrx-store-demo',
+    loadChildren: () => import('./demos/ngrx-store-demo/ngrx-store-demo.module').then(m => m.NgrxStoreDemoPageModule)
+  },
+  {
     path: '**',
     loadChildren: () => import('./pages/shared/not-found/not-found.module').then(m => m.NotFoundPageModule)
   }
-
-
 
 ];
 
