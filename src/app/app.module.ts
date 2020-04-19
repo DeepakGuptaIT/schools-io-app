@@ -27,6 +27,7 @@ import { EffectsModule } from '@ngrx/effects';
 import { AppEffects, effects } from './effects/app.effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 // import { GooglePlus } from '@ionic-native/google-plus'; // We'll install this in the next section
+//test
 
 const firebaseConfig = {
   apiKey: "AIzaSyBKAQAy4yb1BpE-eoMjFg_ZRFALUhejg8U",
