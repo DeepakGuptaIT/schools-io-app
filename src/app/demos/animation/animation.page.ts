@@ -1,6 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { trigger, state, style, transition, animate } from '@angular/animations';
-import { AnimationService, AnimationBuilder } from 'css-animator';
 
 
 @Component({
@@ -32,15 +31,13 @@ export class AnimationPage implements OnInit {
   visibleState = 'visible';
   dark: boolean = false;
   fadeInRight = false;
-  private animator: AnimationBuilder;
   // @ViewChild('slides', { static: true }) slides: IonSlides;
   @ViewChild('myElement', { static: false }) myElem: any;
   @ViewChild('para', { static: false }) para: HTMLElement;
 
 
 
-  constructor(animationService: AnimationService) {
-    this.animator = animationService.builder();
+  constructor() {
   }
 
   ngOnInit() {

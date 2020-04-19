@@ -16,11 +16,9 @@ import { AngularFireModule } from '@angular/fire';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFireDatabaseModule } from "@angular/fire/database";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { AnimationService } from 'css-animator';
 import { Interceptor, DEFAULT_TIMEOUT } from './providers/core/interceptor';
 import { CommonService } from './providers/core/common.service';
 import { HighlightModule, HIGHLIGHT_OPTIONS, HighlightOptions } from 'ngx-highlightjs';
-import { NgwWowModule } from 'ngx-wow';
 import { StoreModule } from '@ngrx/store';
 import { reducers, metaReducers } from './reducers';
 import { EffectsModule } from '@ngrx/effects';
@@ -68,7 +66,6 @@ export function getHighlightLanguages() {
     AngularFireAuthModule,
     AngularFireDatabaseModule,
     HighlightModule,
-    NgwWowModule,
     StoreModule.forRoot(reducers, {
       metaReducers,
       runtimeChecks: {
@@ -90,7 +87,7 @@ export function getHighlightLanguages() {
     },
     [{ provide: HTTP_INTERCEPTORS, useClass: Interceptor, multi: true }],
     [{ provide: DEFAULT_TIMEOUT, useValue: 10000 }],
-    InAppBrowser, SplashScreen, StatusBar, AnimationService, CommonService],
+    InAppBrowser, SplashScreen, StatusBar, CommonService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
