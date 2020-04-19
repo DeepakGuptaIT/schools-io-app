@@ -24,6 +24,7 @@ import { NgwWowModule } from 'ngx-wow';
 import { StoreModule } from '@ngrx/store';
 import { reducers, metaReducers } from './reducers';
 // import { GooglePlus } from '@ionic-native/google-plus'; // We'll install this in the next section
+//test
 
 const firebaseConfig = {
   apiKey: "AIzaSyBKAQAy4yb1BpE-eoMjFg_ZRFALUhejg8U",
