@@ -1,0 +1,106 @@
+@mixin center-text-card($max-height: null) {
+    margin: 0;
+    height: 100%;
+    display: flex !important;
+    flex-direction: column !important;
+    text-align: center !important;
+    justify-content: center !important;
+
+    // cursor: pointer !important;
+    p {
+        font-size: 14px;
+        letter-spacing: 1px;
+    }
+}
+
+@mixin center-text-card-with-shadow-on-hover($max-height: null) {
+    @include center-text-card($max-height);
+
+    &:hover {
+        box-shadow: 0 8px 16px var(--ion-color-medium-shade), 0 3px 6px var(--ion-color-medium-shade);
+        transform: translateY(-2px);
+    }
+}
+
+/*
+ the mixin which creates full image card with text at center.
+
+*/
+@mixin full-image-card-with-center-text($textColor : #fff, $max-height: null) {
+    margin: 0; //to remove extra gap at bottom of the card
+    height: 100%;
+    display: flex !important;
+    flex-direction: column !important;
+    text-align: center !important;
+    justify-content: center !important;
+
+    @if ($max-height) {
+        max-height: $max-height;
+    }
+
+    ion-card-header {
+        position: absolute;
+        color: $textColor;
+        z-index: 2;
+        width: 100%;
+
+        p {
+            font-size: 14px;
+            letter-spacing: 1px;
+        }
+    }
+
+    img {
+        width: 100%;
+        height: 100%;
+        z-index: 1;
+    }
+}
+
+@mixin full-image-card-with-center-text-with-image-zoom() {
+    @include full-image-card-with-center-text();
+
+    img {
+        transition: all .3s ease-in-out;
+    }
+
+    &:hover {
+        img {
+            transform: scale(1.2);
+            // filter: grayscale(100%);
+        }
+    }
+}
+
+/*
+extension of full-image-card-with-center-text-with-image-zoom . to hide p initially and show on hover.
+*/
+@mixin image-card-with-p-show-on-hover {
+    @include full-image-card-with-center-text-with-image-zoom();
+
+    ion-card-header {
+        p {
+            transform: scale(1.8);
+            opacity: 0;
+            transition: all .3s ease;
+        }
+    }
+
+    &:hover {
+        img {
+            //https://www.w3schools.com/cssref/css3_pr_filter.asp
+            filter: grayscale(100%);
+            filter: brightness(50%), grayscale(100%);
+            filter: brightness(50%); //so great response. text is highly readable
+        }
+
+        ion-card-header {
+            p {
+                transform: scale(1);
+                // transition: all .3s ease;
+                opacity: 1;
+            }
+        }
+
+    }
+}

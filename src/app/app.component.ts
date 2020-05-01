@@ -72,6 +72,12 @@ export class AppComponent implements OnInit {
   ];
   demoPages: Page[] = [
     {
+      title: 'codePan-image-hover',
+      url: 'image-hover',
+      icon: 'albums'
+
+    },
+    {
       title: 'store demo',
       url: 'ngrx-store-demo',
       icon: 'cloud'
@@ -137,7 +143,7 @@ export class AppComponent implements OnInit {
   adminUserEmailList = ['deepak.gupta.sky@gmail.com', 'deepakguptaoptimistic@gmail.com', 'uvzdeepak789@gmail.com', 'gupta231296@gmail.com'];
   status = 'ONLINE';
   isConnected = true;
-  appVersion: string = '21-march-2020 v2'
+  appVersion: string = '1-May-2020 v1'
 
   constructor(
     private menu: MenuController,

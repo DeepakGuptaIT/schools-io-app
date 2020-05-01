@@ -82,9 +82,14 @@ const routes: Routes = [
     loadChildren: () => import('./demos/ngrx-store-demo/ngrx-store-demo.module').then(m => m.NgrxStoreDemoPageModule)
   },
   {
+    path: 'image-hover',
+    loadChildren: () => import('./demos/image-hover/image-hover.module').then(m => m.ImageHoverPageModule)
+  },
+  {
     path: '**',
     loadChildren: () => import('./pages/shared/not-found/not-found.module').then(m => m.NotFoundPageModule)
   }
+
 
 ];
 

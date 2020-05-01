@@ -1,0 +1,77 @@
+// @import './cards';
+// -----------------------------------------------------------------------------
+// This file contains all application-wide Sass mixins.
+// -----------------------------------------------------------------------------
+
+/// Breakpoints 
+$ld-xs:0px;
+$ld-sm:576px;
+$ld-md:768px;
+$ld-lg:992px;
+$ld-xl:1200px;
+$ld-xxl: 1800px; // not part of ionic
+
+///breakpoints for each resolution pulled from variables ld-xs,ld-sm,ld-md and ld-lg
+///media queries named as ld-{device}
+/// after 0
+@mixin ld-mobile {
+    @media (min-width: #{$ld-xs}) {
+        @content;
+    }
+}
+
+///after 576 , no-mobile 
+@mixin ld-tablet {
+    @media (min-width: #{$ld-sm}) {
+        @content;
+    }
+}
+
+///after 768
+@mixin ld-ltablet {
+    @media (min-width: #{$ld-md}) {
+        @content;
+    }
+}
+
+///between 992
+@mixin ld-desktop {
+    @media (min-width: #{$ld-lg}) {
+        @content;
+    }
+}
+
+///after 1200
+@mixin ld-ldesktop {
+    @media (min-width : #{$ld-xl}) {
+        @content;
+    }
+}
+
+///1800 and above
+@mixin ld-xldesktop {
+    @media (min-width : #{$ld-xl}) {
+        @content;
+    }
+}
+
+@mixin ld-breakpoints($minpoint, $maxpoint) {
+    @media (min-width: $minpoint) and (max-width: $maxpoint) {
+        @content;
+    }
+}
+
+//we can register more app-level specific mixins below. Below is one example
+
+/***Video min and max queries**/
+@mixin videoMin {
+    @media (min-width: 1075px) {
+        @content;
+    }
+}
+
+@mixin videoMax {
+    @media (max-width: 1074px) {
+        @content;
+    }
+}
