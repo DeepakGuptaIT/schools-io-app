@@ -86,9 +86,23 @@ const routes: Routes = [
     loadChildren: () => import('./demos/image-hover/image-hover.module').then(m => m.ImageHoverPageModule)
   },
   {
+    path: 'topics',
+    children: [
+      {
+        path: '',
+        loadChildren: () => import('./pages/topic-list/topic-list.module').then(m => m.TopicListPageModule)
+      },
+      {
+        path: 'topic-detail/:topicId',
+        loadChildren: () => import('./pages/topic-detail/topic-detail.module').then(m => m.TopicDetailPageModule)
+      }
+    ]
+  },
+  {
     path: '**',
     loadChildren: () => import('./pages/shared/not-found/not-found.module').then(m => m.NotFoundPageModule)
   }
+
 
 
 ];

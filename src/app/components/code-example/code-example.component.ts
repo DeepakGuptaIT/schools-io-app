@@ -12,6 +12,7 @@ import { ToastController } from '@ionic/angular';
 export class CodeExampleComponent implements OnInit {
   //disabled as pre element is taking extra margin on top and bottom
   useCustomCode: boolean = false
+  center: boolean = false
   _code: string;
 
   @Input()

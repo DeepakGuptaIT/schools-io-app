@@ -94,8 +94,13 @@ ion-grid {
 
 }
 
+.ionic-component-card {
+    @include ionic-component-card()
+}
+
 .image-card-with-center-text {
     $color: #fff; //var(--ion-color-primary);
+    $color: var(--ion-color-angular);
     @include full-image-card-with-center-text($color, null);
 }
 

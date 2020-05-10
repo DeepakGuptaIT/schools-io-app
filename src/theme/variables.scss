@@ -103,8 +103,10 @@
   --ion-background-color: #ffffff;
   --ion-background-color-rgb: 255, 255, 255;
 
-  --ion-text-color: #000000;
-  --ion-text-color-rgb: 0, 0, 0;
+  // --ion-text-color: #000000;
+  // --ion-text-color-rgb: 0, 0, 0;
+  --ion-text-color: #303943;
+  --ion-text-color-rgb: 48, 57, 67;
 
   --ion-color-step-50: #f2f2f2;
   --ion-color-step-100: #e6e6e6;
@@ -250,6 +252,9 @@
  */
 
 :root {
+  /*setting app level font family*/
+  --ion-font-family: system-ui, sans-serif;
+
   --ion-headings-font-weight: 300;
 
   --ion-color-angular: #ac282b;
@@ -261,6 +266,39 @@
   --ion-color-food: #3bc7c4;
   --ion-color-documentation: #b16be3;
   --ion-color-navigation: #6600cc;
+  /*below variable are used in ionic website . taking from there*/
+  --text-color: #303943;
+  --text-color--darker: #24282e;
+  --text-color--dark: #020814;
+  --text-color--lighter: #abb2bf;
+  --text-color--light: #73849a;
+
+  --accent-color: #3880ff;
+  --accent-color-rgb: 56, 128, 255;
+  --accent-color-100: #4d8dff;
+  --accent-color-200: #639cff;
+  --accent-color-300: #4d8dff;
+  --accent-color-400: #7cabff;
+  --accent-color-500: #97bdff;
+  --accent-color-600: #b2ceff;
+  --accent-color-700: #cddfff;
+  --accent-color-800: #e3edff;
+  --accent-color-900: #f0f6ff;
+  --background: #fff;
+  --code-background: #f5f7fa;
+  --code-color: var(--text-color--dark);
+  --code-font-family: "SFMono-Regular", "Roboto Mono", Consolas, "Liberation Mono", Menlo, Courier, monospace;
+  --font-family: system-ui, sans-serif;
+  --header-height: 1rem;
+  --heading-font-family: "Eina", var(--font-family);
+  --line-rule-color: #edf2f6;
+  --menu-width: 140px;
+  --offset-background: #fdfdff;
+  --offset-background--dark: #f7f7ff;
+  --page-margin-left: var(--menu-width);
+
+  //ionic page variable end here 
+
 }
 
 /*
@@ -355,6 +393,14 @@
   --ion-color-light-contrast-rgb: 255, 255, 255;
   --ion-color-light-shade: #1e2023;
   --ion-color-light-tint: #383a3e;
+
+  /*ionic page variables change for dark  mode*/
+  --text-color: #fff;
+  --text-color--darker: #fff;
+  --text-color--dark: #fff;
+  --text-color--lighter: #abb2bf;
+  --text-color--light: #73849a;
+
 }
 
 /*

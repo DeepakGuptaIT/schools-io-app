@@ -1,0 +1,111 @@
+@import './../../../theme/ionic';
+
+ion-grid {
+    font-size: 16px;
+    line-height: 2;
+    // margin-left: var(--page-margin-left);
+    margin-top: var(--header-height);
+    max-width: 1200px;
+}
+
+ion-content {
+
+    h2 a,
+    h3 a,
+    h4 a,
+    h5 a,
+    h6 a {
+        color: inherit;
+        font-weight: inherit;
+        position: relative;
+    }
+
+    h2 a:hover:before,
+    h3 a:hover:before,
+    h4 a:hover:before,
+    h5 a:hover:before,
+    h6 a:hover:before {
+        opacity: 1;
+    }
+
+    h2 a:before,
+    h3 a:before,
+    h4 a:before,
+    h5 a:before,
+    h6 a:before {
+        content: "#";
+        opacity: 0;
+        position: absolute;
+        right: 100%;
+        padding-right: 5px;
+        -webkit-transition: opacity .1s ease;
+        transition: opacity .1s ease;
+    }
+
+    ion-item {
+        --padding-start: 0px;
+    }
+
+    .docs-table-of-contents {
+        font-size: 13px;
+        margin-bottom: 2rem;
+
+        ul {
+            line-height: 1.23em;
+            list-style: none;
+        }
+
+        .Nav-header {
+            color: #abb2bf;
+            font-size: 0.75em;
+            font-weight: 800;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            padding-left: 0px;
+        }
+
+        .Nav-subnav {
+            // --item-spacing: 6px;
+            color: var(--text-color--light);
+            font-size: 13px;
+            padding-left: 0;
+
+            .Nav-link {
+                padding-left: 0px;
+                margin-left: 0px;
+                margin-top: 1rem;
+
+                a {
+                    text-decoration: none;
+                    color: inherit;
+                    display: inline-block;
+                    transition: color 0.2s ease 0s, transform 0.3s ease-out 0s;
+
+
+                }
+
+                &:hover {
+                    color: var(--text-color);
+                }
+            }
+        }
+    }
+
+    p.intro {
+        color: var(--text-color--light);
+        font-size: 1.2rem;
+        margin-bottom: 1.2rem;
+        // max-width: 40rem;
+
+        code {
+            font-size: 15px;
+            font-weight: 500
+        }
+
+        strong {
+            font-weight: 500;
+            color: var(--text-color)
+        }
+    }
+
+}

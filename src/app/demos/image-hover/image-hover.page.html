@@ -10,6 +10,29 @@
 <ion-content>
   <ion-grid fixed>
     <ion-row class="ion-align-items-stretch ion-padding">
+
+      <ion-col size=" 12" size-sm="6" size-md="4" size-xl="4" class="ion-padding" *ngFor="let topic of topicList">
+        <ion-card class=" ionic-component-card">
+          <ion-card-header>
+            <ion-item detail="false" lines="none" class="speaker-item">
+              <ion-avatar slot="start">
+                <img [src]="topic?.icon" alt="JS">
+              </ion-avatar>
+            </ion-item>
+            <ion-item detail="false" lines="none" class="speaker-item">
+
+              <ion-card-title>{{topic.title}}</ion-card-title>
+            </ion-item>
+
+          </ion-card-header>
+          <ion-card-content>
+            <ion-item lines="none">
+              <p size="small">{{topic.detail}}
+              </p>
+            </ion-item>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
       <ion-col size=" 12" size-sm="6" size-md="4" size-xl="4" class="ion-padding">
         <ion-card class="subject-card-grid blury-card">
           <img src="assets/img/cards/travel.jpg" alt="EMMYLOU">
@@ -83,6 +106,7 @@
           </ion-card-header>
         </ion-card>
       </ion-col>
+
     </ion-row>
   </ion-grid>
 
