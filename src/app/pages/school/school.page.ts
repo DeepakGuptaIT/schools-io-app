@@ -81,7 +81,7 @@ export class SchoolPage implements OnInit {
           await toast.present();
           this.dismiss(res);
         },
-        async (error) => {
+        async error => {
           this.commonService.handleApiError(error);
           // await this.loading.dismiss();
         }

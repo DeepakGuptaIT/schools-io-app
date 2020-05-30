@@ -12,7 +12,10 @@ import { ToastController } from '@ionic/angular';
 export class CodeExampleComponent implements OnInit {
   //disabled as pre element is taking extra margin on top and bottom
   useCustomCode: boolean = false
-  center: boolean = false
+
+  @Input()
+  isCenter: boolean = false;
+
   _code: string;
 
   @Input()
@@ -42,7 +45,7 @@ export class CodeExampleComponent implements OnInit {
   ngOnInit() {
     if (!this.code)
       this.code = '';
-    console.log('languageList', this.languageList)
+    // console.log('languageList', this.languageList)
   }
   onHighlight(e: any) {
     this.response = {
@@ -52,7 +55,7 @@ export class CodeExampleComponent implements OnInit {
       top: '{...}',
       value: '{...}'
     }
-    console.log('code type details', this.response);
+    // console.log('code type details', this.response);
   }
 
   async doCopy() {

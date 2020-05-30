@@ -19,6 +19,10 @@ export interface Props {
 export class NotesCardComponent implements OnInit {
 
   hasContent: boolean = true;
+
+  @Input()
+  isCenter: boolean = false;
+
   hasTitle: boolean = true;
   cardClass = "note-with-title-card";
   constructor() { }
@@ -34,6 +38,9 @@ export class NotesCardComponent implements OnInit {
   @Input()
   cardColor: string = "medium";
 
+  @Input()
+  type: 'success' | 'warning' | 'danger' = "success";
+
   ngOnInit() {
     if (_.isEmpty(this.content)) {
       this.hasContent = false;
@@ -44,6 +51,7 @@ export class NotesCardComponent implements OnInit {
       this.cardClass = "note-card";
       this.title = 'Title';
     }
+    this.cardClass += " " + this.type;
     /* if (_.isEmpty(this.props)) {
       this.content = 'Happy Coding !';
 

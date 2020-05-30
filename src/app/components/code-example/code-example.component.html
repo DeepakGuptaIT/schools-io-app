@@ -1,4 +1,5 @@
-<ion-card *ngIf="!useCustomCode && !center" color="medium">
+<!--THIS COMPONENT WILL NOT BE DISPLAYED IF CODE IS EMPTY-->
+<ion-card *ngIf="!!code && !useCustomCode && !isCenter" color="medium">
   <ion-card-content>
     <ion-buttons class="ion-justify-content-end">
       <p>{{heading}}</p>
@@ -9,7 +10,7 @@
     <pre><code [highlight]="code" (highlighted)="onHighlight($event)" [languages]="languageList? languageList : null" [lineNumbers]="showLineNumbers"></code></pre>
   </ion-card-content>
 </ion-card>
-<ion-row class="ion-justify-content-center" *ngIf="center">
+<ion-row class="ion-justify-content-center" *ngIf="isCenter">
   <ion-col size="12" size-xl="9">
     <ion-card *ngIf="!useCustomCode" color="medium">
       <ion-card-content>

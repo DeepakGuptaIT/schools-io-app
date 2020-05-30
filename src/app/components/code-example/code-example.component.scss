@@ -6,6 +6,8 @@ ion-col {
 ion-card {
     margin-left: 0;
     margin-right: 0;
+    box-shadow: none;
+    border-radius: 2px;
 
     ion-card-content {
         padding: 0;

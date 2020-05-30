@@ -44,18 +44,22 @@
     <ion-item class="font8">font-family: 'Source Code Pro'; 8 Such a geniousa b c d e f g h i j k l mnop qrst uvz xys
     </ion-item>
   </ion-list>
-  <notes-card [content]="content"> </notes-card>
-  <notes-card [content]="content" title="what is component ?"> </notes-card>
-  <code-example [code]="javaSampleCode" heading="" [languageList]="javaLang" [showLineNumbers]="showLineNumbers">
+  <notes-card [content]="content" [isCenter]="isCenter"> </notes-card>
+  <notes-card [content]="content" title="what is component ?" [isCenter]="isCenter"> </notes-card>
+  <code-example [code]="javaSampleCode" heading="" [languageList]="javaLang" [isCenter]="isCenter"
+    [showLineNumbers]="showLineNumbers">
   </code-example>
-  <code-example [code]="typesscriptSampleCode" [languageList]="tsLang" [showLineNumbers]="showLineNumbers">
+  <code-example [code]="typesscriptSampleCode" [languageList]="tsLang" [showLineNumbers]="showLineNumbers"
+    [isCenter]="isCenter">
   </code-example>
-  <code-example [code]="cssSampleCode" [languageList]="cssLang" heading="" [showLineNumbers]="showLineNumbers">
+  <code-example [code]="cssSampleCode" [languageList]="cssLang" heading="" [showLineNumbers]="showLineNumbers"
+    [isCenter]="isCenter">
   </code-example>
   <h1 class="wow fadeInUp">This is sass</h1>
-  <code-example [code]="jsSampleCode" [languageList]="jsLang" heading="" [showLineNumbers]="showLineNumbers">
+  <code-example [code]="jsSampleCode" [languageList]="jsLang" heading="" [showLineNumbers]="showLineNumbers"
+    [isCenter]="isCenter">
   </code-example>
-  <code-example [code]="scssSampleCode" heading="" [showLineNumbers]="!showLineNumbers">
+  <code-example [code]="scssSampleCode" heading="" [showLineNumbers]="!showLineNumbers" [isCenter]="isCenter">
   </code-example>
   <section class="wow pulse" data-wow-offset="10">
     <h1>green</h1>

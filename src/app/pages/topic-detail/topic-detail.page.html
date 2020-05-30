@@ -3,88 +3,69 @@
     <ion-buttons slot="start" mode="ios">
       <ion-back-button [defaultHref]="defaultHref"></ion-back-button>
     </ion-buttons>
-    <ion-title>topic-detail</ion-title>
+    <ion-title>{{topic?.name}}</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content class="ion-content ion-padding">
-  <ion-grid>
+  <ion-grid *ngIf="topic">
     <ion-row>
-      <h1>ion-alert</h1>
-
+      <h1>{{topic?.name}}</h1>
     </ion-row>
+    <!-- TABLE OF CONTENTS-->
+    <div class="docs-table-of-contents">
+      <strong class="Nav-header">Contents</strong>
+      <nav>
+        <ul class="Nav-subnav">
+          <li class="Nav-link"><a href="{{baseUrl}}#usage">Usage</a></li>
+          <li class="Nav-link"><a href="{{baseUrl}}#properties">Properties</a></li>
+          <li class="Nav-link"><a href="{{baseUrl}}#Events">Events</a></li>
+          <li class="Nav-link"><a href="{{baseUrl}}#Methods">Methods</a></li>
+        </ul>
+      </nav>
+    </div>
+
+    <!-- TOPIC INTRO  -->
     <ion-row>
-      <div class="docs-table-of-contents">
-        <strong class="Nav-header">Contents</strong>
-        <nav>
-          <ul class="Nav-subnav">
-            <!-- <ion-router-link href="">
-  
-              </ion-router-link> -->
-            <li class="Nav-link"><a href="{{baseUrl}}#usage">Usage</a></li>
-            <li class="Nav-link"><a href="{{baseUrl}}#properties">Properties</a></li>
-            <li class="Nav-link"><a href="{{baseUrl}}#Events">Events</a></li>
-            <li class="Nav-link"><a href="{{baseUrl}}#Methods">Methods</a></li>
-          </ul>
-        </nav>
+      <p class="intro">
+        <span *ngFor="let i of topic.intro">
+          <span *ngIf="i.type === 'text' || !i.type">{{i.value}}</span>
+          <code *ngIf="i.type === 'code'">{{i.value}}</code>
+        </span>
+      </p>
+    </ion-row>
+
+    <!-- THE CONTENTS/DETAIL SECTION WITH HEADING-->
+    <div *ngFor="let c of topic.contentList">
+      <!--Headings: h2 or h3 will be chosen based on the type-->
+      <h3 *ngIf="!c.heading.type || c.heading?.type === 'h3'" [id]="c?.heading.value"> <a
+          href="{{baseUrl}}#{{c?.heading.value}}">{{c?.heading.value}}</a></h3>
+      <h2 *ngIf="c.heading?.type === 'h2'" [id]="c?.heading.value"> <a
+          href="{{baseUrl}}#{{c?.heading.value}}">{{c?.heading.value}}</a></h2>
+
+      <!-- DETAILS UPDER A HEADING -->
+      <div *ngFor="let cm of c.contentMapList">
+        <!-- THIS IS A PARAGRAPH -->
+        <p *ngIf="!cm.type || cm?.type === 'p'">
+          <span *ngFor="let i of cm.content">
+            <span *ngIf="i.type === 'text' || !i.type">{{i.value}}</span>
+            <code *ngIf="i.type === 'code'">{{i.value}}</code>
+          </span>
+        </p>
+        <!-- THIS IS CODE CARD . COMES FROM contentMapList only-->
+        <div *ngIf="cm.type === 'code'">
+          <code-example [code]="cb.value" heading="" [showLineNumbers]="showLineNumbers" *ngFor="let cb of cm.content">
+          </code-example>
+        </div>
+        <!-- THIS IS NOTE CARD . COMES FROM contentMapList only-->
+        <div *ngIf="cm.type === 'note'">
+          <notes-card [content]="cb.value" [type]="cb?.noteType" [title]="cb?.heading" *ngFor="let cb of cm.content">
+          </notes-card>
+        </div>
 
       </div>
 
-
-    </ion-row>
-    <ion-row>
-      <p class="intro">An Alert is a dialog that presents users with information or collects information from the user
-        using inputs. An alert
-        appears on top of the app's content, and must be manually dismissed by the user before they can resume
-        interaction with
-        the app. It can also optionally have a <code>header</code>, <code>subHeader</code> and <code>message</code>.
-      </p>
-
-    </ion-row>
-    <h3 id="buttons"> <a href="{{baseUrl}}#buttons">Buttons</a></h3>
-
-    <p>
-      In the array of <code>buttons</code> , each button includes properties for its text, and optionally a handler. If
-      a handler
-      returns
-      false then the alert will not automatically be dismissed when the button is clicked. All buttons will show up in
-      the
-      order they have been added to the buttons array from left to right. Note: The right most button (the last one in
-      the
-      array) is the main button.
-    </p>
-    <p>
-      Optionally, a role property can be added to a button, such as cancel. If a cancel role is on one of the buttons,
-      then if
-      the alert is dismissed by tapping the backdrop, then it will fire the handler from the button with a cancel role.
-    </p>
-
-    <h2 id="usage"><a href="{{baseUrl}}#usage">Usage</a></h2>
-    <code-example [code]="cssSampleCode" [languageList]="cssLang" heading="" [showLineNumbers]="showLineNumbers">
-    </code-example>
-    <section>
-      <h2 id="properties"><a href="{{baseUrl}}#properties">Properties</a></h2>
-      <p>
-        In the array of <code>buttons</code> , each button includes properties for its text, and optionally a handler.
-        If
-        a handler
-        returns
-        false then the alert will not automatically be dismissed when the button is clicked. All buttons will show up in
-        the
-        order they have been added to the buttons array from left to right. Note: The right most button (the last one in
-        the
-        array) is the main button.
-      </p>
-      <p>
-        Optionally, a role property can be added to a button, such as cancel. If a cancel role is on one of the buttons,
-        then if
-        the alert is dismissed by tapping the backdrop, then it will fire the handler from the button with a cancel
-        role.
-      </p>
-    </section>
-
-
-
+    </div>
   </ion-grid>
 
 </ion-content>

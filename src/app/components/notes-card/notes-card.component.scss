@@ -2,16 +2,27 @@ ion-col {
     padding: 0;
 }
 
+//to remove card shadow or radius set below 
+// border-radius: 0;
+// box-shadow: none;
+
 ion-card {
+    margin-left: 0;
+    margin-right: 0;
+    box-shadow: none;
 
     ion-card-header {
         padding: .5rem;
+
+        ion-card-title {
+            font-size: 1.2rem;
+        }
     }
 
     ion-card-content {
         // font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
         background-color: rgba(25, 118, 210, 0.05);
-        color: rgb(68, 68, 68);
+        color: var(--text-color);
         font-size: 16px;
 
         b {
@@ -22,6 +33,22 @@ ion-card {
 
     &.note-card {
         border-left: .5rem solid var(--ion-color-primary);
+        border-bottom-left-radius: 0;
+        border-top-left-radius: 0;
+
+        &.success {
+            border-left-color: var(--ion-color-primary);
+        }
+
+        &.warning {
+
+            border-left-color: var(--ion-color-warning);
+        }
+
+        &.danger {
+
+            border-left-color: var(--ion-color-danger);
+        }
     }
 
     &.note-with-title-card {

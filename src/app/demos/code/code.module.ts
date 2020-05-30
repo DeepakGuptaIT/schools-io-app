@@ -9,8 +9,6 @@ import { CodeExampleModule } from './../../components/code-example/code-example.
 import { YoutubeModule } from './../../components/youtube/youtube.module';
 
 import { CodePage } from './code.page';
-import { NotesCardComponent } from './../../components/notes-card/notes-card.component'
-
 
 @NgModule({
   imports: [
@@ -21,7 +19,6 @@ import { NotesCardComponent } from './../../components/notes-card/notes-card.com
     CodeExampleModule,
     YoutubeModule
   ],
-  declarations: [CodePage, NotesCardComponent],
-  entryComponents: [NotesCardComponent]
+  declarations: [CodePage]
 })
 export class CodePageModule { }

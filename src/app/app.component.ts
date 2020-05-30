@@ -148,7 +148,7 @@ export class AppComponent implements OnInit {
   adminUserEmailList = ['deepak.gupta.sky@gmail.com', 'deepakguptaoptimistic@gmail.com', 'uvzdeepak789@gmail.com', 'gupta231296@gmail.com'];
   status = 'ONLINE';
   isConnected = true;
-  appVersion: string = '6-May-2020 v1'
+  appVersion: string = '30-May-2020 v1'
 
   constructor(
     private menu: MenuController,
