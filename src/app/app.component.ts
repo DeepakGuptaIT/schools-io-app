@@ -82,6 +82,11 @@ export class AppComponent implements OnInit {
   ];
   demoPages: Page[] = [
     {
+      title: 'ngx-chart',
+      url: 'graph',
+      icon: 'map'
+    },
+    {
       title: 'codePan-image-hover',
       url: 'image-hover',
       icon: 'albums'

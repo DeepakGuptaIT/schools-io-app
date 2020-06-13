@@ -103,13 +103,13 @@ const routes: Routes = [
     loadChildren: () => import('./pages/quiz/quiz.module').then(m => m.QuizPageModule)
   },
   {
+    path: 'graph',
+    loadChildren: () => import('./demos/graph/graph.module').then(m => m.GraphPageModule)
+  },
+  {
     path: '**',
     loadChildren: () => import('./pages/shared/not-found/not-found.module').then(m => m.NotFoundPageModule)
   }
-
-
-
-
 ];
 
 @NgModule({

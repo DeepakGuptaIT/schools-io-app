@@ -24,6 +24,7 @@ import { reducers, metaReducers } from './reducers';
 import { EffectsModule } from '@ngrx/effects';
 import { AppEffects, effects } from './effects/app.effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { NgxChartsModule } from '@swimlane/ngx-charts';
 // import { GooglePlus } from '@ionic-native/google-plus'; // We'll install this in the next section
 //test
 
@@ -62,6 +63,7 @@ export function getHighlightLanguages() {
     ServiceWorkerModule.register('ngsw-worker.js', {
       enabled: environment.production
     }),
+    NgxChartsModule,
     AngularFireModule.initializeApp(firebaseConfig), // <-- firebase here
     AngularFireAuthModule,
     AngularFireDatabaseModule,
@@ -74,7 +76,7 @@ export function getHighlightLanguages() {
       }
     }),
     EffectsModule.forRoot(effects),
-    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production })
+    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
   ],
   declarations: [AppComponent],
   providers: [
