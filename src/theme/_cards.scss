@@ -55,6 +55,29 @@
     }
 }
 
+@mixin quiz-card($max-height: null) {
+    margin: 0;
+    height: 100%;
+    display: flex !important;
+    flex-direction: column !important;
+    // text-align: center !important;
+    // justify-content: center !important;
+
+    // cursor: pointer !important;
+    p {
+        font-size: 1.3em;
+        letter-spacing: 1px;
+        color: var(--text-color);
+    }
+    ion-list {
+        letter-spacing: 1px;
+        font-size: 1em;
+        ion-list-header {
+            text-align: left;
+        }
+    }
+}
+
 @mixin center-text-card($max-height: null) {
     margin: 0;
     height: 100%;

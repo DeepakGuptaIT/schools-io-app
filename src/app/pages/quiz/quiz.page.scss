@@ -1,0 +1,67 @@
+@import './../../../theme/mixins';
+@import './../../../theme//cards';
+
+
+.container {
+    height: 100%;
+    display: flex !important;
+    flex-direction: column !important;
+    text-align: center !important;
+    justify-content: center;
+    margin: 0;
+    padding: 0;
+    &.start-div {
+        justify-content: flex-start;
+        padding: 16px;
+        
+    }
+    &.submit-btn-div {
+        height: 80vh;
+        padding: 16px;
+    }
+
+    .central-body {
+        text-align: center;
+        max-height: 60vh;text-align: center;
+        max-height: 60vh;
+
+        .image-404 {
+            width: 300px;
+            max-width: 80vw;
+
+        }
+
+        .home-btn {
+            margin-top: 1rem;
+        }
+
+        @media only screen and (max-width: 1024px) {
+            .home-btn {
+                margin-top: 0;
+            }
+        }
+    }
+}
+.swiper-button-next,
+.swiper-button-prev {
+    display: none;
+
+    @include ld-desktop {
+        display: block;
+    }
+}
+
+.quiz-card {
+    @include quiz-card();
+    min-width: 75vw;
+    max-width: 95vw;
+    margin-top: 1rem;
+    @include ld-desktop {
+        min-width: 65vw;
+    }
+}
+
+.swiper-slide {
+    margin-bottom: 2rem; // to display dot with top spacing 
+    flex-flow: column wrap;
+}

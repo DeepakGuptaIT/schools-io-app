@@ -99,9 +99,14 @@ const routes: Routes = [
     ]
   },
   {
+    path: 'quiz',
+    loadChildren: () => import('./pages/quiz/quiz.module').then(m => m.QuizPageModule)
+  },
+  {
     path: '**',
     loadChildren: () => import('./pages/shared/not-found/not-found.module').then(m => m.NotFoundPageModule)
   }
+
 
 
 

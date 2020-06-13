@@ -4,10 +4,9 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { CodePageRoutingModule } from './code-routing.module';
-import { YoutubeModule } from './../../components/youtube/youtube.module';
+import { QuizPageRoutingModule } from './quiz-routing.module';
 
-import { CodePage } from './code.page';
+import { QuizPage } from './quiz.page';
 import { TopicComponentsModule } from '../../components/topic-components.module';
 
 @NgModule({
@@ -15,10 +14,9 @@ import { TopicComponentsModule } from '../../components/topic-components.module'
     CommonModule,
     FormsModule,
     IonicModule,
-    CodePageRoutingModule,
-    TopicComponentsModule,
-    YoutubeModule
+    QuizPageRoutingModule,
+    TopicComponentsModule
   ],
-  declarations: [CodePage]
+  declarations: [QuizPage]
 })
-export class CodePageModule { }
+export class QuizPageModule { }

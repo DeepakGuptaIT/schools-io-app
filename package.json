@@ -50,6 +50,7 @@
     "@ngrx/effects": "^8.6.0",
     "@ngrx/store": "^8.6.0",
     "@ngrx/store-devtools": "^8.6.0",
+    "@swimlane/ngx-charts": "^14.0.0",
     "animate.css": "^3.7.2",
     "cordova-android": "^8.1.0",
     "cordova-ios": "^5.1.1",

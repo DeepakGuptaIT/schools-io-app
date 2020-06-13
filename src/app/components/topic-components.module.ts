@@ -1,15 +1,15 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { CodeComponent } from './../code/code.component';
-import { CodeExampleComponent } from './code-example.component';
-import { NotesCardComponent } from './../notes-card/notes-card.component';
-import { CopierService } from '../../providers/core/copier.service';
+import { CodeComponent } from './code/code.component';
+import { CodeExampleComponent } from './code-example/code-example.component';
+import { NotesCardComponent } from './notes-card/notes-card.component';
+import { CopierService } from '../providers/core/copier.service';
 import { HighlightModule } from 'ngx-highlightjs';
 import { IonicModule } from '@ionic/angular';
 
 /**
  * 
- * this also contains NodeCardComponent exports
+ * A common module for common custom components.
  */
 @NgModule({
     imports: [CommonModule, IonicModule, HighlightModule],
@@ -18,4 +18,4 @@ import { IonicModule } from '@ionic/angular';
     providers: [CopierService],
     entryComponents: [CodeExampleComponent, CodeComponent, NotesCardComponent]
 })
-export class CodeExampleModule { }
+export class TopicComponentsModule { }

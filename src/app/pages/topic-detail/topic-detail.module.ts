@@ -7,7 +7,7 @@ import { IonicModule } from '@ionic/angular';
 import { TopicDetailPageRoutingModule } from './topic-detail-routing.module';
 
 import { TopicDetailPage } from './topic-detail.page';
-import { CodeExampleModule } from './../../components/code-example/code-example.module';
+import { TopicComponentsModule } from '../../components/topic-components.module';
 
 @NgModule({
   imports: [
@@ -15,7 +15,7 @@ import { CodeExampleModule } from './../../components/code-example/code-example.
     FormsModule,
     IonicModule,
     TopicDetailPageRoutingModule,
-    CodeExampleModule
+    TopicComponentsModule
   ],
   declarations: [TopicDetailPage]
 })

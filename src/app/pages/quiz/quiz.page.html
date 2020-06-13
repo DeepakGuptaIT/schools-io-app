@@ -1,0 +1,96 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>quiz</ion-title>
+    <ion-item color="primary" slot="end" *ngIf="hasQuizStarted">
+      <ion-label>
+        <b> {{displayTimer.hour}} H : {{displayTimer.minute}} M
+          :
+          {{displayTimer.seconds}} S </b></ion-label>
+    </ion-item>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding-top">
+  <div class="container start-div" *ngIf="!hasSubmitted && !hasQuizStarted">
+    <div class="central-body">
+      <img class="image-404" src="/assets/img/quiz/best-of-luck.png">
+      <div class="home-btn">
+        <notes-card content="Total Number of Questions:  {{questionList?.length}}" isCenter="true"></notes-card>
+        <notes-card content="Total Marks:  {{quiz?.totalWt}}" isCenter="true"></notes-card>
+        <ion-chip color="primary" button (click)="startQuiz()">
+          <ion-label>START THE QUIZ</ion-label>
+          <ion-icon name="play"></ion-icon>
+        </ion-chip>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="!hasSubmitted && hasQuizStarted">
+    <ion-slides #slides (ionSlideWillChange)="onSlideChangeStart($event)" [options]="slideOpts" pager="true">
+      <ion-slide *ngFor="let ques of questionList; let i = index;trackBy: trackByFn">
+        <ion-card class="quiz-card">
+          <ion-card-header>
+            <ion-card-subtitle>Question {{i + 1}} : [{{ques.wt? ques.wt : 1}} marks]</ion-card-subtitle>
+            <ion-card-title>{{ques.questionText}}</ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            <!-- <p>{{ques.questionText}} </p> -->
+            <ion-list lines="none">
+              <ion-radio-group (ionChange)="selectAnswerSingle($event)" [name]="ques">
+                <ion-list-header class="ion-margin-bottom">
+                  <ion-label>
+                    Choose the correct option:
+                  </ion-label>
+                </ion-list-header>
+                <ion-item *ngFor="let ans of ques.answers; let j = index">
+                  <ion-label class="ion-text-wrap">
+                    {{ans.answer}}
+                  </ion-label>
+                  <!-- <ion-checkbox slot="start"></ion-checkbox> -->
+                  <ion-radio slot="start" [value]="j"></ion-radio>
+                </ion-item>
+              </ion-radio-group>
+            </ion-list>
+          </ion-card-content>
+        </ion-card>
+      </ion-slide>
+      <ion-slide>
+        <div class="container submit-btn-div">
+          <div class="central-body">
+            <div class="home-btn">
+              <ion-chip color="primary" button (click)="submitQuiz()">
+                <ion-label>SUMBIT YOUR ANSWERS</ion-label>
+                <ion-icon name="stop"></ion-icon>
+              </ion-chip>
+            </div>
+          </div>
+        </div>
+      </ion-slide>
+    </ion-slides>
+  </div>
+  <!-- Add Arrows -->
+  <div class="swiper-button-next" [hidden]="hideNext" (click)="slideNext()"></div>
+  <div class="swiper-button-prev" [hidden]="hidePrev" (click)="slidePrev()"></div>
+  <!-- After Quiz Sumbit Page -->
+  <div class="container start-div" *ngIf="hasSubmitted && hasQuizStarted">
+    <div class="central-body">
+      <img class="image-404" src="/assets/img/quiz/congratulations.png">
+      <div *ngIf="!!submitResponse" class="home-btn">
+        <notes-card content="score: {{submitResponse.scoreInPercentage.value}} %" isCenter="true"
+          [type]="submitResponse.scoreInPercentage?.type"></notes-card>
+        <notes-card content="#Question Answered : {{submitResponse.totalAnswered.value}}" isCenter="true"
+          [type]="submitResponse.totalAnswered?.type"></notes-card>
+        <notes-card content="#Answered Correctly: {{submitResponse.correctCount.value}}" isCenter="true"
+          [type]="submitResponse.correctCount?.type"></notes-card>
+        <notes-card content="#Answered Wrong: {{submitResponse.wrongCount.value}}" isCenter="true"
+          [type]="submitResponse.wrongCount?.type"></notes-card>
+        <notes-card
+          content="Total Number of Questions:  {{submitResponse.totalQ.value}} and Total Marks:  {{submitResponse.totalWt.value}}"
+          isCenter="true" [type]="submitResponse.totalQ?.type"></notes-card>
+      </div>
+    </div>
+  </div>
+
+</ion-content>

@@ -51,6 +51,11 @@ export class AppComponent implements OnInit {
       title: 'Topics',
       url: 'topics',
       icon: 'information-circle'
+    },
+    {
+      title: 'Quiz',
+      url: 'quiz',
+      icon: 'rocket-outline'
     }
   ];
   adminAppPages: Page[] = [

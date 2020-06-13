@@ -49,7 +49,7 @@ export function getHighlightLanguages() {
     xml: () => import('highlight.js/lib/languages/xml')
   };
 }
-
+// IonicModule.forRoot({ mode: "ios" }),
 @NgModule({
   imports: [
     BrowserModule,
@@ -57,7 +57,7 @@ export function getHighlightLanguages() {
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    IonicModule.forRoot({ mode: "ios" }),
+    IonicModule.forRoot(),
     IonicStorageModule.forRoot(),
     ServiceWorkerModule.register('ngsw-worker.js', {
       enabled: environment.production
