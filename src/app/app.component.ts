@@ -17,6 +17,7 @@ import { CommonService } from './providers/core/common.service';
 import * as fromRoot from './reducers/index';
 import { Store } from '@ngrx/store';
 import * as UserActions from './actions/user.actions';
+import * as PlatformActions from './actions/platform.actions';
 // import * as AOS from 'aos';
 
 interface Page {
@@ -234,12 +235,52 @@ export class AppComponent implements OnInit {
   }
 
   getPlatformInfo() {
-    console.log("platform source " + this.platform.platforms());
+    // this.store.dispatch(PlatformActions.resize({ viewport: this.getViewPort(this.platform.width()) }));
+    this.dispatchUpdateFlatform();
+    // console.log("platform source " + this.platform.platforms());
     this.platform.resize.subscribe(async () => {
       // console.log(`Resize event detected width: ${this.platform.width()} and height : ${this.platform.height()}`);
+      this.dispatchUpdateFlatform();
     });
+  }
+
+  dispatchUpdateFlatform(): void {
+    this.store.dispatch(PlatformActions.updatePlatform(
+      {
+        platform: {
+          viewport: this.getViewPort(this.platform.width()),
+          width: this.platform.width(),
+          height: this.platform.height(),
+          isMobile: this.platform.is('mobile'),
+          isPwa: this.platform.is('pwa'),
+          isAndroid: this.platform.is('android'),
+          isDesktop: this.platform.is('desktop'),
+          isPortrait: this.platform.isPortrait(),
+          isLandscape: this.platform.isLandscape(),
+          platforms: this.platform.platforms()
+        }
+      }));
 
   }
+
+  getViewPort(width: number): PlatformActions.Viewport {
+    let viewport: PlatformActions.Viewport = PlatformActions.Viewport.SM;
+    if (width > 1800) {
+      viewport = PlatformActions.Viewport.XXL;
+    } else if (width > 1200) {
+      viewport = PlatformActions.Viewport.XL;
+    } else if (width > 992) {
+      viewport = PlatformActions.Viewport.LG;
+    } else if (width > 768) {
+      viewport = PlatformActions.Viewport.MD;
+    } else if (width > 576) {
+      viewport = PlatformActions.Viewport.SM;
+    } else {
+      viewport = PlatformActions.Viewport.XS;
+    }
+    return viewport;
+  }
+
   initAOS() {
     /*  AOS.init({
        duration: 1200,
@@ -288,9 +329,6 @@ export class AppComponent implements OnInit {
     const checked = $event.detail.checked;
 
     this.store.dispatch(UserActions.SetTheme({ darkTheme: checked }));
-
-
-
   }
 
   listenNetworkConnectivity() {

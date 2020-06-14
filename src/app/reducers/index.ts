@@ -12,21 +12,23 @@ import * as fromNote from "./note.reducer";
 import * as fromCounter from './counter.reducer';
 import * as fromData from "./data.reducer";
 import * as fromUser from "./user.reducer";
+import * as fromPlatform from "./platform.reducer";
+import { Platform } from "./../actions/platform.actions";
 
 export interface AppState {
   notes: fromNote.NoteState,
   count: fromCounter.CountState,
   data: fromData.DataState
   user: fromUser.UserState
-
+  platform: Platform
 }
 
 export const reducers: ActionReducerMap<AppState> = {
   notes: fromNote.noteReducer,
   count: fromCounter.counterReducer,
   data: fromData.dataReducer,
-  user: fromUser.userReducer
-
+  user: fromUser.userReducer,
+  platform: fromPlatform.platformReducer
 };
 
 // console.log all actions
@@ -87,3 +89,12 @@ export const getTheme = createSelector(
   fromUser.getTheme
 
 )
+
+
+//////// VIEWPORT /////////////
+export const getPlatformState = (state: AppState) => state.platform;
+export const getViewport = createSelector(
+  getPlatformState,
+  fromPlatform.getViewport
+)
+

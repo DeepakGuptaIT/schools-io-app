@@ -9,6 +9,7 @@ import * as fromRoot from './../../reducers/index';
 // import { createNote } from './../../actions/subject.actions';
 import { DataService } from "../../providers/data.service";
 import * as UserActions from './../../actions/user.actions';
+import * as viewportActions from '../../actions/platform.actions';
 
 
 @Component({
@@ -18,11 +19,15 @@ import * as UserActions from './../../actions/user.actions';
 })
 export class NgrxStoreDemoPage implements OnInit {
   count$: Observable<number>;
+  size$: Observable<any>;
+  platform$: Observable<any>;
   data: any;
 
   constructor(private store: Store<fromRoot.AppState>, private dataService: DataService) {
     this.count$ = store.pipe(select(fromRoot.getAllCount));
     this.dataService.load();
+    this.size$ = store.pipe(select(fromRoot.getViewport))
+    this.platform$ = store.pipe(select(fromRoot.getPlatformState))
   }
 
   increment() {
