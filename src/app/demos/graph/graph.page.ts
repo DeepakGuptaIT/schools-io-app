@@ -58,6 +58,9 @@ export class GraphPage implements OnInit {
       "value": 204617
     }
   ];
+  onSelect(event: any) {
+
+  }
 
 
 }

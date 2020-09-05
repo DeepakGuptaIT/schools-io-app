@@ -17,6 +17,11 @@ export class SubjectService {
 
   constructor(public http: HttpClient, private commonService: CommonService) { }
 
+  testExpress(): Observable<any> {
+    let url = `${this.baseUrl}/widgets/ts`;
+    return this.http.get(url);
+  }
+
   async getSubjectList(): Promise<Observable<any>> {
     try {
       let url = `${this.baseUrl}/subjectApi`;

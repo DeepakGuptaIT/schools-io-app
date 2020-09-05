@@ -21,8 +21,7 @@
     <ion-row class="ion-justify-content-center">
       <ion-col size=" 12" size-sm="6" size-lg="4" class="ion-padding">
         <ngx-charts-pie-chart [view]="view" [scheme]="colorScheme" [results]="single" [legend]="showLegend"
-          [explodeSlices]="explodeSlices" [labels]="showLabels" [doughnut]="doughnut" [gradient]="gradient"
-          (select)="onSelect($event)">
+          [labels]="showLabels" [gradient]="gradient" (select)="onSelect($event)">
         </ngx-charts-pie-chart>
       </ion-col>
     </ion-row>

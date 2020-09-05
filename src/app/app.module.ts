@@ -25,6 +25,8 @@ import { EffectsModule } from '@ngrx/effects';
 import { AppEffects, effects } from './effects/app.effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
+import { EditorModule } from '@tinymce/tinymce-angular';
+import { MomentModule } from 'ngx-moment';
 // import { GooglePlus } from '@ionic-native/google-plus'; // We'll install this in the next section
 //test
 
@@ -64,7 +66,7 @@ export function getHighlightLanguages() {
       enabled: environment.production
     }),
     NgxChartsModule,
-    AngularFireModule.initializeApp(firebaseConfig), // <-- firebase here
+    AngularFireModule.initializeApp(environment.firebase), // <-- firebase here
     AngularFireAuthModule,
     AngularFireDatabaseModule,
     HighlightModule,
@@ -77,6 +79,8 @@ export function getHighlightLanguages() {
     }),
     EffectsModule.forRoot(effects),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
+    EditorModule,
+    MomentModule
   ],
   declarations: [AppComponent],
   providers: [

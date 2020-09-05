@@ -7,14 +7,16 @@ import { IonicModule } from '@ionic/angular';
 import { NgrxStoreDemoPageRoutingModule } from './ngrx-store-demo-routing.module';
 
 import { NgrxStoreDemoPage } from './ngrx-store-demo.page';
+import { EditorModule } from '@tinymce/tinymce-angular';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    NgrxStoreDemoPageRoutingModule
+    NgrxStoreDemoPageRoutingModule,
+    EditorModule
   ],
   declarations: [NgrxStoreDemoPage]
 })
-export class NgrxStoreDemoPageModule {}
+export class NgrxStoreDemoPageModule { }

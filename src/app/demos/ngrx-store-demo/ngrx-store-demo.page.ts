@@ -22,6 +22,7 @@ export class NgrxStoreDemoPage implements OnInit {
   size$: Observable<any>;
   platform$: Observable<any>;
   data: any;
+  // apiKey="0y7tdzm6wvxqxxov61cj9zw573hrii7l4tu5sxjgifj1sq3j"
 
   constructor(private store: Store<fromRoot.AppState>, private dataService: DataService) {
     this.count$ = store.pipe(select(fromRoot.getAllCount));

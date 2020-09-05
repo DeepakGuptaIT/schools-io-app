@@ -8,6 +8,8 @@ import { SubjectService } from './../../providers/subject/subject.service';
 import { CommonService } from './../../providers/core/common.service';
 import { coverflow } from './../../constants/SlideOptions';
 // import { CardComponent } from './../../components/card/card.component';
+import { Store, select } from '@ngrx/store';
+import * as fromRoot from './../../reducers/index';
 import * as _ from "lodash";
 
 @Component({
@@ -26,6 +28,7 @@ export class HomePage implements OnInit {
   loading: HTMLIonLoadingElement;
   toast: HTMLIonToastElement;
   swiper: any;
+  platform$: Observable<any>;
 
   //create the options based on screen size , using platform api
   slideOpts: object = {
@@ -49,9 +52,11 @@ export class HomePage implements OnInit {
     public alertController: AlertController,
     private afAuth: AngularFireAuth,
     public router: Router,
-    public commonService: CommonService
+    public commonService: CommonService,
+    private store: Store<fromRoot.AppState>
   ) {
     this.user = this.afAuth.authState;
+    this.platform$ = store.pipe(select(fromRoot.getPlatformState))
   }
 
   ngOnInit() {
@@ -67,7 +72,7 @@ export class HomePage implements OnInit {
       this.needSubjectLoad = false;
     }
     if (this.needSubjectLoad) {
-      this.loading = await this.commonService.presentLoading('Loading HomePage..');
+      // this.loading = await this.commonService.presentLoading('Loading HomePage..');
 
       (await this.subjectService.getSubjectList()).subscribe(
         async (subjectList: any[]) => {
@@ -81,6 +86,14 @@ export class HomePage implements OnInit {
           await this.loading.dismiss();
         }
       );
+      this.subjectService.testExpress().subscribe(
+        async (res) => {
+          console.log('express ts', res);
+        },
+        async (error) => {
+          this.commonService.handleApiError(error);
+        }
+      )
 
     } else {
       console.log('needSubjectLoad=>', this.needSubjectLoad);

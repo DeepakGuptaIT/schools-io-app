@@ -83,6 +83,11 @@ export class AppComponent implements OnInit {
   ];
   demoPages: Page[] = [
     {
+      title: 'loadash',
+      url: 'loadash',
+      icon: 'code'
+    },
+    {
       title: 'ngx-chart',
       url: 'graph',
       icon: 'map'
@@ -148,6 +153,7 @@ export class AppComponent implements OnInit {
       url: '/forms',
       icon: 'document-outline'
     }
+
   ]
   loggedIn = false;
   darkObj: Observable<boolean> = this.store.select(fromRoot.getTheme);

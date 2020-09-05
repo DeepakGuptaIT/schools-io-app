@@ -107,9 +107,14 @@ const routes: Routes = [
     loadChildren: () => import('./demos/graph/graph.module').then(m => m.GraphPageModule)
   },
   {
+    path: 'loadash',
+    loadChildren: () => import('./demos/loadash/loadash.module').then(m => m.LoadashPageModule)
+  },
+  {
     path: '**',
     loadChildren: () => import('./pages/shared/not-found/not-found.module').then(m => m.NotFoundPageModule)
   }
+
 ];
 
 @NgModule({
